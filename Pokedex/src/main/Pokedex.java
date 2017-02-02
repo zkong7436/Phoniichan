@@ -24,7 +24,7 @@ public class Pokedex extends GuiApplication {
 	 * @see guiPractice.GuiApplication#initScreen()
 	 */
 	@Override
-	protected void initScreen() {
+	protected void initScreen() { 
 		// TODO Auto-generated method stub
 
 	}

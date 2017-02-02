@@ -12,8 +12,10 @@ import guiPractice.GuiApplication;
 public class Pokedex extends GuiApplication {
 
 	/**
-	 * 
+	 * static fields
 	 */
+	public static Pokedex game;
+	
 	public Pokedex() {
 		// TODO Auto-generated constructor stub
 	}

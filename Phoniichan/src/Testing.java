@@ -3,17 +3,17 @@
  */
 
 /**
- * @author Student8
+ * @author KZ
  *
  */
-public class TestFile {
-
+public class Testing 
+{
 	/**
 	 * 
 	 */
-	public TestFile() {
+	public Testing() 
+	{
 		// TODO Auto-generated constructor stub
 	}
 
 }
- 

@@ -15,6 +15,7 @@ public class Pokedex extends GuiApplication {
 	 * 
 	 */
 	private static Pokedex game;
+	
 	public Pokedex() {
 		// TODO Auto-generated constructor stub
 	}
@@ -32,8 +33,9 @@ public class Pokedex extends GuiApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		game = new Pokedex();
+		Thread go = new Thread(game);
+		go.start();
 	}
 
 }

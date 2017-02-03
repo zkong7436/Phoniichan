@@ -1,6 +1,3 @@
-/**
- * 
- */
 package main;
 
 import guiPractice.GuiApplication;
@@ -15,22 +12,17 @@ public class Pokedex extends GuiApplication {
 	 * static fields
 	 */
 	public static Pokedex game;
-	
-	public Pokedex() {
-		// TODO Auto-generated constructor stub
-	}
-
-	/* (non-Javadoc)
-	 * @see guiPractice.GuiApplication#initScreen()
-	 */
-	@Override
-	protected void initScreen() {
-		// TODO Auto-generated method stub
-
-	}
+	public static PokedexScreen screen;
 	
 	public static void main(String[] args){
-		
+		game = new Pokedex();
+		Thread app = new Thread(game);
+		app.start();
+	}
+	
+	protected void initScreen() {
+		screen = new PokedexScreen(getWidth(), getHeight());
+		setScreen(screen);
 	}
 
 }

@@ -7,7 +7,7 @@ import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.Visible;
 
-public class PokedexScreen extends ClickableScreen {
+public abstract class PokedexScreen extends ClickableScreen {
 
 	public static Button toHome;
 	public static Button togglePower;
@@ -29,7 +29,8 @@ public class PokedexScreen extends ClickableScreen {
 	}
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> arg0) {
+	public void initAllObjects(ArrayList<Visible> viewObjects) {
+		initRemainingItems(viewObjects);
 		int buttonWidth = w/8;
 		toHome = new Button(w/8,h/2+h/16, buttonWidth, buttonWidth, null, null, new Action(){
 
@@ -54,6 +55,10 @@ public class PokedexScreen extends ClickableScreen {
 			}
 			
 		});
+		viewObjects.add(toHome);
+		viewObjects.add(togglePower);
 	}
+	
+	public abstract void initRemainingItems(ArrayList<Visible> viewObjects);
 
 }

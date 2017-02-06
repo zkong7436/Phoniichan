@@ -21,7 +21,7 @@ public class Pokedex extends GuiApplication {
 	}
 	
 	protected void initScreen() {
-		screen = new PokedexScreen(getWidth(), getHeight());
+		screen = new LockScreen(getWidth(), getHeight());
 		setScreen(screen);
 	}
 

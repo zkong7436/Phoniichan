@@ -9,6 +9,7 @@ import guiPractice.components.Visible;
 public class LockScreen extends PokedexScreen {
 
 	private Button[][] buttons;
+	private Button enter;
 	private String corCode = "022716";
 	private String code = "";
 	
@@ -35,8 +36,19 @@ public class LockScreen extends PokedexScreen {
 				});
 				viewObjects.add(buttons[i][j]);			
 			}
-
 		}
+		enter = new Button(0,0,0,0,"Enter",null,new Action(){
+
+			@Override
+			public void act() {
+				if(code.equals(corCode)){
+					locked = false;
+					Pokedex.game.setScreen(home);
+				}
+			}
+			
+		});
+		viewObjects.add(enter);
 	}
 
 }

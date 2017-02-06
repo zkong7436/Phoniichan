@@ -1,8 +1,8 @@
 package TwentyFortyEight;
 
-public class Movement {
+public class JimmyCondition {
 
-	public Movement() {
+	public JimmyCondition() {
 		// TODO Auto-generated constructor stub
 	}
 

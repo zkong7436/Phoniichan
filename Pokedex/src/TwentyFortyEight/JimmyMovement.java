@@ -1,8 +1,8 @@
 package TwentyFortyEight;
 
-public class FrontEnd {
+public class JimmyMovement {
 
-	public FrontEnd() {
+	public JimmyMovement() {
 		// TODO Auto-generated constructor stub
 	}
 

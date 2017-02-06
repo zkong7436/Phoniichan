@@ -1,8 +1,8 @@
 package TwentyFortyEight;
 
-public class Progress {
+public class JosephFrontEnd {
 
-	public Progress() {
+	public JosephFrontEnd() {
 		// TODO Auto-generated constructor stub
 	}
 

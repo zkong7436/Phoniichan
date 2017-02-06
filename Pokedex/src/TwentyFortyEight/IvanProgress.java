@@ -1,8 +1,8 @@
 package TwentyFortyEight;
 
-public class Condition {
+public class IvanProgress {
 
-	public Condition() {
+	public IvanProgress() {
 		// TODO Auto-generated constructor stub
 	}
 

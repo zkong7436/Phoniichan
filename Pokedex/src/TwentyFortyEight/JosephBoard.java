@@ -1,8 +1,8 @@
 package TwentyFortyEight;
 
-public class Square {
+public class JosephBoard {
 
-	public Square() {
+	public JosephBoard() {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -7,7 +7,7 @@ import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.Visible;
 
-public abstract class PokedexScreen extends ClickableScreen {
+public abstract class PokedexScreen extends ClickableScreen implements PokedexScreenInterface {
 
 	public static Button toHome;
 	public static Button togglePower;

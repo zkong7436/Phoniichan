@@ -37,7 +37,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 
 	private void nextRound() {
 		acceptingInput = false;
-		roundNumber++;
+		roundNumber++; 
 		abras.add(randomMove());
 		progress.setRound(roundNumber);
 		progress.setSequenceSize(sequence.size());

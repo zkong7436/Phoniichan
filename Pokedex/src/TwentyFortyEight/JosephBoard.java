@@ -13,7 +13,7 @@ public class JosephBoard extends Component implements BoardInterface{
 	private int[][] board = new int [4][4];
 	//private int sq1,sq2,sq3,sq4,sq5,sq6,sq7,sq8,sq9,sq10,sq11,sq12,sq13,sq14,sq15,s16;
 	private static int[]checkBoard = new int[16];
-	
+	private int height,width = 200;
 	public JosephBoard(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -35,7 +35,7 @@ public class JosephBoard extends Component implements BoardInterface{
 		g.setColor(Color.black);
 		for (int row = 0; row < board.length; row++) {
 			for (int col = 0; col < board[row].length; col++) {
-				g.drawRect(row*width + width, 30, width, height);
+				g.drawRect(col*width,row*height, width, height);
 
 			}
 		}

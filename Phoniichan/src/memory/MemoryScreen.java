@@ -38,7 +38,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 	
 	private void firstRound() {
-		randomMove();
+		generateAbras();
 		changeText("Click to Start");
 		acceptingInput = false;
 		roundNumber++;
@@ -49,7 +49,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 	 
 	private void nextRound() {
-		randomMove();
+		generateAbras();
 		acceptingInput = false;
 		hp = 3;
 		roundNumber++; 
@@ -62,7 +62,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		
 	}
 	
-	private int randomMove() {
+	private int generateAbras() {
 		
 	}
 

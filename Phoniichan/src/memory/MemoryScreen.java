@@ -47,7 +47,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		showAbra();
 		acceptingInput = true;
 	}
-	
+	 
 	private void nextRound() {
 		randomMove();
 		acceptingInput = false;

@@ -1,5 +1,6 @@
 package main;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import guiPractice.components.Action;
@@ -37,7 +38,7 @@ public class LockScreen extends PokedexScreen {
 				viewObjects.add(buttons[i][j]);			
 			}
 		}
-		enter = new Button(0,0,0,0,"Enter",null,new Action(){
+		enter = new Button(0,0,70,70,"Enter",new Color(0,0,0,0),new Action(){
 
 			@Override
 			public void act() {

@@ -30,20 +30,17 @@ public abstract class PokedexScreen extends ClickableScreen implements PokedexSc
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		initRemainingItems(viewObjects);
-		for(int i = 0; i < viewObjects.size(); i++){
-			if(viewObjects.get(i).getX() < 330){
-				viewObjects.remove(i);
-			}
-			if(viewObjects.get(i).getX() > 710){
-				viewObjects.remove(i);
-			}
-			if(viewObjects.get(i).getY() < 90){
-				viewObjects.remove(i);
-			}
-			if(viewObjects.get(i).getY() > 435){
-				viewObjects.remove(i);
-			}
-		}
+//		for(int i = 0; i < viewObjects.size(); i++){
+//			if(viewObjects.get(i).getX() < 330){
+//				viewObjects.remove(i);
+//			}else if(viewObjects.get(i).getX() > 710){
+//				viewObjects.remove(i);
+//			}else if(viewObjects.get(i).getY() < 90){
+//				viewObjects.remove(i);
+//			}else if(viewObjects.get(i).getY() > 435){
+//				viewObjects.remove(i);
+//			}
+//		}
 		Color buttonColor = new Color(105,168,79,0);
 		toHome = new Button(815,220, 45, 45, "H", buttonColor, new Action(){
 
@@ -68,6 +65,7 @@ public abstract class PokedexScreen extends ClickableScreen implements PokedexSc
 			}
 			
 		});
+		blank = new Graphic(0,0,"resources/DefaultScreen.jpg");
 		viewObjects.add(toHome);
 		viewObjects.add(togglePower);
 		viewObjects.add(blank);

@@ -63,7 +63,8 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 	
 	private int generateAbras() {
-		
+		int row = (int) (Math.random()*abra.length);
+		int col = 
 	}
 
 	private void changeText(String s) {

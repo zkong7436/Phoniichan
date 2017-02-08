@@ -1,9 +1,19 @@
 package memory;
 
-public class ButtonFulton {
+import java.awt.Graphics2D;
+
+import guiPractice.components.Component;
+
+public class ButtonFulton extends Component implements ButtonInterfaceFulton{
 
 	public ButtonFulton() {
-		// TODO Auto-generated constructor stub
+		super(0, 0, h, h);
+	}
+
+	@Override
+	public void update(Graphics2D arg0) {
+		// TODO Auto-generated method stub
+		
 	}
  
 }

@@ -15,7 +15,8 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private int combo;
 	private int lives;
 	private int points;
-	private ArrayList<Button> abras;
+	private ArrayList<Button> tiles;
+	private boolean[][] abra;
 		
 	public MemoryScreen(int height, int width) {
 		super(height, height);
@@ -23,13 +24,11 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		app.start();
 	}
 	
-	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		label.setText("");
+		nextRound();
 	}
 
-	@Override
 	public void initAllObjects(ArrayList<Visible> arg0) {
 		// TODO Auto-generated method stub
 		
@@ -37,10 +36,9 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 
 	private void nextRound() {
 		acceptingInput = false;
+		
 		roundNumber++; 
-		abras.add(randomMove());
-		progress.setRound(roundNumber);
-		progress.setSequenceSize(sequence.size());
+		
 		changeText("Simon's turn");
 		label.setText("");
 		playSequence();
@@ -49,8 +47,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		sequenceIndex = 0;
 	}
 	
-	private Object randomMove() {
-		return null;
+	private int randomMove() {
 	}
 
 	private void changeText(String s) {

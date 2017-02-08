@@ -2,6 +2,7 @@ package TwentyFortyEight;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
 
@@ -36,21 +37,35 @@ public class JosephBoard extends Component implements BoardInterface{
 		for (int row = 0; row < board.length; row++) {
 			for (int col = 0; col < board[row].length; col++) {
 				g.drawRect(col*width,row*height, width, height);
-
 			}
 		}
-		
-		
 	}
 	
-
-
-
-
-
-
-
-
+	public void makeSquare(Graphics2D g, int a){
+		Image[] pokemonOrder = new Image[16];
+		String pokemon = new String();
+		for(int i = 0; i < pokemonOrder.length; i++){
+			pokemon = //whatever the link is plus i;
+			pokemonOrder[i] = new Image(pokemon);
+		}
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setColor(Color.black);
+		g.drawRect(getX(),getY(), width, height);
+		g.drawImage(pokemonOrder[a-1].getImage(), getX(), getY(),width, height);
+	}
 	
-
+	public void highScore(int userScore){
+		int[] scores = new int[10];
+		boolean gameOver = false;
+		if(gameOver){
+			for(int i = 0; i < scores.length; i++){
+				if( scores[i] < userScore){
+					scores[i] = userScore;
+					for(int j = i; j < scores.length; j++){
+						
+					}
+				}
+			}
+		}
+	}
 }

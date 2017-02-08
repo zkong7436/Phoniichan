@@ -1,16 +1,19 @@
 package main;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
+import guiPractice.components.Graphic;
 import guiPractice.components.Visible;
 
 public abstract class PokedexScreen extends ClickableScreen implements PokedexScreenInterface {
 
 	public static Button toHome;
 	public static Button togglePower;
+	public static Graphic blank;
 	
 	public static boolean locked;
 	public static boolean on;
@@ -18,21 +21,31 @@ public abstract class PokedexScreen extends ClickableScreen implements PokedexSc
 	public static HomeScreen home;
 	public static LockScreen lock;
 	
-	private static int w;
-	private static int h;
-	
 	public PokedexScreen(int width, int height) {
 		super(width, height);
-		w = width;
-		h = height;
-		home = new HomeScreen(w,h);
+		home = new HomeScreen(width,height);
+		lock = new LockScreen(width, height);
 	}
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		initRemainingItems(viewObjects);
-		int buttonWidth = w/8;
-		toHome = new Button(w/8,h/2+h/16, buttonWidth, buttonWidth, null, null, new Action(){
+		for(int i = 0; i < viewObjects.size(); i++){
+			if(viewObjects.get(i).getX() < 330){
+				viewObjects.remove(i);
+			}
+			if(viewObjects.get(i).getX() > 710){
+				viewObjects.remove(i);
+			}
+			if(viewObjects.get(i).getY() < 90){
+				viewObjects.remove(i);
+			}
+			if(viewObjects.get(i).getY() > 435){
+				viewObjects.remove(i);
+			}
+		}
+		Color buttonColor = new Color(105,168,79,0);
+		toHome = new Button(815,220, 45, 45, "H", buttonColor, new Action(){
 
 			@Override
 			public void act() {
@@ -42,7 +55,7 @@ public abstract class PokedexScreen extends ClickableScreen implements PokedexSc
 			}
 			
 		});
-		togglePower = new Button(7*w/8,h/2+h/16, buttonWidth, buttonWidth, null, null, new Action(){
+		togglePower = new Button(770,260, 45, 45, "P", buttonColor, new Action(){
 
 			@Override
 			public void act() {
@@ -57,6 +70,7 @@ public abstract class PokedexScreen extends ClickableScreen implements PokedexSc
 		});
 		viewObjects.add(toHome);
 		viewObjects.add(togglePower);
+		viewObjects.add(blank);
 	}
 	
 	public abstract void initRemainingItems(ArrayList<Visible> viewObjects);

@@ -15,7 +15,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private int combo;
 	private int lives;
 	private int hp;
-	private int points;
+	private int points; 
 	private int abraCount;
 	private ArrayList<ArrayList<Button>> tiles;
 	private boolean[][] abra;

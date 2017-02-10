@@ -24,7 +24,7 @@ public class KevinScoreboard
 			combo = 1;
 		}
 		return currentScore;
-	}
+	} 
 	private int addScore(int combo, int level)
 	{
 		return combo * level;

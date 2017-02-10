@@ -18,36 +18,19 @@ public abstract class PokedexScreen extends ClickableScreen implements PokedexSc
 	public static boolean locked;
 	public static boolean on;
 	
-	public static HomeScreen home;
-	public static LockScreen lock;
-	
 	public PokedexScreen(int width, int height) {
 		super(width, height);
-		home = new HomeScreen(width,height);
-		lock = new LockScreen(width, height);
 	}
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		initRemainingItems(viewObjects);
-//		for(int i = 0; i < viewObjects.size(); i++){
-//			if(viewObjects.get(i).getX() < 330){
-//				viewObjects.remove(i);
-//			}else if(viewObjects.get(i).getX() > 710){
-//				viewObjects.remove(i);
-//			}else if(viewObjects.get(i).getY() < 90){
-//				viewObjects.remove(i);
-//			}else if(viewObjects.get(i).getY() > 435){
-//				viewObjects.remove(i);
-//			}
-//		}
 		Color buttonColor = new Color(105,168,79,0);
 		toHome = new Button(815,220, 45, 45, "H", buttonColor, new Action(){
 
 			@Override
 			public void act() {
 				if(on && !locked){
-					Pokedex.game.setScreen(home);
+					Pokedex.game.setScreen(new HomeScreen(getWidth(),getHeight()));
 				}
 			}
 			
@@ -60,7 +43,7 @@ public abstract class PokedexScreen extends ClickableScreen implements PokedexSc
 					on = false;
 				}else{
 					on = true;
-					Pokedex.game.setScreen(lock);
+					Pokedex.game.setScreen(new LockScreen(getWidth(), getHeight()));
 				}
 			}
 			
@@ -69,8 +52,15 @@ public abstract class PokedexScreen extends ClickableScreen implements PokedexSc
 		viewObjects.add(toHome);
 		viewObjects.add(togglePower);
 		viewObjects.add(blank);
+		initRemainingItems(viewObjects);
 	}
 	
 	public abstract void initRemainingItems(ArrayList<Visible> viewObjects);
 
 }
+/*
+max x: 710
+min x: 330
+max y: 435
+min y: 90
+*/

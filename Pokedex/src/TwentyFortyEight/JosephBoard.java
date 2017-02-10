@@ -61,7 +61,7 @@ public class JosephBoard extends Component implements BoardInterface{
 				}
 			}
 		}
-	}
+	}//ss
 
 
 	@Override

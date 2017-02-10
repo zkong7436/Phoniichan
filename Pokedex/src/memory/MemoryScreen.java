@@ -14,6 +14,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private int roundNumber;
 	private int lives;
 	private int hp;
+	private int rowSize;
 	private int abraCount;
 	private int abraCaught;
 	private boolean[] abra;
@@ -30,12 +31,14 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		firstRound();
 		nextRound();
 	}
-
+	
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-
+		
 	}
 
 	private void firstRound() {
+		rowSize = 3;
+		lives = 5;
 		generateAbras();
 		changeText("Click to Start");
 		acceptingInput = false;
@@ -47,17 +50,20 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 
 	private void nextRound() {
+		roundNumber++;
+		if(roundNumber % 3 == 0){
+			rowSize++;
+		}
 		generateAbras();
 		acceptingInput = false;
 		hp = 3;
-		roundNumber++;
 		showAbra();
 		acceptingInput = true;
 	}
 
 	private void showAbra() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void generateAbras() {

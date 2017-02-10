@@ -27,7 +27,7 @@ public class LockScreen extends PokedexScreen {
 			for(int j = 0; j < buttons[i].length; j++){
 				int a = i;
 				int b = j;
-				buttons[i][j] = new Button(getWidth()/9+3*i,getHeight()/9+3*j,50,50,(i+j+1+i*2)+"",null,new Action(){
+				buttons[i][j] = new Button(330+i*50,90+j*50,50,50,(i+j+1+i*2)+"",new Color(0,0,0,1),new Action(){
 	
 					@Override
 					public void act() {
@@ -44,7 +44,7 @@ public class LockScreen extends PokedexScreen {
 			public void act() {
 				if(code.equals(corCode)){
 					locked = false;
-					Pokedex.game.setScreen(home);
+					Pokedex.game.setScreen(new HomeScreen(getWidth(),getHeight()));
 				}
 			}
 			

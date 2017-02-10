@@ -6,7 +6,6 @@ import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
-import simon.MoveInterfaceFulton;
 
 public class MemoryScreen extends ClickableScreen implements Runnable {
 

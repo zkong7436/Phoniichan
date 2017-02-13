@@ -6,6 +6,7 @@ import guiPractice.GuiApplication;
  * @author Student8
  *
  */
+@SuppressWarnings("serial")
 public class Pokedex extends GuiApplication {
 
 	/**

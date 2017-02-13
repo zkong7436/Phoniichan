@@ -17,7 +17,7 @@ public class TestingScreenTracey extends ClickableScreen {
 	@Override
 	public void initAllObjects(ArrayList<Visible> arg0) {
 		appIcon = new AppsLink();
-		appIcon.setIconImage
+//		appIcon.setIconImage
 
 	}
 

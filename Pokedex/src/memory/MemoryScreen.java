@@ -17,8 +17,9 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private int rowSize;
 	private int abraCount;
 	private int abraCaught;
+	private boolean[] checked;
 	private boolean[] abra;
-	private ArrayList<Button> tiles;
+	private ButtonInterfaceFulton[] tiles;
  
 	public MemoryScreen(int height, int width) {
 		super(height, height);
@@ -33,7 +34,17 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 	
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
+		int numberOfButtons = rowSize*rowSize;
+		tiles = new ButtonInterfaceFulton[numberOfButtons];
 		
+		for(int i = 0; i < numberOfButtons; i++){
+			 tiles[i] = getAButton();
+             final ButtonInterfaceFulton b = tiles[i];
+		}
+	}
+
+	private ButtonInterfaceFulton getAButton() {
+		return new memory.ButtonFulton();
 	}
 
 	private void firstRound() {

@@ -47,7 +47,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		return new memory.ButtonFulton();
 	}
 
-	private void firstRound() {
+	private void firstRound() { 
 		rowSize = 3;
 		lives = 5;
 		generateAbras();

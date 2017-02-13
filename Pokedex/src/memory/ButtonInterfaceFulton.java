@@ -10,3 +10,4 @@ public interface ButtonInterfaceFulton extends Clickable{
 	
 	void setAction(Action a);
 }
+ 

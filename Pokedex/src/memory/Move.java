@@ -1,4 +1,4 @@
-package memory;
+ package memory;
 
 public class Move implements MoveInterface{
 	

@@ -30,7 +30,7 @@ public class JosephBoard extends Component implements BoardInterface{
 		g.setColor(Color.black);
 		for (int row = 0; row < board.length; row++) {
 			for (int col = 0; col < board[row].length; col++) {
-				g.drawRect(col*width,row*height, width, height);
+				g.drawRect(40,40,40,40);
 			}
 		}
 	}

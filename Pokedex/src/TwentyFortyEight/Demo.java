@@ -23,7 +23,7 @@ public class Demo extends GuiApplication {
 	 * 
 	 */
 	public Demo() {
-		reward = new Reward();
+		//reward = new Reward();
 	}
 
 	/* (non-Javadoc)
@@ -47,28 +47,33 @@ public class Demo extends GuiApplication {
 	}
 	// nested inner class
 	private class DemoScreen extends ClickableScreen{
-		private TextLabel rewardDisplay;
-		private Button beatAMonster;
+		//private TextLabel rewardDisplay;
+		//private Button beatAMonster;
+		//private MyDemo demo;
 		public DemoScreen(int width, int height) {
 			super(width, height);
+			
 			// TODO Auto-generated constructor stub
 		}
 
 		@Override
 		public void initAllObjects(ArrayList<Visible> view) {
-			rewardDisplay = new TextLabel(20,40,1000,25,"");
-			beatAMonster = new Button(40, 100, 190, 40,"beat a monster" ,Color.blue, 
-					new Action() {
-						
-						@Override
-						public void act() {
-							Demo.reward.getReward(10);
-							rewardDisplay.setText(" You earned a reward ! Total points = " +Demo.reward.getPoints());
-							
-						}
-					});
-			view.add(rewardDisplay);
-			view.add(beatAMonster);
+			
+			MyDemo d = new MyDemo(40,40,300,300);
+		//	rewardDisplay = new TextLabel(20,40,1000,25,"");
+		//	beatAMonster = new Button(40, 100, 190, 40,"beat a monster" ,Color.blue, 
+//					new Action() {
+//						
+//						@Override
+//						public void act() {
+//							Demo.reward.getReward(10);
+//							rewardDisplay.setText(" You earned a reward ! Total points = " +Demo.reward.getPoints());
+//							
+//						}
+//					});
+		//	view.add(rewardDisplay);
+		//	view.add(beatAMonster);
+			view.add(d);
 		}
 		
 	}

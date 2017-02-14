@@ -13,9 +13,11 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	private Action action;
 	private Color color;
 	private String pictureAddress;
+	private ButtonContainer container;
 
-	public ButtonFulton() {
+	public ButtonFulton(ButtonContainer container) {
 		super(0, 0, 0, 0); 
+		this.container = container;
 	}
 
 	public void act() {
@@ -33,7 +35,8 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		if(pictureAddress != null){
-			Graphic pic = new Graphic(x, y, w, h, imageLocation)
+			Graphic pic = new Graphic(x, y, w, h, imageLocation);
+			container.getNumberOfButtons();
 		}
 	}
 

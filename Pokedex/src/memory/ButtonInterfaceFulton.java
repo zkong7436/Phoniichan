@@ -18,5 +18,6 @@ public interface ButtonInterfaceFulton extends Clickable{
 	void setPicture(String address); 
 	
 	Graphic getGraphic();
+
 }
  

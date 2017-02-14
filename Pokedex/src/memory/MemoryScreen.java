@@ -1,7 +1,10 @@
 package memory;
 
+import java.awt.Color;
+import java.awt.GraphicsEnvironment;
 import java.util.ArrayList;
 
+import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
@@ -11,22 +14,63 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 
 	private boolean acceptingInput;
 	private TextLabel label;
-	private int roundNumber;
+	private int combo;
+	private int currentScore;
+	private int level;
 	private int lives;
 	private int hp;
 	private int rowSize;
 	private int abraCount;
 	private int abraCaught;
-	private boolean[] checked;
-	private boolean[] abra;
+	private boolean[][] logic;
 	private ButtonInterfaceFulton[] tiles;
  
+	public int getCombo() {
+		return combo;
+	}
+	
+	public void setCombo(int combo) {
+		this.combo = combo;
+	}
+	
+	public int getCurrentScore() {
+		return currentScore;
+	}
+	
+	public void setCurrentScore(int currentScore) {
+		this.currentScore = currentScore;
+	}
+	
+	public int getLevel() {
+		return level;
+	}
+	
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
+	public int getLives() {
+		return lives;
+	}
+	
+	public void setLives(int lives) {
+		this.lives = lives;
+	}
+	
+	public int getAbraCaught() {
+		return abraCaught;
+	}
+	
+	public void setAbraCaught(int abraCaught) {
+		this.abraCaught = abraCaught;
+	}
+	
 	public MemoryScreen(int height, int width) {
 		super(height, height);
 		Thread app = new Thread(this);
 		app.start();
 	}
-
+	
 	public void run() {
 		label.setText("");
 		firstRound();
@@ -40,7 +84,29 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		for(int i = 0; i < numberOfButtons; i++){
 			 tiles[i] = getAButton();
              final ButtonInterfaceFulton b = tiles[i];
-		}
+             b.setColor(Color.green);
+//			 b.setX((int)());
+//			 b.setY((int)());
+			 tiles[i].setAction(new Action(){
+					public void act(){
+						if(acceptingInput){
+							Thread flip = new Thread(new Runnable(){
+								public void run(){
+									try{
+										Thread.sleep(400);
+									}catch(Exception e){
+										e.printStackTrace();
+									}
+								}
+								
+								
+							});
+						}
+					}
+
+			 });
+			 viewObjects.add(tiles[i]);
+		 }
 	}
 
 	private ButtonInterfaceFulton getAButton() {
@@ -53,36 +119,35 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		generateAbras();
 		changeText("Click to Start");
 		acceptingInput = false;
-		roundNumber++;
+		level++;
 		hp = 3;
 		label.setText("");
-		showAbra();
+		showAbras();
 		acceptingInput = true;
 	}
 
 	private void nextRound() {
-		roundNumber++;
-		if(roundNumber % 3 == 0){
+		level++;
+		if(level % 3 == 0){
 			rowSize++;
 		}
 		generateAbras();
 		acceptingInput = false;
 		hp = 3;
-		showAbra();
+		showAbras();
 		acceptingInput = true;
 	}
 
-	private void showAbra() {
-		// TODO Auto-generated method stub
+	private void showAbras() {
 		
 	}
 
 	private void generateAbras() {
 		int count = abraCount;
 		while (count >= 0) {
-			int place = (int) (Math.random() * abra.length);
-			if (abra[place] != true) {
-				abra[place] = true;
+			int place = (int) (Math.random() * logic.length);
+			if (logic[place][0] != true) {
+				logic[place][0] = true;
 				count--;
 			}
 		}

@@ -40,9 +40,12 @@ public class MyDemo extends Component {
 //				}
 			}
 		}
+		g.drawRect(120, 230, 170, 60);
 		board = a;
 		
+		
 	}
+	
 
 //	public void start(){
 //		ArrayList<Integer> Nrow = new ArrayList<Integer>();

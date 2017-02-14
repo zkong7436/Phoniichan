@@ -1,7 +1,7 @@
 package TwentyFortyEight;
 import TwentyFortyEight.BoardInterface;
 public class TwentyFortyEightGame  {
-	private int gameOver = 0;
+	public static int gameOver = 0;
 	private int[][] board = new int [4][4];
 	public TwentyFortyEightGame() {
 		if(gameOver == 0){

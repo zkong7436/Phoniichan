@@ -60,6 +60,7 @@ public class Demo extends GuiApplication {
 		public void initAllObjects(ArrayList<Visible> view) {
 			
 			MyDemo d = new MyDemo(40,40,300,300);
+			TextLabel text = new TextLabel(130, 230, 300, 40, "This is the High Score Board");
 		//	rewardDisplay = new TextLabel(20,40,1000,25,"");
 		//	beatAMonster = new Button(40, 100, 190, 40,"beat a monster" ,Color.blue, 
 //					new Action() {
@@ -74,6 +75,7 @@ public class Demo extends GuiApplication {
 		//	view.add(rewardDisplay);
 		//	view.add(beatAMonster);
 			view.add(d);
+			view.add(text);
 		}
 		
 	}

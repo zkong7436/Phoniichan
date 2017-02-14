@@ -50,13 +50,14 @@ public class JosephBoard extends Component implements BoardInterface{
 	
 	public void highScore(int userScore){
 		int[] scores = new int[10];
-		boolean gameOver = false;
-		if(gameOver){
+		if(TwentyFortyEightGame.gameOver == 1){
 			for(int i = 0; i < scores.length; i++){
 				if( scores[i] < userScore){
+					int temp = scores[i];
 					scores[i] = userScore;
-					for(int j = i; j < scores.length; j++){
-						
+					scores[i+1] = temp;
+					for(int j = i+2; j < scores.length; j++){
+						scores[j] = scores[i];
 					}
 				}
 			}

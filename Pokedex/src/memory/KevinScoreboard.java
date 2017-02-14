@@ -2,7 +2,7 @@ package memory;
 
 public class KevinScoreboard
 {
-	private int lives;
+	private int hp;
 	private int combo;
 	private int level;
 	private int currentScore;
@@ -10,7 +10,7 @@ public class KevinScoreboard
 	{
 		combo = 1;
 		level = 1;
-		lives = 3;
+		hp = 3;
 		currentScore = 0;
 	}
 	
@@ -24,7 +24,7 @@ public class KevinScoreboard
 		else
 		{
 			combo = 1;
-			lives -= 1;
+			hp -= 1;
 		}
 		return currentScore;
 	} 

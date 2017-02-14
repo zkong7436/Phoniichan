@@ -2,34 +2,22 @@ package memory;
 
 public class KevinScoreboard
 {
-	private int hp;
-	private int combo;
-	private int level;
-	private int currentScore;
 	public KevinScoreboard() 
 	{
-		combo = 1;
-		level = 1;
-		hp = 3;
-		currentScore = 0;
+		
 	}
 	
-	public int increaseScore(boolean correct)
+	public int updateScore(boolean correct, int level, int combo, int currentScore)
 	{
 		if(correct == true)
 		{
 			combo = +1;
-			currentScore =+ addScore(combo, level);
+			currentScore =+ (combo * level);
 		}
 		else
 		{
 			combo = 1;
-			hp -= 1;
 		}
 		return currentScore;
 	} 
-	private int addScore(int combo, int level)
-	{
-		return combo * level;
-	}
 }

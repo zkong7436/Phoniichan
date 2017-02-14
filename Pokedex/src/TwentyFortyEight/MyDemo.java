@@ -15,6 +15,7 @@ import guiPractice.components.Component;
  *
  */
 public class MyDemo extends Component {
+	private int[][]board;
 	public MyDemo(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -39,22 +40,32 @@ public class MyDemo extends Component {
 //				}
 			}
 		}
+		board = a;
 		
 	}
 
 //	public void start(){
 //		ArrayList<Integer> Nrow = new ArrayList<Integer>();
 //		ArrayList<Integer> Ncol = new ArrayList<Integer>();
-//		for (int row = 0; row < a.length; row++) {
-//			for (int col= 0; col < a.length; col++) {
-//				if(a[row][col] == 0){
+//		for (int row = 0; row < board.length; row++) {
+//			for (int col= 0; col < board.length; col++) {
+//				if(board[row][col] == 0){
 //					Nrow.add(row);
-//					Nrow.add(col);
+//					Ncol.add(col);
+//					//will add row and col of all unfilled squares
 //				}
 //			}
-//			int expo = (int) ((1 * Math.random()) + 1); // (0 or 1) + 1;
-//			// 
-//			// 2 ^1 = 2; 2^2 = 4;  it will random 
+//			for (int i = 0; i < 2; i++) {
+//				int rndX = (int)(Nrow.size()*Math.random());
+//				int rndY = (int)(Ncol.size()*Math.random());
+//				int expo = (int) ((1 * Math.random()) + 1); // (0 or 1) + 1;
+//				// 
+//				// 2 ^1 = 2; 2^2 = 4;  it will random 
+//				board[rndX][rndY] = (int) Math.pow(2, expo);
+//				Nrow.remove(rndX);
+//				Nrow.remove(rndY);
+//				
+//			}
 //		}
 //		
 //	}

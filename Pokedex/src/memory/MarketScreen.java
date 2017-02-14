@@ -1,8 +1,8 @@
 package memory;
 
-public class Array2D {
+public class MarketScreen {
 
-	public Array2D() {
+	public MarketScreen() {
 		// TODO Auto-generated constructor stub
 	}
 

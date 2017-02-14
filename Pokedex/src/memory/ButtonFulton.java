@@ -13,9 +13,11 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	private Action action;
 	private Color color;
 	private String pictureAddress;
+	private ButtonContainer container;
 
-	public ButtonFulton() {
+	public ButtonFulton(ButtonContainer container) {
 		super(0, 0, 0, 0); 
+		this.container = container;
 	}
 
 	public void act() {

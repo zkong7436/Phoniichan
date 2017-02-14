@@ -44,7 +44,7 @@ public class MarketScreen extends ClickableScreen implements Runnable{
 	private ButtonInterfaceFulton getAButton() {
 		return new ButtonToby;
 	}
-
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

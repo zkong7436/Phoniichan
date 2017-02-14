@@ -6,14 +6,16 @@ import java.awt.RenderingHints;
 
 import guiPractice.components.Action;
 import guiPractice.components.Component;
+import guiPractice.components.Graphic;
 
 public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 
 	private Action action;
 	private Color color;
+	private String pictureAddress;
 
 	public ButtonFulton() {
-		super(0, 0, h, h);
+		super(0, 0, 0, 0);
 	}
 
 	public void act() {
@@ -30,6 +32,9 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		if(pictureAddress != null){
+			Graphic pic = new Graphic(x, y, w, h, imageLocation)
+		}
 	}
 
 	public void setAction(Action a) {
@@ -40,6 +45,12 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	public void setColor(Color green) {
 		this.color = color;
         update();
+	}
+
+	@Override
+	public void setPicture(String address) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

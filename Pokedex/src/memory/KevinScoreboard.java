@@ -1,7 +1,9 @@
 package memory;
 
-public class KevinScoreboard
+public class KevinScoreboard extends MemoryScreen
 {
+	int combo = MemoryScreen.getCombo();
+
 	public KevinScoreboard() 
 	{
 		

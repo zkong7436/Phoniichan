@@ -85,8 +85,8 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 			 tiles[i] = getAButton();
              final ButtonInterfaceFulton b = tiles[i];
              b.setColor(Color.green);
-//			 b.setX((int)());
-//			 b.setY((int)());
+//			 b.setX();
+//			 b.setY();
 			 tiles[i].setAction(new Action(){
 					public void act(){
 						if(acceptingInput){

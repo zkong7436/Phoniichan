@@ -13,5 +13,7 @@ public interface ButtonInterfaceFulton extends Clickable{
 	void setAction(Action a);
 
 	void setColor(Color green);
+	
+	void setPicture(String address);
 }
  

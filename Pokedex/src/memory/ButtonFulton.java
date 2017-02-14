@@ -15,7 +15,7 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	private String pictureAddress;
 
 	public ButtonFulton() {
-		super(0, 0, 0, 0);
+		super(0, 0, 0, 0); 
 	}
 
 	public void act() {

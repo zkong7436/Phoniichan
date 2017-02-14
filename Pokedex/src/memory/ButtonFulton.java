@@ -1,5 +1,6 @@
  package memory;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
@@ -9,6 +10,7 @@ import guiPractice.components.Component;
 public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 
 	private Action action;
+	private Color color;
 
 	public ButtonFulton() {
 		super(0, 0, h, h);
@@ -33,6 +35,11 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	public void setAction(Action a) {
 		this.action = a;
 		update();
+	}
+
+	public void setColor(Color green) {
+		this.color = color;
+        update();
 	}
 
 }

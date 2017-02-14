@@ -4,14 +4,15 @@ import guiPractice.GuiApplication;
 
 public class FultonDemo extends GuiApplication {
 
-	public FultonDemo() {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	protected void initScreen() {
-		// TODO Auto-generated method stub
-
+		MemoryScreen ssf = new MemoryScreen(getWidth(), getHeight());
+		setScreen(ssf);
 	}
 
+	public static void main(String[] args) {
+		FultonDemo game = new FultonDemo();
+		Thread app = new Thread(game);
+		app.start();
+	}
 }

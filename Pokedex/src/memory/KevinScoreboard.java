@@ -6,7 +6,6 @@ public class KevinScoreboard
 	{
 		
 	}
-	
 	public int updateScore(boolean correct, int level, int combo, int currentScore)
 	{
 		if(correct == true)

@@ -5,17 +5,32 @@ import java.util.Arrays;
 
 public class SpawnDemo {
 	private static int [][]board = new int [4][4];
+	static ArrayList<Integer> Nrow = new ArrayList<Integer>();
+	static ArrayList<Integer> Ncol = new ArrayList<Integer>();
 	public static void main(String[] args) {
-
+		System.out.println("Game starts and two random blank blocks are turned into 2s or 4s" );
 		start();
+		
+		System.out.println("After you move (which is not shown), a new blank block is turned into a 2 or 4"+"");
+		cont();
 //		System.out.print(Arrays.deepToString(board));
 
 	}
 	
+	public static void cont(){
+		for(int i = 0; i<1; i++){
+			int newExpo = (int)Math.pow(2, (int) (((2 * Math.random())) + 1));
+			int newRndX = (int)(Nrow.size()*Math.random()) ;
+			int newRndY = (int)(Ncol.size()*Math.random()) ;
+			board[Nrow.get(newRndX)][Ncol.get(newRndY)] = newExpo;
+			 Nrow.remove(newRndX);
+			 Ncol.remove(newRndY);
+		}
+		System.out.print(Arrays.deepToString(board)+ "\n");
+	}
 
 	public static void start(){
-	ArrayList<Integer> Nrow = new ArrayList<Integer>();
-	ArrayList<Integer> Ncol = new ArrayList<Integer>();
+	
 	for (int row = 0; row < board.length; row++) {
 		for (int col= 0; col < board.length; col++) {
 			if(board[row][col] == 0){

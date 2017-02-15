@@ -6,6 +6,7 @@ import guiPractice.GuiApplication;
  * @author Student8
  *
  */
+@SuppressWarnings("serial")
 public class Pokedex extends GuiApplication {
 
 	/**
@@ -21,7 +22,7 @@ public class Pokedex extends GuiApplication {
 	}
 	
 	protected void initScreen() {
-		screen = new LockScreen(getWidth(), getHeight());
+		screen = new LockScreen(944, 526);
 		setScreen(screen);
 	}
 

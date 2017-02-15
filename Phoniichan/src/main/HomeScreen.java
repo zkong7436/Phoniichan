@@ -7,6 +7,7 @@ import guiPractice.components.Visible;
 
 public class HomeScreen extends PokedexScreen {
 
+	@SuppressWarnings("unused")
 	private ArrayList<Button> appLink;
 	
 	public HomeScreen(int width, int height) {

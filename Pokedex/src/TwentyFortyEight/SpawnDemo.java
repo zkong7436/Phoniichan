@@ -8,9 +8,9 @@ public class SpawnDemo {
 	static ArrayList<Integer> Nrow = new ArrayList<Integer>();
 	static ArrayList<Integer> Ncol = new ArrayList<Integer>();
 	public static void main(String[] args) {
-//		System.out.println("Game starts and two random blank blocks are turned into 2s or 4s" );
-//		//start();
-//		System.out.println("After you move (which is not shown), a new blank block is turned into a 2 or 4"+"");
+		System.out.println("Game starts and two random blank blocks are turned into 2s or 4s" );
+		start();
+		System.out.println("After you move (which is not shown), a new blank block is turned into a 2 or 4"+"");
 		cont();
 		cont();
 		cont();
@@ -25,8 +25,9 @@ public class SpawnDemo {
 		cont();
 		cont();
 		cont();
-		cont();
-		cont();
+		//14 cont to print out last 14 blanks
+//		cont();
+//		cont();
 		//cont x16 to make sure every blank is filled and working.
 		
 		
@@ -87,21 +88,23 @@ public class SpawnDemo {
 	
 	//ended up not using start for now ( its just cont used twice..)
 
-//	public static void start(){
-//	checkBlanks();
-////	System.out.print(Nrow.size()+ "\n");
-////	System.out.print(Ncol.size() + "\n");
-//	int rndX = 0,rndY = 0,nR = 0, nC = 0;
-//	for(int i = 0; i<2; i++){
-//		int expo = (int)Math.pow(2, (int) (((2 * Math.random())) + 1));
-//		 rndX = (int)(Nrow.size()*Math.random()) ;
-//		 rndY = (int)(Ncol.size()*Math.random()) ;
-//		 nR = Nrow.get(rndX);
-//		 nC = Ncol.get(rndY);	 
-//		 board[nR][nC] = expo;
-//		 Nrow.remove(rndX);
-//		 Ncol.remove(rndY);
-//	}
+	public static void start(){
+//	System.out.print(Nrow.size()+ "\n");
+//	System.out.print(Ncol.size() + "\n");
+	//int rndX = 0,rndY = 0,nR = 0, nC = 0;
+	for(int i = 0; i<2; i++){
+		checkBlanks();
+		int newExpo = (int)Math.pow(2, (int) (((2 * Math.random())) + 1));
+		int newRndX = (int)(Nrow.size()*Math.random()) ;
+		int newRndY = newRndX;
+//		int newRndY = (int)(Ncol.size()*Math.random()) ;
+		board[Nrow.get(newRndX)][Ncol.get(newRndY)] = newExpo;
+		Nrow.clear();
+		Ncol.clear();
+		
+	}
+	System.out.print(Arrays.deepToString(board)+ "\n");
+	}
 //	System.out.print(Arrays.deepToString(board)+ "\n");
 //	
 //	//test out that ArrayList holds the blocks in correct order

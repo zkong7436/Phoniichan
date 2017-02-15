@@ -19,5 +19,9 @@ public interface ButtonInterfaceFulton extends Clickable{
 	
 	Graphic getGraphic();
 
+	void setName(String string);
+
+	void setText(String string);
+
 }
  

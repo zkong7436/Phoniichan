@@ -11,8 +11,7 @@ import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
 public class MemoryScreen extends ClickableScreen implements Runnable {
-
-	private boolean acceptingInput;
+	
 	private TextLabel label;
 	private int combo;
 	private int currentScore;
@@ -22,6 +21,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private int rowSize;
 	private int abraCount;
 	private int abraCaught;
+	private boolean acceptingInput;
 	private boolean[][] logic;
 	private ButtonInterfaceFulton[] tiles;
  
@@ -74,55 +74,66 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	public void run() {
 		label.setText("");
 		firstRound();
-		nextRound();
+		//nextRound();
 	}
 	
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		int numberOfButtons = rowSize*rowSize;
+		rowSize = 5;
+		int idkName = 1;
+		int idkName2 = 1;
+		int numberOfButtons = rowSize * rowSize;
 		tiles = new ButtonInterfaceFulton[numberOfButtons];
 		
 		for(int i = 0; i < numberOfButtons; i++){
-			 tiles[i] = getAButton();
-             final ButtonInterfaceFulton b = tiles[i];
-             b.setColor(Color.green);
-//			 b.setX( );
-//			 b.setY();
-			 tiles[i].setAction(new Action(){
+			if(i%rowSize == 0){
+				idkName++;
+				idkName2 = 1;
+			}
+			tiles[i] = getAButton();
+			final ButtonInterfaceFulton b = tiles[i];
+            tiles[i].setColor(Color.green);
+			tiles[i].setX(10+(50*idkName2));
+			idkName2++;
+			tiles[i].setY(10+(50*idkName));
+			tiles[i].setAction(new Action(){
 					public void act(){
 						if(acceptingInput){
 							Thread flip = new Thread(new Runnable(){
 								public void run(){
+									level++;
 									try{
 										Thread.sleep(400);
 									}catch(Exception e){
 										e.printStackTrace();
 									}
 								}
-								
-								
 							});
 						}
 					}
 
-			 });
-			 viewObjects.add(tiles[i]);
-		 }
+			});
+			viewObjects.add(tiles[i]);
+		}
 	}
-
+	
+	public void update(ArrayList<Visible> viewObjects){
+		
+	}
+	
+	
 	private ButtonInterfaceFulton getAButton() {
-		return new memory.ButtonFulton();
+		return new memory.ButtonFulton(null);
 	}
 
 	private void firstRound() { 
-		rowSize = 3;
 		lives = 5;
-		generateAbras();
+//		generateAbras();
 		changeText("Click to Start");
 		acceptingInput = false;
 		level++;
 		hp = 3;
 		label.setText("");
-		showAbras();
+//		showAbras();
 		acceptingInput = true;
 	}
 
@@ -131,10 +142,10 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		if(level % 3 == 0){
 			rowSize++;
 		}
-		generateAbras();
+//		generateAbras();
 		acceptingInput = false;
 		hp = 3;
-		showAbras();
+//		showAbras();
 		acceptingInput = true;
 	}
 

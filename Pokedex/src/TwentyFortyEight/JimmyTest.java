@@ -18,12 +18,20 @@ public class JimmyTest {
 		}
 		game[0][0] = 2;
 		game[0][1] = 2;
-		game[0][2] = 2;
-		game[0][3] = 4;
-		game[1][0] = 0;
-		game[1][1] = 4;
-		game[1][2] = 8;
-		game[3][2] = 8;
+		game[0][2] = 1;
+		game[0][3] = 3;
+		game[1][0] = 2;
+		game[1][1] = 2;
+		game[1][2] = 2;
+		game[1][3] = 2;
+		game[2][0] = 2;
+		game[2][1] = 2;
+		game[2][2] = 2;
+		game[2][3] = 2;
+		game[3][0] = 2;
+		game[3][1] = 2;
+		game[3][2] = 2;
+		game[3][3] = 2;
 
 		printGame(game);
 		playGame();
@@ -34,172 +42,120 @@ public class JimmyTest {
 			System.out.println("Enter a direction to slide the tile.");
 			String input = in.nextLine();
 			if (input.equals("a")) {
-				for (int i = 0; i < game.length; i++) {
-					int[] row = new int[4];
-					for (int j = 0; j < game[i].length; j++) {
-						if (game[i][j] != 0) {
-							int temp = 0;
-							while (row[temp] != 0) {
-								temp++;
-							}
-							row[temp] = game[i][j];
-						}
-					}
-					for (int k = 0; k < row.length - 1; k++) {
-						if (row[k] == row[k + 1]) {
-							row[k] = row[k] + row[k + 1];
-							row[k + 1] = 0;
-						}
-					}
-					game[i] = row;
-				}
-				for (int i = 0; i < game.length; i++) {
-					int[] row = new int[4];
-					for (int j = 0; j < game[i].length; j++) {
-						if (game[i][j] != 0) {
-							int temp = 0;
-							while (row[temp] != 0) {
-								temp++;
-							}
-							row[temp] = game[i][j];
-						}
-					}
-					game[i] = row;
-				}
+				moveTilesPlus(game);
 				printGame(game);
 
-			}else if(input.equals("d")) {
-				for (int i = 0; i < game.length; i++) {
-					int[] row = new int[4];
-					for (int j = 0; j < game[i].length; j++) {
-						if (game[i][j] != 0) {
-							int temp = 3;
-							while (row[temp] != 0) {
-								temp--;
-							}
-							row[temp] = game[i][j];
-						}
-					}
-					for (int k = 0; k < row.length - 1; k++) {
-						if (row[k] == row[k + 1]) {
-							row[k] = row[k] + row[k + 1];
-							row[k + 1] = 0;
-						}
-					}
-					game[i] = row;
-				}
-				for (int i = 0; i < game.length; i++) {
-					int[] row = new int[4];
-					for (int j = 0; j < game[i].length; j++) {
-						if (game[i][j] != 0) {
-							int temp = 3;
-							while (row[temp] != 0) {
-								temp--;
-							}
-							row[temp] = game[i][j];
-						}
-					}
-					game[i] = row;
-				}
+			} else if (input.equals("d")) {
+				moveTilesMinus(game);
 				printGame(game);
 
-			}else if (input.equals("s")) {
-				game = rotateCW(game);
-				for (int i = 0; i < game.length; i++) {
-					int[] row = new int[4];
-					for (int j = 0; j < game[i].length; j++) {
-						if (game[i][j] != 0) {
-							int temp = 0;
-							while (row[temp] != 0) {
-								temp++;
-							}
-							row[temp] = game[i][j];
-						}
-					}
-					for (int k = 0; k < row.length - 1; k++) {
-						if (row[k] == row[k + 1]) {
-							row[k] = row[k] + row[k + 1];
-							row[k + 1] = 0;
-						}
-					}
-					game[i] = row;
-				}
-				for (int i = 0; i < game.length; i++) {
-					int[] row = new int[4];
-					for (int j = 0; j < game[i].length; j++) {
-						if (game[i][j] != 0) {
-							int temp = 0;
-							while (row[temp] != 0) {
-								temp++;
-							}
-							row[temp] = game[i][j];
-						}
-					}
-					game[i] = row;
-				}
+			} else if (input.equals("s")) {
+				rotate(game, 1);
+				moveTilesPlus(game);
+				rotate(game, 3);
+				printGame(game);
 
-				game = rotateCW(game);
-				game = rotateCW(game);
-				game = rotateCW(game);
-				
+			} else if (input.equals("w")) {
+				rotate(game, 1);
+				moveTilesMinus(game);
+				rotate(game, 3);
 				printGame(game);
-			}else if (input.equals("w")) {
-				game = rotateCW(game);
-				for (int i = 0; i < game.length; i++) {
-					int[] row = new int[4];
-					for (int j = 0; j < game[i].length; j++) {
-						if (game[i][j] != 0) {
-							int temp = 3;
-							while (row[temp] != 0) {
-								temp--;
-							}
-							row[temp] = game[i][j];
-						}
-					}
-					for (int k = 0; k < row.length - 1; k++) {
-						if (row[k] == row[k + 1]) {
-							row[k] = row[k] + row[k + 1];
-							row[k + 1] = 0;
-						}
-					}
-					game[i] = row;
-				}
-				for (int i = 0; i < game.length; i++) {
-					int[] row = new int[4];
-					for (int j = 0; j < game[i].length; j++) {
-						if (game[i][j] != 0) {
-							int temp = 3;
-							while (row[temp] != 0) {
-								temp--;
-							}
-							row[temp] = game[i][j];
-						}
-					}
-					game[i] = row;
-				}
-				game = rotateCW(game);
-				game = rotateCW(game);
-				game = rotateCW(game);
-				printGame(game);
+
 			}
 
 		}
-		
-	}
-	static int[][] rotateCW(int[][] mat) {
-	    final int M = mat.length;
-	    final int N = mat[0].length;
-	    int[][] ret = new int[N][M];
-	    for (int r = 0; r < M; r++) {
-	        for (int c = 0; c < N; c++) {
-	            ret[c][M-1-r] = mat[r][c];
-	        }
-	    }
-	    return ret;
+
 	}
 
-	private static void moveTiles() {
-		// TODO Auto-generated method stub
+	private static void rotate(int[][] game, int numberOfRotations) {
+		// rotates clockwise
+		int[][] newArr = new int[4][4];
+		while (numberOfRotations >= 1) {
+			for (int i = 0; i < game.length; i++) {
+				for (int j = 0; j < game[i].length; j++) {
+					newArr[j][3 - i] = game[i][j];
+				}
+			}
+			for (int i = 0; i < game.length; i++) {
+				for (int j = 0; j < game[i].length; j++) {
+					game[i][j] = newArr[i][j];
+				}
+			}
+			numberOfRotations--;
+		}
+
+	}
+
+	private static void combineTiles(int[] row) {
+		for (int k = 0; k < row.length - 1; k++) {
+			if (row[k] == row[k + 1]) {
+				row[k] = row[k] + row[k + 1];
+				row[k + 1] = 0;
+			}
+		}
+	}
+
+	private static void moveTilesPlus(int[][] game) {
+		for (int i = 0; i < game.length; i++) {
+			int[] row = new int[4];
+			for (int j = 0; j < game[i].length; j++) {
+				if (game[i][j] != 0) {
+					int temp = 0;
+					while (row[temp] != 0) {
+						temp++;
+					}
+					row[temp] = game[i][j];
+				}
+			}
+			combineTiles(row);
+
+			game[i] = row;
+		}
+		for (int i = 0; i < game.length; i++) {
+			int[] row = new int[4];
+			for (int j = 0; j < game[i].length; j++) {
+				if (game[i][j] != 0) {
+					int temp = 0;
+					while (row[temp] != 0) {
+						temp++;
+					}
+					row[temp] = game[i][j];
+				}
+			}
+			game[i] = row;
+		}
+
+	}
+
+	private static void moveTilesMinus(int[][] game) {
+		for (int i = 0; i < game.length; i++) {
+			int[] row = new int[4];
+			for (int j = 0; j < game[i].length; j++) {
+				if (game[i][j] != 0) {
+					int temp = 3;
+					while (row[temp] != 0) {
+						temp--;
+					}
+					row[temp] = game[i][j];
+				}
+			}
+			combineTiles(row);
+
+			game[i] = row;
+		}
+		for (int i = 0; i < game.length; i++) {
+			int[] row = new int[4];
+			for (int j = 0; j < game[i].length; j++) {
+				if (game[i][j] != 0) {
+					int temp = 3;
+					while (row[temp] != 0) {
+						temp--;
+					}
+					row[temp] = game[i][j];
+				}
+			}
+			game[i] = row;
+		}
 
 	}
 

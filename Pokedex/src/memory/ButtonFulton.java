@@ -68,4 +68,16 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 		return null;
 	}
 
+	@Override
+	public void setName(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setText(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

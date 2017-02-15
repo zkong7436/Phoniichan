@@ -9,61 +9,17 @@ import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
+import simon.ProgressInterfaceFulton;
 
 public class MemoryScreen extends ClickableScreen implements Runnable {
 	
 	private TextLabel label;
-	private int combo;
-	private int currentScore;
-	private int level;
-	private int lives;
-	private int hp;
 	private int rowSize;
 	private int abraCount;
-	private int abraCaught;
 	private boolean acceptingInput;
 	private boolean[][] logic;
 	private ButtonInterfaceFulton[] tiles;
- 
-	public int getCombo() {
-		return combo;
-	}
-	
-	public void setCombo(int combo) {
-		this.combo = combo;
-	}
-	
-	public int getCurrentScore() {
-		return currentScore;
-	}
-	
-	public void setCurrentScore(int currentScore) {
-		this.currentScore = currentScore;
-	}
-	
-	public int getLevel() {
-		return level;
-	}
-	
-	public void setLevel(int level) {
-		this.level = level;
-	}
-	
-	public int getLives() {
-		return lives;
-	}
-	
-	public void setLives(int lives) {
-		this.lives = lives;
-	}
-	
-	public int getAbraCaught() {
-		return abraCaught;
-	}
-	
-	public void setAbraCaught(int abraCaught) {
-		this.abraCaught = abraCaught;
-	}
+	private ProgressInterface progress;
 	
 	public MemoryScreen(int height, int width) {
 		super(height, height);
@@ -74,13 +30,13 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	public void run() {
 		label.setText("");
 		firstRound();
-		//nextRound();
+		nextRound();
 	}
 	
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		rowSize = 5;
-		int idkName = 1;
-		int idkName2 = 1;
+		int idkName = 0;
+		int idkName2 = 0;
 		int numberOfButtons = rowSize * rowSize;
 		tiles = new ButtonInterfaceFulton[numberOfButtons];
 		
@@ -90,17 +46,15 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 				idkName2 = 1;
 			}
 			tiles[i] = getAButton();
-			final ButtonInterfaceFulton b = tiles[i];
             tiles[i].setColor(Color.green);
-			tiles[i].setX(10+(50*idkName2));
+			tiles[i].setX(55*idkName2);
 			idkName2++;
-			tiles[i].setY(10+(50*idkName));
+			tiles[i].setY(55*idkName);
 			tiles[i].setAction(new Action(){
 					public void act(){
 						if(acceptingInput){
 							Thread flip = new Thread(new Runnable(){
 								public void run(){
-									level++;
 									try{
 										Thread.sleep(400);
 									}catch(Exception e){
@@ -126,12 +80,12 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 
 	private void firstRound() { 
-		lives = 5;
+		progress.setLife(5);
 //		generateAbras();
 		changeText("Click to Start");
 		acceptingInput = false;
 		level++;
-		hp = 3;
+		progress.setLife(3);
 		label.setText("");
 //		showAbras();
 		acceptingInput = true;
@@ -139,7 +93,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 
 	private void nextRound() {
 		level++;
-		if(level % 3 == 0){
+		if(progress.level % 3 == 0){
 			rowSize++;
 		}
 //		generateAbras();

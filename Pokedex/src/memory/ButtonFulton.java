@@ -1,4 +1,4 @@
- package memory;
+package memory;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -14,9 +14,10 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	private Color color;
 	private String pictureAddress;
 	private ButtonContainer container;
+	private Color displayColor;
 
 	public ButtonFulton(ButtonContainer container) {
-		super(0, 0, 0, 0); 
+		super(0, 0, 50, 50); 
 		this.container = container;
 	}
 
@@ -25,7 +26,7 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	}
 
 	public boolean isHovered(int x, int y) {
-		return x > getX() && x < getX()+getWidth() && y > getY() && y<getY()+getHeight();
+		return x > getX() && x < getX()+ getWidth() && y > getY() && y < getY() + getHeight();
 	}
 	
 	public void flip(){
@@ -34,10 +35,14 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		if(pictureAddress != null){
-			Graphic pic = new Graphic(x, y, w, h, imageLocation);
-			container.getNumberOfButtons();
-		}
+//		if(pictureAddress != null){
+//			Graphic pic = new Graphic(x, y, w, h, imageLocation);
+//			container.getNumberOfButtons();
+//		}
+		g.setColor(Color.green);
+		g.fillRoundRect(0, 0, 50, 100, 5, 10);
+		g.setColor(Color.black);
+		g.drawRoundRect(0, 0, 50-1, 50-1, 5, 10);
 	}
 
 	public void setAction(Action a) {
@@ -45,8 +50,9 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 		update();
 	}
 
-	public void setColor(Color green) {
+	public void setColor(Color color) {
 		this.color = color;
+		displayColor = Color.green;
         update();
 	}
 
@@ -54,6 +60,12 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	public void setPicture(String address) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Graphic getGraphic() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

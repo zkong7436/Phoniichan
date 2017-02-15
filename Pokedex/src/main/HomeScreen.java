@@ -2,11 +2,14 @@ package main;
 
 import java.util.ArrayList;
 
+import guiPractice.components.ClickableGraphic;
+import guiPractice.components.Graphic;
 import guiPractice.components.Visible;
 
 public class HomeScreen extends PokedexScreen {
 
-	private ArrayList<AppsLink> appLinks;
+	private ArrayList<ClickableGraphic> appLinks;
+	private Graphic backImg;
 	
 	public HomeScreen(int width, int height) {
 		super(width, height);
@@ -14,6 +17,7 @@ public class HomeScreen extends PokedexScreen {
 
 	@Override
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
+		backImg = new Graphic(330, 90, "resources/ivyback.png");
 		int xShift = 0;
 		int yShift = 0;
 		if(appLinks != null){
@@ -30,7 +34,7 @@ public class HomeScreen extends PokedexScreen {
 				}
 			}
 		}
-		
+		viewObjects.add(backImg);
 	}
 
 }

@@ -51,13 +51,18 @@ public class Progress extends Component implements ProgressInterface{
 		update();
 	}
 
+	public void setHp(int hp){
+		health = "Hp| " + hp;
+		update();
+	}
+	
 	@Override
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		FontMetrics fm = g.getFontMetrics();
 		g.setFont(new Font("Helvitca", Font.PLAIN, 12));
 		if(gameOver){
-//			MouseFollower.game.setScreen(MouseFollower.myScreen);
+//			fultonDemo.game.setScreen(fultonDemo.kevinLeaderBoard);
 		}
 	}
 

@@ -41,17 +41,10 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 //			Graphic pic = new Graphic(x, y, w, h, imageLocation);
 //			container.getNumberOfButtons();
 //		}
-		if(displayColor != null){ 
-			g.setColor(displayColor);
-		}else{
-			g.setColor(Color.green);
-		}
+		g.setColor(Color.green);
 		g.fillRoundRect(0, 0, 50, 100, 5, 10);
 		g.setColor(Color.black);
 		g.drawRoundRect(0, 0, 50-1, 50-1, 5, 10);
-		if(highlight){
-			g.setColor(Color.white);
-		}
 	}
 
 	public void setAction(Action a) {

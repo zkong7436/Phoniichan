@@ -18,6 +18,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	public static int currentScore;
 	public static int lives;
 	public static int combo;
+	public static int hp;
 	private int rowSize;
 	private int abraCount;
 	private boolean acceptingInput;
@@ -39,6 +40,8 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		abraCount = 3;
 		rowSize = 3;
+		level = 1;
+		lives = 3;
 		int idkName = 0;
 		int idkName2 = 0;
 		int numberOfButtons = rowSize * rowSize;
@@ -88,19 +91,16 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 
 	private void firstRound() { 
-		progress.setLife(5);
+//		progress.setLife(5);
 		generateAbras();
-		changeText("Click to Start");
-		acceptingInput = false;
+//		changeText("Click to Start");
+//		acceptingInput = false;
 //		progress.level++;
-		progress.setLife(3);
-		label.setText("");
+//		progress.setLife(3);
+//		label.setText("");
 //		showAbras();
-		acceptingInput = true;
-		for(int i = 0; i < tiles.length; i++){
-			System.out.println(tiles[i]);
-		}
-		nextRound();
+//		acceptingInput = true;
+//		nextRound();
 	}
 
 	private void nextRound() {
@@ -109,17 +109,19 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 //			rowSize++;
 //		}
 		generateAbras();
-		acceptingInput = false;
+//		acceptingInput = false;
 //		hp = 3;
 //		showAbras();
-		acceptingInput = true;
+//		acceptingInput = true;
 	}
 
 	private void showAbras() {
 		ButtonInterfaceFulton b = null;
 		for(int i = 0; i < tiles.length; i++){
-			final ButtonInterfaceFulton b = tiles[i];
-			if(
+			final ButtonInterfaceFulton c = tiles[i];
+			if(logic[i][0] == true){
+				c.highlight();
+			}
 		}
 	}
 
@@ -131,6 +133,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 				logic[place][0] = true;
 				count--;
 			}
+			System.out.println(place);
 		}
 	}
 

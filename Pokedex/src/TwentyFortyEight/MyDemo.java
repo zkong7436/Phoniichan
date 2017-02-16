@@ -9,6 +9,7 @@ import java.awt.RenderingHints;
 import java.util.ArrayList;
 
 import guiPractice.components.Component;
+import guiPractice.components.Graphic;
 
 /**
  * @author Student 8
@@ -16,6 +17,7 @@ import guiPractice.components.Component;
  */
 public class MyDemo extends Component {
 	private int[][]board;
+	private int [][]changeBoard;
 	public MyDemo(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -30,11 +32,13 @@ public class MyDemo extends Component {
 		int[][]a = new int[4][4];
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
+	
 		int height = 40,width = 40;
 		for (int row = 0; row < a.length; row++) {
 			for (int col = 0; col < a.length; col++) {
 				g.drawRect(col*width,row*height, width, height);
-//				if(a[row][col]== 0){
+				Graphic picture = new Graphic(50,50,5,"resources/images2048/grass.jpg");
+				g.drawImage(picture.getImage(), picture.getX(), picture.getY(), null);
 //
 //					
 //				}
@@ -42,9 +46,28 @@ public class MyDemo extends Component {
 		}
 		g.drawRect(120, 230, 170, 60);
 		board = a;
+	
 		
 		
 	}
+	public void changeImages(){
+		// checks array values.
+		// if its 2 then it will be bulbasaur
+		// default (0) = grass img
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board.length; col++) {
+				changeBoard[row][col] = (int) Math.sqrt(board[row][col]);
+ 			}
+		}
+//		// if values of chaneBoard[row][col] == 0  -> img is grass
+//		== 1 image is bulbasaur
+//				 == 2 is ivysaur
+	}
+	public void setNewImages(){
+		//don't know where to put this yet
+		// this will change the images based on the values (reason stated above)
+	}
+	
 	
 
 //	public void start(){

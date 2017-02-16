@@ -58,9 +58,11 @@ public class Demo extends GuiApplication {
 
 		@Override
 		public void initAllObjects(ArrayList<Visible> view) {
-			
-			MyDemo d = new MyDemo(40,40,300,300);
+
+			MyDemo d = new MyDemo(50,50,400,400);
 			TextLabel text = new TextLabel(130, 230, 300, 40, "This is the High Score Board");
+			//Button reset = new Button (40,40,40,40 , "Reset", Color.BLUE, new Action());
+			//reset.setAction(Action());
 		//	rewardDisplay = new TextLabel(20,40,1000,25,"");
 		//	beatAMonster = new Button(40, 100, 190, 40,"beat a monster" ,Color.blue, 
 //					new Action() {
@@ -76,6 +78,11 @@ public class Demo extends GuiApplication {
 		//	view.add(beatAMonster);
 			view.add(d);
 			view.add(text);
+		}
+
+		private Action Action() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 		
 	}

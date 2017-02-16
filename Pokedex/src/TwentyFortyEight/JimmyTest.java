@@ -159,7 +159,7 @@ public class JimmyTest {
 
 	}
 
-	private static void printGame(int[][] game) {
+	public static void printGame(int[][] game) {
 		for (int[] row : game) {
 			for (int i : row) {
 				System.out.print(i);

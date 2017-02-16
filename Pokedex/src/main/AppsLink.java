@@ -1,34 +1,28 @@
 package main;
 
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import guiPractice.components.Clickable;
+import guiPractice.components.Graphic;
 
-import guiPractice.components.Action;
-import guiPractice.components.Component;
+public class AppsLink extends Graphic implements Clickable{
 
-public class AppsLink extends Component {
-
-	private static final int WIDTH = 60;
-	private static final int HEIGHT = 60;
+	private static int HEIGHT = 60;
+	private static int WIDTH = 60;
 	
-	private Action action;
-	
-	public AppsLink() {
-		super(0, 0, WIDTH, HEIGHT);
+	public AppsLink(int x, int y, String imageLocation) {
+		super(x, y, imageLocation);
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setAction(Action action) {
-		this.action = action;
-	}
-	
-	public void act(){
-		action.act();
-	}
 	@Override
-	public void update(Graphics2D g) {
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	public void act() {
+		// TODO Auto-generated method stub
+		
+	}
 
+	@Override
+	public boolean isHovered(int arg0, int arg1) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

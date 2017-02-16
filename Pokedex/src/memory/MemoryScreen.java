@@ -13,16 +13,16 @@ import guiPractice.components.Visible;
 public class MemoryScreen extends ClickableScreen implements Runnable {
 	
 	private TextLabel label;
-	private static int level;
-	private static int abrasCaught;
-	private static int currentScore;
-	private static int lives;
-	private static int combo;
+	public static int level;
+	public static int abrasCaught;
+	public static int currentScore;
+	public static int lives;
+	public static int combo;
 	private int rowSize;
 	private int abraCount;
 	private boolean acceptingInput;
 	private boolean[][] logic;
-	private ArrayList<ButtonInterfaceFulton> tiles;
+	private ButtonInterfaceFulton[] tiles;
 	private ProgressInterface progress;
 	
 	public MemoryScreen(int height, int width) {
@@ -116,7 +116,11 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 
 	private void showAbras() {
-		
+		ButtonInterfaceFulton b = null;
+		for(int i = 0; i < tiles.length; i++){
+			final ButtonInterfaceFulton b = tiles[i];
+			if(
+		}
 	}
 
 	private void generateAbras() {

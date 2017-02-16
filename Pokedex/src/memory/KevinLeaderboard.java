@@ -4,6 +4,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import java.util.Scanner;
+
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.Visible;
 
@@ -11,6 +13,7 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 {
 	public int combo;
 	public int score;
+	public static Scanner in;
 	
 	public KevinLeaderboard(int width, int height) 
 	{
@@ -31,6 +34,13 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 			MemoryScreen.combo = 1;
 		}
 		return currentScore;
+	}
+	
+	public void addName()
+	{
+		System.out.println("Please enter your name");
+		String input = in.nextLine();
+		
 	}
 	
 	@Override

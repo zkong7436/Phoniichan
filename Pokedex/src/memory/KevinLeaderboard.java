@@ -33,7 +33,23 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 		}
 		return currentScore;
 	}
-
+	
+	public void getCombo(int combo)
+	{
+//		return Progress.setCombo(combo);
+	}
+	
+	public void getLevel(int level)
+	{
+		
+	}
+	
+	public void getScore(int score)
+	{
+		
+	}
+	
+	
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub

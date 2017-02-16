@@ -9,7 +9,6 @@ import guiPractice.components.Visible;
 
 public class KevinLeaderboard extends ClickableScreen implements Runnable, MouseMotionListener
 {
-	public int level;
 	public int combo;
 	public int score;
 	
@@ -24,53 +23,37 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	{
 		if(correct == true)
 		{
-			combo = +1;
-			currentScore =+ (combo * level);
+			MemoryScreen.combo = +1;
+			MemoryScreen.currentScore =+ (combo * level);
 		}
 		else
 		{
-			combo = 1;
+			MemoryScreen.combo = 1;
 		}
 		return currentScore;
 	}
 	
-	public void getCombo(int combo)
-	{
-//		return Progress.setCombo(combo);
-	}
-	
-	public void getLevel(int level)
-	{
-		
-	}
-	
-	public void getScore(int score)
-	{
-		
-	}
-	
-	
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseDragged(MouseEvent arg0) 
+	{
 		
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+	public void mouseMoved(MouseEvent arg0) 
+	{
 		
 	}
 
 	@Override
-	public void run() {
-		// TODO Auto-generated method stub
+	public void run() 
+	{
 		
 	}
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> arg0) {
-		// TODO Auto-generated method stub
+	public void initAllObjects(ArrayList<Visible> arg0) 
+	{
 		
 	} 
 }

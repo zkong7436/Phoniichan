@@ -15,6 +15,8 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	private String pictureAddress;
 	private ButtonContainer container;
 	private Color displayColor;
+	private boolean highlight;
+	private final Color DIM = new Color(105, 105, 105);
 
 	public ButtonFulton(ButtonContainer container) {
 		super(0, 0, 50, 50); 
@@ -39,10 +41,17 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 //			Graphic pic = new Graphic(x, y, w, h, imageLocation);
 //			container.getNumberOfButtons();
 //		}
-		g.setColor(Color.green);
+		if(displayColor != null){ 
+			g.setColor(displayColor);
+		}else{
+			g.setColor(Color.green);
+		}
 		g.fillRoundRect(0, 0, 50, 100, 5, 10);
 		g.setColor(Color.black);
 		g.drawRoundRect(0, 0, 50-1, 50-1, 5, 10);
+		if(highlight){
+			g.setColor(Color.white);
+		}
 	}
 
 	public void setAction(Action a) {
@@ -54,6 +63,18 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 		this.color = color;
 		displayColor = Color.green;
         update();
+	}
+	
+	public void highlight() {
+	    displayColor = this.color;
+		highlight = true;
+		update();
+	}
+
+	public void dim() {
+		displayColor = DIM;
+		highlight = false;
+		update();
 	}
 
 	@Override

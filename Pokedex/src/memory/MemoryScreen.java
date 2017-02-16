@@ -9,16 +9,20 @@ import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
-import simon.ProgressInterfaceFulton;
 
 public class MemoryScreen extends ClickableScreen implements Runnable {
 	
 	private TextLabel label;
+	private static int level;
+	private static int abrasCaught;
+	private static int currentScore;
+	private static int lives;
+	private static int combo;
 	private int rowSize;
 	private int abraCount;
 	private boolean acceptingInput;
 	private boolean[][] logic;
-	private ButtonInterfaceFulton[] tiles;
+	private ArrayList<ButtonInterfaceFulton> tiles;
 	private ProgressInterface progress;
 	
 	public MemoryScreen(int height, int width) {
@@ -30,11 +34,11 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	public void run() {
 		label.setText("");
 		firstRound();
-		nextRound();
 	}
 	
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		rowSize = 5;
+		abraCount = 3;
+		rowSize = 3;
 		int idkName = 0;
 		int idkName2 = 0;
 		int numberOfButtons = rowSize * rowSize;
@@ -50,18 +54,22 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 			tiles[i].setX(55*idkName2);
 			idkName2++;
 			tiles[i].setY(55*idkName);
+			final ButtonInterfaceFulton b = tiles[i];
 			tiles[i].setAction(new Action(){
 					public void act(){
 						if(acceptingInput){
 							Thread flip = new Thread(new Runnable(){
 								public void run(){
+									b.highlight();
 									try{
 										Thread.sleep(400);
 									}catch(Exception e){
 										e.printStackTrace();
 									}
+									b.dim();
 								}
 							});
+							flip.start();
 						}
 					}
 
@@ -81,24 +89,28 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 
 	private void firstRound() { 
 		progress.setLife(5);
-//		generateAbras();
+		generateAbras();
 		changeText("Click to Start");
 		acceptingInput = false;
-		level++;
+//		progress.level++;
 		progress.setLife(3);
 		label.setText("");
 //		showAbras();
 		acceptingInput = true;
+		for(int i = 0; i < tiles.length; i++){
+			System.out.println(tiles[i]);
+		}
+		nextRound();
 	}
 
 	private void nextRound() {
-		level++;
-		if(progress.level % 3 == 0){
-			rowSize++;
-		}
-//		generateAbras();
+//		level++;
+//		if(progress.level % 3 == 0){
+//			rowSize++;
+//		}
+		generateAbras();
 		acceptingInput = false;
-		hp = 3;
+//		hp = 3;
 //		showAbras();
 		acceptingInput = true;
 	}

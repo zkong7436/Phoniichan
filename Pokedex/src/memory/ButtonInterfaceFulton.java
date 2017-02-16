@@ -23,5 +23,9 @@ public interface ButtonInterfaceFulton extends Clickable{
 
 	void setText(String string);
 
+	void dim();
+
+	void highlight();
+
 }
  

@@ -18,19 +18,19 @@ public class JimmyTest {
 		}
 		game[0][0] = 2;
 		game[0][1] = 2;
-		game[0][2] = 1;
-		game[0][3] = 3;
-		game[1][0] = 2;
-		game[1][1] = 2;
-		game[1][2] = 2;
+		game[0][2] = 4;
+		game[0][3] = 64;
+		game[1][0] = 16;
+		game[1][1] = 32;
+		game[1][2] = 4;
 		game[1][3] = 2;
-		game[2][0] = 2;
+		game[2][0] = 8;
 		game[2][1] = 2;
-		game[2][2] = 2;
+		game[2][2] = 16;
 		game[2][3] = 2;
-		game[3][0] = 2;
+		game[3][0] = 32;
 		game[3][1] = 2;
-		game[3][2] = 2;
+		game[3][2] = 8;
 		game[3][3] = 2;
 
 		printGame(game);
@@ -67,7 +67,7 @@ public class JimmyTest {
 
 	}
 
-	private static void rotate(int[][] game, int numberOfRotations) {
+	public static void rotate(int[][] game, int numberOfRotations) {
 		// rotates clockwise
 		int[][] newArr = new int[4][4];
 		while (numberOfRotations >= 1) {
@@ -95,7 +95,7 @@ public class JimmyTest {
 		}
 	}
 
-	private static void moveTilesPlus(int[][] game) {
+	public static void moveTilesPlus(int[][] game) {
 		for (int i = 0; i < game.length; i++) {
 			int[] row = new int[4];
 			for (int j = 0; j < game[i].length; j++) {
@@ -127,7 +127,7 @@ public class JimmyTest {
 
 	}
 
-	private static void moveTilesMinus(int[][] game) {
+	public static void moveTilesMinus(int[][] game) {
 		for (int i = 0; i < game.length; i++) {
 			int[] row = new int[4];
 			for (int j = 0; j < game[i].length; j++) {
@@ -159,7 +159,7 @@ public class JimmyTest {
 
 	}
 
-	private static void printGame(int[][] game) {
+	public static void printGame(int[][] game) {
 		for (int[] row : game) {
 			for (int i : row) {
 				System.out.print(i);

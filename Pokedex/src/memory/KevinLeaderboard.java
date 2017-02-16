@@ -14,6 +14,9 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	public int combo;
 	public int score;
 	public static Scanner in;
+	public String[] leaderboard;
+	public String[] name;
+	public int	 [] scores;
 	
 	public KevinLeaderboard(int width, int height) 
 	{
@@ -22,6 +25,17 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 		app.start();
 	}
 	
+	public static void main(String[] args)
+	{
+		in = new Scanner(System.in);
+		int[] scores = {100000,90000,80000,70000,60000,50000,40000,30000,20000,10000};
+		String[] name = {};
+	}
+	
+	public static void sort()
+	{
+		
+	}
 	public int updateScore(boolean correct, int level, int combo, int currentScore)
 	{
 		if(correct == true)
@@ -40,7 +54,7 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	{
 		System.out.println("Please enter your name");
 		String input = in.nextLine();
-		
+		sort();
 	}
 	
 	@Override

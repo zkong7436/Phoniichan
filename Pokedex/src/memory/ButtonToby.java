@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+import javax.swing.ImageIcon;
+
 import guiPractice.components.Action;
 import guiPractice.components.Component;
 import guiPractice.components.Graphic;
@@ -42,8 +44,10 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 			g.setFont(new Font(font, Font.PLAIN, size));
 			g.drawString(cost, 305, 20);
 		}
+//		ImageIcon icon = new ImageIcon(pictureAddress);
+//		g.drawImage(icon.getGraphic(), 0, 0 , null);
 	}
-
+	
 	public void act() {
 		action.act();
 	}
@@ -68,7 +72,6 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 		update();
 	}
 	
-	@Override
 	public void setPicture(String address) {
 		this.pictureAddress = address;
 		update();
@@ -76,11 +79,9 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 
 	@Override
 	public Graphic getGraphic() {
-		
 		return null;
 	}
 
-	@Override
 	public void setText(String text) {
 		this.cost = text;
 		displayCost = text;

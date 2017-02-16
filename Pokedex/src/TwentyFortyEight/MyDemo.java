@@ -16,8 +16,8 @@ import guiPractice.components.Graphic;
  *
  */
 public class MyDemo extends Component {
-	private int[][]board;
-	private int [][]changeBoard;
+	private int[][]board = new int[4][4];
+	private int [][]changeBoard = new int[4][4];
 	public MyDemo(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -68,7 +68,7 @@ public class MyDemo extends Component {
 		// if its 2 then it will be bulbasaur
 		// default (0) = grass img
 		for (int row = 0; row < board.length; row++) {
-			for (int col = 0; col < board.length; col++) {
+			for (int col = 0; col < board[row].length; col++) {
 				changeBoard[row][col] = (int) Math.sqrt(board[row][col]);
  			}
 		}

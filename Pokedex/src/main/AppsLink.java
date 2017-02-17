@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.Graphics2D;
+
 import guiPractice.components.Clickable;
 import guiPractice.components.Graphic;
 
@@ -19,6 +21,8 @@ public class AppsLink extends Graphic implements Clickable{
 		
 	}
 
+
+	
 	@Override
 	public boolean isHovered(int arg0, int arg1) {
 		// TODO Auto-generated method stub

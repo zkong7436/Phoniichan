@@ -19,6 +19,7 @@ public class HomeScreen extends PokedexScreen {
 	@Override
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
 		backImg = new Graphic(330, 90, "resources/ivyback.png");
+		appLinks = new ArrayList<AppsLink>();
 		findApps();
 		int xShift = 0;
 		int yShift = 0;
@@ -37,9 +38,11 @@ public class HomeScreen extends PokedexScreen {
 			}
 		}
 		viewObjects.add(backImg);
+		viewObjects.addAll(appLinks);
 	}
 
 	public void findApps() {
+		
 		File[] resources = new File("resources/").listFiles();
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){

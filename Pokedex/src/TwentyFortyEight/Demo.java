@@ -18,7 +18,7 @@ import guiPractice.components.Visible;
  *
  */
 public class Demo extends GuiApplication {
-	public static Reward reward;
+//	public static Reward reward;
 	/**
 	 * 
 	 */

@@ -16,8 +16,8 @@ import guiPractice.components.Graphic;
  *
  */
 public class MyDemo extends Component {
-	private int[][]board = new int[4][4];
-	private int [][]changeBoard = new int[4][4];
+	private int[][]board;
+	private int [][]changeBoard;
 	public MyDemo(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -30,6 +30,8 @@ public class MyDemo extends Component {
 	@Override
 	public void update(Graphics2D g) {
 		int[][]a = new int[4][4];
+		board = new int[4][4];
+		changeBoard = new int[4][4];
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
 		String pics[] = { "resources/images2048/grass.jpg" , "resources/images2048/bulbasaur.jpg",

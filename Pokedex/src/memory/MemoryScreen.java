@@ -115,7 +115,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 //		acceptingInput = true; 
 	}
 
-	private void showAbras() {
+	private void showAbras() { 
 		ButtonInterfaceFulton b = null;
 		for(int i = 0; i < tiles.length; i++){
 			final ButtonInterfaceFulton c = tiles[i];

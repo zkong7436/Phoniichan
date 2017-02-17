@@ -25,6 +25,8 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private boolean[][] logic;
 	private ButtonInterfaceFulton[] tiles;
 	private ProgressInterface progress;
+	private int increaseSize=5;
+	private int startingSize=4;
 	
 	public MemoryScreen(int height, int width) {
 		super(height, height);
@@ -44,10 +46,14 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		lives = 3;
 		int idkName = 0;
 		int idkName2 = 0;
-		int numberOfButtons = rowSize * rowSize;
+		int numberOfButtons = startingSize;
+		logic = new boolean[3][3];
+		label = new TextLabel(getWidth()/2 - 100, getHeight()/2 -10, 200, 20, "Text");
+		viewObjects.add(label);
 		tiles = new ButtonInterfaceFulton[numberOfButtons];
 		
-		for(int i = 0; i < numberOfButtons; i++){
+
+		for(int i = 0; i < startingSize; i++){
 			if(i%rowSize == 0){
 				idkName++;
 				idkName2 = 1;
@@ -93,6 +99,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private void firstRound() { 
 //		progress.setLife(5);
 		generateAbras();
+		
 //		changeText("Click to Start");
 //		acceptingInput = false;
 //		progress.level++;

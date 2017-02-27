@@ -45,7 +45,7 @@ public class HomeScreen extends PokedexScreen {
 		File[] resources = new File("resources/").listFiles();
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){
-//				appLinks.add(new AppsLink(0,0,resources[i].getName()));
+//				appLinks.add(new AppsLink(0,0,"resources/"+resources[i].getName()));
 			}
 		}
 	}

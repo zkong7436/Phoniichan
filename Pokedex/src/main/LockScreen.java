@@ -33,7 +33,7 @@ public class LockScreen extends PokedexScreen {
 			for(int j = 0; j < buttons[i].length; j++){
 				int a = i;
 				int b = j;
-				buttons[i][j] = new Button(420+i*buttonFactor, 130+j*buttonFactor, buttonFactor, buttonFactor, (i+j+1+i*2)+"", new Color(0,0,0,0), new Action(){
+				buttons[i][j] = new Button(420+i*buttonFactor, 130+j*buttonFactor, buttonFactor, buttonFactor, (j+i+1+j*2)+"", new Color(0,0,0,0), new Action(){
 	
 					@Override
 					public void act() {

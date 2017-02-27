@@ -102,5 +102,5 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 		// TODO Auto-generated method stub
 		
 	}
-
+ 
 }

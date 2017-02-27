@@ -66,7 +66,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 				"resources/sampleImages/Potion1.png","resources/sampleImages/Potion1.png"};
 		int numberOfButtons = 6;
 		buttons = new ButtonToby[numberOfButtons];
-		for(int i = 0; i <numberOfButtons; i++){
+		for(int i = 0; i <numberOfButtons; i++){ 
 			buttons[i] = getAButton();
 			buttons[i].setName(names[i]);
 			buttons[i].setText(costs[i]);

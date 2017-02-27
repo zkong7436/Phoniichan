@@ -35,7 +35,7 @@ public class Progress extends Component implements ProgressInterface{
 		caught = "Abra| " + abrasCaught;
 		update();
 	}
-	
+	 
 	public void setPoint(int currentScore){
 		score = currentScore + " Points";
 		update();

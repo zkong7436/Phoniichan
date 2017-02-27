@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import java.io.File;
 
-import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Graphic;
 import guiPractice.components.Visible;
 
@@ -12,7 +11,6 @@ public class HomeScreen extends PokedexScreen {
 
 	private ArrayList<AppsLink> appLinks;
 	private Graphic backImg;
-	private ClickableGraphic twentyIcon;
 	
 	public HomeScreen(int width, int height) {
 		super(width, height);
@@ -39,15 +37,15 @@ public class HomeScreen extends PokedexScreen {
 			}
 		}
 		viewObjects.add(backImg);
-		viewObjects.addAll(appLinks);
+//		viewObjects.addAll(appLinks);
 	}
 
 	public void findApps() {
-		appLinks.add(new AppsLink(0,0,"resources/2048icon.png"));
+//		appLinks.add(new AppsLink(0,0,"resources/2048icon.png"));
 		File[] resources = new File("resources/").listFiles();
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){
-				appLinks.add(new AppsLink(0,0,"resources/"+resources[i].getName()));
+//				appLinks.add(new AppsLink(0,0,resources[i].getName()));
 			}
 		}
 	}

@@ -44,8 +44,6 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 			g.setFont(new Font(font, Font.PLAIN, size));
 			g.drawString(cost, 305, 20);
 		}
-//		ImageIcon icon = new ImageIcon(pictureAddress);
-//		g.drawImage(icon.getGraphic(), 0, 0 , null);
 	}
 	
 	public void act() {
@@ -86,6 +84,18 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 		this.cost = text;
 		displayCost = text;
 		update();
+		
+	}
+
+	@Override
+	public void dim() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void highlight() {
+		// TODO Auto-generated method stub
 		
 	}
 

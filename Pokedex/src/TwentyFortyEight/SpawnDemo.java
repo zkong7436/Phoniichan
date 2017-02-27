@@ -9,22 +9,10 @@ public class SpawnDemo {
 	static ArrayList<Integer> Ncol = new ArrayList<Integer>();
 	public static void main(String[] args) {
 		System.out.println("Game starts and two random blank blocks are turned into 2s or 4s" );
-		start();
+		start(board);
 		System.out.println("After you move (which is not shown), a new blank block is turned into a 2 or 4"+"");
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
-		cont();
+		cont(board);
+
 		//14 cont to print out last 14 blanks
 //		cont();
 //		cont();
@@ -47,7 +35,7 @@ public class SpawnDemo {
 		
 
 	}
-	public static void checkBlanks(){
+	public static void checkBlanks(int[][]board){
 		for (int row = 0; row < board.length; row++) {
 			for (int col= 0; col < board.length; col++) {
 				if(board[row][col] == 0){
@@ -65,8 +53,8 @@ public class SpawnDemo {
 //			Ncol.remove(sz);
 //		}
 //	}
-	public static void cont(){
-		checkBlanks();
+	public static void cont(int[][]board){
+		checkBlanks(board);
 		for(int i = 0; i<1; i++){
 			int newExpo = (int)Math.pow(2, (int) (((2 * Math.random())) + 1));
 			int newRndX = (int)(Nrow.size()*Math.random()) ;
@@ -78,7 +66,7 @@ public class SpawnDemo {
 		//	 Nrow.remove(newRndX);
 		//	 Ncol.remove(newRndY);
 		}
-		System.out.print(Arrays.deepToString(board)+ "\n");
+		
 	//	resetArrayList();
 		Nrow.clear();
 		Ncol.clear();
@@ -88,12 +76,12 @@ public class SpawnDemo {
 	
 	//ended up not using start for now ( its just cont used twice..)
 
-	public static void start(){
+	public static void start(int [][]board){
 //	System.out.print(Nrow.size()+ "\n");
 //	System.out.print(Ncol.size() + "\n");
 	//int rndX = 0,rndY = 0,nR = 0, nC = 0;
 	for(int i = 0; i<2; i++){
-		checkBlanks();
+		checkBlanks(board);
 		int newExpo = (int)Math.pow(2, (int) (((2 * Math.random())) + 1));
 		int newRndX = (int)(Nrow.size()*Math.random()) ;
 		int newRndY = newRndX;
@@ -103,7 +91,7 @@ public class SpawnDemo {
 		Ncol.clear();
 		
 	}
-	System.out.print(Arrays.deepToString(board)+ "\n");
+	
 	}
 //	System.out.print(Arrays.deepToString(board)+ "\n");
 //	

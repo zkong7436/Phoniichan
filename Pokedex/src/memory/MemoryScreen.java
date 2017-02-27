@@ -23,7 +23,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private int abraCount;
 	private boolean acceptingInput;
 	private boolean[][] logic;
-	private ButtonInterfaceFulton[] tiles;
+	private ArrayList<ButtonInterfaceFulton> tiles;
 	private ProgressInterface progress;
 	private int increaseSize=5;
 	private int startingSize=4;
@@ -50,7 +50,8 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		logic = new boolean[3][3];
 		label = new TextLabel(getWidth()/2 - 100, getHeight()/2 -10, 200, 20, "Text");
 		viewObjects.add(label);
-		tiles = new ButtonInterfaceFulton[numberOfButtons];
+//		tiles = new ButtonInterfaceFulton[numberOfButtons];
+		tiles.add();
 		
 
 		for(int i = 0; i < startingSize; i++){
@@ -58,13 +59,13 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 				idkName++;
 				idkName2 = 1;
 			}
-			tiles[i] = getAButton();
-            tiles[i].setColor(Color.green);
-			tiles[i].setX(55*idkName2);
+			tiles = (ArrayList<ButtonInterfaceFulton>) getAButton();
+            tiles.get(i).setColor(Color.green);
+			tiles.get(i).setX(55*idkName2);
 			idkName2++;
-			tiles[i].setY(55*idkName);
-			final ButtonInterfaceFulton b = tiles[i];
-			tiles[i].setAction(new Action(){
+			tiles.get(i).setY(55*idkName);
+			final ButtonInterfaceFulton b = tiles.get(i);
+			tiles.get(i).setAction(new Action(){
 					public void act(){
 						if(acceptingInput){
 							Thread flip = new Thread(new Runnable(){
@@ -83,7 +84,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 					}
 
 			});
-			viewObjects.add(tiles[i]);
+			viewObjects.add(tiles.get(i));
 		}
 	}
 	
@@ -124,8 +125,8 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 
 	private void showAbras() { 
 		ButtonInterfaceFulton b = null;
-		for(int i = 0; i < tiles.length; i++){
-			final ButtonInterfaceFulton c = tiles[i];
+		for(int i = 0; i < tiles.size(); i++){
+			final ButtonInterfaceFulton c = tiles.get(i);
 			if(logic[i][0] == true){
 				c.highlight();
 			}

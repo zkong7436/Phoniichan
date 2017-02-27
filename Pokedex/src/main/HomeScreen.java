@@ -21,6 +21,7 @@ public class HomeScreen extends PokedexScreen {
 	@Override
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
 		backImg = new Graphic(330, 90, "resources/ivyback.png");
+		appLinks = new ArrayList<ClickableGraphic>();
 		findApps();
 		int xShift = 0;
 		int yShift = 0;

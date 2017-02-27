@@ -55,7 +55,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		increaseSize=5;
 		startingSize=4;
 		abraCount = 3;
-		level = 1; 
+		level = 1;  
 		lives = 3;
 		int idkName = 0;
 		int idkName2 = 0;

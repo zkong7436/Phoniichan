@@ -87,6 +87,10 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 		
 	}
 
+	public String getPictureAddress(){
+		return pictureAddress;
+	}
+	
 	@Override
 	public void dim() {
 		// TODO Auto-generated method stub

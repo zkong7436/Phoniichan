@@ -34,8 +34,8 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		label = new TextLabel(20, 20, 760, 40, "AbraMarket");
-		picture = new Graphic(25, 280, .4, "resources/sampleImages/Potion.png");
-		button = new Button(25,225,100,45,"Return",Color.green,
+		picture = new Graphic(40, 280, .4, "resources/sampleImages/White.png");
+		button = new Button(40,230,100,45,"Return",Color.green,
 			new Action() {
 			public void act() {
 				TobyDemo.game.setScreen(TobyDemo.memory);
@@ -61,9 +61,9 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 		String[] names = {"Potion", "Alright Potion", "Good Potion", "Great Potion", "Best Potion", "Super Potion"};
 		String[] costs = {"x1","x2","x4","x8","x16","x32"};
 		String[] potionDescription = {"1","2","3","4","5","6"};
-		String[] address= {"resources/sampleImages/Potion.png","resources/sampleImages/FloatAbra.png",
-				"resources/sampleImages/Potion.png","resources/sampleImages/Potion.png",
-				"resources/sampleImages/Potion.png","resources/sampleImages/Potion.png"};
+		String[] address= {"resources/sampleImages/Potion1.png","resources/sampleImages/Potion2.png",
+				"resources/sampleImages/Potion3.png","resources/sampleImages/Potion1.png",
+				"resources/sampleImages/Potion1.png","resources/sampleImages/Potion1.png"};
 		int numberOfButtons = 6;
 		buttons = new ButtonToby[numberOfButtons];
 		for(int i = 0; i <numberOfButtons; i++){
@@ -127,7 +127,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 	public void mouseMoved(MouseEvent m){
 		for(ButtonToby b:buttons){
 			if(b.isHovered(m.getX(), m.getY())){
-				picture.loadImages(b.getPictureAddress(), .4);
+				picture.loadImages(b.getPictureAddress(), .2);
 			}
 		}
 	}

@@ -62,7 +62,7 @@ public class Progress extends Component implements ProgressInterface{
 		FontMetrics fm = g.getFontMetrics();
 		g.setFont(new Font("Helvitca", Font.PLAIN, 12));
 		if(gameOver){
-//			fultonDemo.game.setScreen(fultonDemo.kevinLeaderBoard);
+//			FultonDemo.game.setScreen(FultonDemo.kevinLeaderBoard);
 		}
 	}
 

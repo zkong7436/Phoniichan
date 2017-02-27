@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import java.io.File;
 
+import guiPractice.components.Action;
+import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Graphic;
 import guiPractice.components.Visible;
 
 public class HomeScreen extends PokedexScreen {
 
-	private ArrayList<AppsLink> appLinks;
+	private ArrayList<ClickableGraphic> appLinks;
 	private Graphic backImg;
 	
 	public HomeScreen(int width, int height) {
@@ -37,15 +39,24 @@ public class HomeScreen extends PokedexScreen {
 			}
 		}
 		viewObjects.add(backImg);
-//		viewObjects.addAll(appLinks);
+		viewObjects.addAll(appLinks);
 	}
 
 	public void findApps() {
-//		appLinks.add(new AppsLink(0,0,"resources/2048icon.png"));
 		File[] resources = new File("resources/").listFiles();
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){
-//				appLinks.add(new AppsLink(0,0,"resources/"+resources[i].getName()));
+				ClickableGraphic newLink = new ClickableGraphic(0,0,"resources/"+resources[i].getName());
+				newLink.setAction(new Action(){
+
+					@Override
+					public void act() {
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
+				appLinks.add(newLink);
 			}
 		}
 	}

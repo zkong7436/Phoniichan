@@ -18,6 +18,6 @@ public class TobyDemo extends GuiApplication {
 		market = new MarketScreen(getWidth(), getHeight());
 //		memory = new MemoryScreen(getWidth(), getHeight());
 		setScreen(market);
-	} 
+	}
 
 }

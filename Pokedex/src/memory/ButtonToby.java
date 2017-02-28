@@ -100,7 +100,7 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 	@Override
 	public void highlight() {
 		// TODO Auto-generated method stub
-		
+	
 	}
  
 }

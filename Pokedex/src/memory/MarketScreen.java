@@ -41,12 +41,11 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 				TobyDemo.game.setScreen(TobyDemo.memory);
 			}
 		});
-		viewObjects.add(picture);
 		addAnimation(viewObjects);
 		addButtons(viewObjects);
 		viewObjects.add(label);
 		viewObjects.add(button);
-//		viewObjects.add(picture);
+		viewObjects.add(picture);
 	}
 	
 //	private String[] addCostLabel(String[] cost) {

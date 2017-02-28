@@ -22,6 +22,7 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 	private String displayCost;
 	private String font;
 	private int size;
+	private String descriptionText;
 	
 	public ButtonToby() {
 		super(0, 0, 330, 35); 
@@ -69,26 +70,29 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 		displayName = name;
 		update();
 	}
-	
-	public void setPicture(String address) {
-		this.pictureAddress = address;
-		update();
-	}
-
-	@Override
-	public Graphic getGraphic() {
-		return null;
-	}
 
 	public void setText(String text) {
 		this.cost = text;
 		displayCost = text;
 		update();
-		
 	}
 
+	public void setPicture(String address) {
+		this.pictureAddress = address;
+		update();
+	}
+	
 	public String getPictureAddress(){
 		return pictureAddress;
+	}
+	
+	public void setLabel(String potionDescription) {
+		this.descriptionText = potionDescription;
+		update();		
+	}
+	
+	public String getDescription(){
+		return descriptionText;
 	}
 	
 	@Override

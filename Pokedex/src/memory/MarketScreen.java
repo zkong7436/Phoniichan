@@ -13,6 +13,7 @@ import guiPractice.components.Action;
 import guiPractice.components.AnimatedComponent;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
+import guiPractice.components.TextArea;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
@@ -34,18 +35,20 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		label = new TextLabel(20, 20, 760, 40, "AbraMarket");
-		picture = new Graphic(40, 280, .4, "resources/sampleImages/White.png");
+		picture = new Graphic(40, 280, .05, "resources/sampleImages/White.png");
+		description = new TextLabel(150, 210, 500, 100, "");
 		button = new Button(40,230,100,45,"Return",Color.green,
 			new Action() {
 			public void act() {
 				TobyDemo.game.setScreen(TobyDemo.memory);
 			}
 		});
-		addAnimation(viewObjects);
-		addButtons(viewObjects);
 		viewObjects.add(label);
 		viewObjects.add(button);
 		viewObjects.add(picture);
+		viewObjects.add(description);
+		addAnimation(viewObjects);
+		addButtons(viewObjects);
 	}
 	
 //	private String[] addCostLabel(String[] cost) {
@@ -57,21 +60,22 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 //	}
 
 	private void addButtons(ArrayList<Visible> viewObjects) {
-		String[] names = {"Potion", "Alright Potion", "Good Potion", "Great Potion", "Best Potion", "Super Potion"};
-		String[] costs = {"x1","x2","x4","x8","x16","x32"};
-		String[] potionDescription = {"1","2","3","4","5","6"};
+		String[] names = {"Potion", "Alright Potion", "Good Potion", "Great Potion", "Super Potion"};
+		String[] costs = {"x1","x2","x4","x8","x16"};
+		String[] potionDescription = {"ajksfhawhfiwe","weirwentwe","asfawerhyk","ytttrthhhhea","dgndmdyjydj"};
 		String[] address= {"resources/sampleImages/Potion1.png","resources/sampleImages/Potion2.png",
 				"resources/sampleImages/Potion3.png","resources/sampleImages/Potion1.png",
-				"resources/sampleImages/Potion1.png","resources/sampleImages/Potion1.png"};
-		int numberOfButtons = 6;
+				"resources/sampleImages/Potion1.png"};
+		int numberOfButtons = 5;
 		buttons = new ButtonToby[numberOfButtons];
 		for(int i = 0; i <numberOfButtons; i++){ 
 			buttons[i] = getAButton();
 			buttons[i].setName(names[i]);
 			buttons[i].setText(costs[i]);
-			buttons[i].setX(180);
-			buttons[i].setY(45*i+40);
+			buttons[i].setX(195);
+			buttons[i].setY(45*i+50);
 			buttons[i].setPicture(address[i]);
+			buttons[i].setLabel(potionDescription[i]);
 //			final ButtonInterfaceFulton b = buttons[i];
 //			buttons[i].setAction(new Action() {
 //				public void act() {
@@ -127,18 +131,19 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 		for(ButtonToby b:buttons){
 			if(b.isHovered(m.getX(), m.getY())){
 				picture.loadImages(b.getPictureAddress(), .2);
+				description.setText(b.getDescription());
 			}
 		}
 	}
 	
-	public MouseMotionListener getMouseMotionListener(){
-		return this;
-	}
-
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public MouseMotionListener getMouseMotionListener(){
+		return this;
 	}
 	
 }

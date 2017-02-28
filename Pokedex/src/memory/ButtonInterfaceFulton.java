@@ -16,12 +16,12 @@ public interface ButtonInterfaceFulton extends Clickable{
 	void setColor(Color green);
 	
 	void setPicture(String address); 
-	
-	Graphic getGraphic();
 
 	void setName(String string);
 
 	void setText(String string);
+	
+	void setLabel(String string);
 
 	void dim();
 

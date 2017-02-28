@@ -14,9 +14,9 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	public int combo;
 	public int score;
 	public static Scanner in;
-	public String[] leaderboard;
-	public String[] name;
 	public int	 [] scores;
+	public String[] names;
+	
 	
 	public KevinLeaderboard(int width, int height) 
 	{
@@ -28,47 +28,45 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	public static void main(String[] args)
 	{
 		in = new Scanner(System.in);
+		
+		
 		int[] scores = {100000,90000,80000,70000,60000,50000,40000,30000,20000,10000};
-		String[] name = {"Alpha","Beta","Gamma","Delta","Epsilon", "Zeta","Eta","Theta","Iota","Kappa"};
-		for (int i = 0; i < 11;i++)
+		String[] names = {"Alpha","Beta","Gamma","Delta","Epsilon", "Zeta","Eta","Theta","Iota","Kappa"};
+		for (int i = 0; i < 10;i++)
 		{
-			leaderboard[i]= name[i] + " , " + scores[i];
+			System.out.println(scores[i] + "," + names[i]);
 		}
 	}
 	
-	public static void insertionSort(int[] ar)
+	public static void insertionSort(int[] score, String[] names)
 	{
-	   for (int i=1; i < ar.length; i++)
+	   for (int i=1; i < score.length; i++)
 	   {
-	      int index = ar[i]; int j = i;
-	      while (j > 0 && ar[j-1] > index)
+	      int sIndex = score[i]; 
+	      String nIndex = names[i];
+	      int j = i;
+	      while (j > 0 && score[j-1] > sIndex)
 	      {
-	           ar[j] = ar[j-1];
+	           score[j] = score[j-1];
+	           names[j] = names[j-1];
 	           j--;
 	      }
-	      ar[j] = index;
+	      score[j] = sIndex;
+	      names[j] = nIndex;
 	   }
 	}
-	public int updateScore(boolean correct, int level, int combo, int currentScore)
-	{
-		if(correct == true)
-		{
-			MemoryScreen.combo = +1;
-			MemoryScreen.currentScore =+ (combo * level);
-		}
-		else
-		{
-			MemoryScreen.combo = 1;
-		}
-		return currentScore;
-	}
-	
 	public void addName()
 	{
 		System.out.println("Please enter your name");
 		String input = in.nextLine();
-		leaderboard[11] = input + " , " + currentScore;
 		
+		scores[10] = MemoryScreen.currentScore;
+		names[10] = input;
+		
+		insertionSort(scores,names);
+		
+		//delete the last element of both lists
+		// because last is not significant enough 
 	}
 	
 	@Override

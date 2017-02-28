@@ -1,5 +1,6 @@
 package memory;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
@@ -62,7 +63,27 @@ public class Progress extends Component implements ProgressInterface{
 		FontMetrics fm = g.getFontMetrics();
 		g.setFont(new Font("Helvitca", Font.PLAIN, 12));
 		if(gameOver){
+			g.setColor(new Color(20,55,90));
+			g.fillRect(0, 0, 120, 50);
+			g.setColor(Color.white);
+			String go = "Game Over!";
+			g.drawString(go, (120 - fm.stringWidth(go)) / 2, 20);
+			g.drawString(round, (120 - fm.stringWidth(round)) / 2, 40);
+			g.drawString(score, (120 - fm.stringWidth(round)) / 2, 60);
 //			FultonDemo.game.setScreen(FultonDemo.kevinLeaderBoard);
+		}else{
+			g.setColor(new Color(220,255,230));
+			g.fillRect(0, 0, 120, 50);
+			g.setColor(Color.black);
+			g.drawRect(0, 0, 120-1, 50-1);
+			if(round !=null){
+				g.drawString(round, (120 - fm.stringWidth(round))/2, 20);
+				g.drawString(caught, (120 - fm.stringWidth(caught))/2, 40);
+				g.drawString(score, (120 - fm.stringWidth(score))/2, 60);
+				g.drawString(life, (120 - fm.stringWidth(life))/2, 60);
+				g.drawString(combos, (120 - fm.stringWidth(combos))/2, 60);
+				g.drawString(health, (120 - fm.stringWidth(health))/2, 60);
+			}
 		}
 	}
 

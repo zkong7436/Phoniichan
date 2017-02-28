@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
+import guiPractice.components.TextArea;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
 public class MemoryScreen extends ClickableScreen implements Runnable {
 	
 	private TextLabel label;
+	private TextArea area;
 	public static int level;
 	public static int abrasCaught;
 	public static int currentScore;
@@ -54,34 +56,37 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		increaseSize=5;
 		startingSize=4;
+		currentScore = 0;
 		abraCount = 3;
-		level = 1;  
+		abrasCaught = 0;
+		combo = 1;
+		level = 1; 
 		lives = 3;
+		hp = 3;
 		int idkName = 0;
 		int idkName2 = 0;
-		logic = new boolean[9][9];
+		logic = new boolean[startingSize+increaseSize][startingSize+increaseSize];
 		tiles = new ArrayList<ButtonInterfaceFulton>();
 
 		
 		for(int i = 0; i < startingSize + increaseSize; i++){
-			if(i % (Math.sqrt(double)((startingSize + increaseSize))));
+			if(i % (Math.sqrt(startingSize + increaseSize)) == 0){
+				idkName++;
+				idkName2 = 0;
+			}
 			ButtonInterfaceFulton b = new ButtonFulton(null);
 			tiles.add(b);		
 			tiles.get(i).setX(55*idkName2);
 			System.out.println("x is "+b.getX());
 			idkName2++;
 			tiles.get(i).setY(55*idkName);
-			
+			final ButtonInterfaceFulton c = tiles.get(i);
 			tiles.get(i).setAction(new Action(){
 					public void act(){
 						if(acceptingInput){
 							Thread flip = new Thread(new Runnable(){
 								public void run(){
-									try{
-										Thread.sleep(400);
-									}catch(Exception e){
-										e.printStackTrace();
-									}
+									c.flip();
 								}
 							});
 							flip.start();
@@ -90,7 +95,17 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 								Thread nextRound = new Thread(MemoryScreen.this);
 								nextRound.start();
 							}
-						//	if(tiles.get(i) == (logic[i][0]))
+							for(int index = 0;index < tiles.size(); index++){
+								if(c == tiles.get(index)){
+									if(!logic[index][1]){
+										if(logic[index][0]){
+											currentScore += (combo * level);
+										}else{
+											hp--;
+										}
+									}
+								}
+							}
 							if(lives == 0){
 								progress.gameOver();
 								return;
@@ -100,11 +115,16 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 			});
 			viewObjects.add(tiles.get(i));
 		}
+		progress = getProgress();
 		label = new TextLabel(getWidth()/2 - 100, getHeight()/2 -10, 200, 20, "Text");
-		viewObjects.add(new ButtonFulton(null));
+		viewObjects.add(progress);
 		viewObjects.add(label);
 	}
 	
+	private ProgressInterface getProgress() {
+		return new Progress();
+	}
+
 	public boolean pass(){
 		for(int i = 0; i < tiles.size(); i++){
 			if(logic[i][0] == true && logic[i][1] != true){
@@ -131,7 +151,6 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		label.setText("");
 //		showAbras();
 		acceptingInput = true;
-		nextRound();
 	}
 
 	private void nextRound() {

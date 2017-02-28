@@ -27,5 +27,7 @@ public interface ButtonInterfaceFulton extends Clickable{
 
 	void highlight();
 
+	void flip();
+
 }
  

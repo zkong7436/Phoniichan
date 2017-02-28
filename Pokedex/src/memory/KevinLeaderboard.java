@@ -29,12 +29,25 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	{
 		in = new Scanner(System.in);
 		int[] scores = {100000,90000,80000,70000,60000,50000,40000,30000,20000,10000};
-		String[] name = {};
+		String[] name = {"Alpha","Beta","Gamma","Delta","Epsilon", "Zeta","Eta","Theta","Iota","Kappa"};
+		for (int i = 0; i < 11;i++)
+		{
+			leaderboard[i]= name[i] + " , " + scores[i];
+		}
 	}
 	
-	public static void sort()
+	public static void insertionSort(int[] ar)
 	{
-		
+	   for (int i=1; i < ar.length; i++)
+	   {
+	      int index = ar[i]; int j = i;
+	      while (j > 0 && ar[j-1] > index)
+	      {
+	           ar[j] = ar[j-1];
+	           j--;
+	      }
+	      ar[j] = index;
+	   }
 	}
 	public int updateScore(boolean correct, int level, int combo, int currentScore)
 	{
@@ -54,7 +67,8 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	{
 		System.out.println("Please enter your name");
 		String input = in.nextLine();
-		sort();
+		leaderboard[11] = input + " , " + currentScore;
+		
 	}
 	
 	@Override

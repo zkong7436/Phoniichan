@@ -45,14 +45,16 @@ public class HomeScreen extends PokedexScreen {
 
 	public void findApps() {
 		File[] resources = new File("resources/").listFiles();
+		int numIcons = 0;
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){
-				ClickableGraphic newLink = new ClickableGraphic(0,0,"resources/"+resources[i].getName());
+				numIcons++;
+				ClickableGraphic newLink = new ClickableGraphic(0,0,60,60,"resources/"+resources[i].getName());
 				newLink.setAction(new Action(){
 
 					@Override
 					public void act() {
-						// TODO Auto-generated method stub
+						//goto application
 						
 					}
 					
@@ -62,6 +64,16 @@ public class HomeScreen extends PokedexScreen {
 		}
 	}
 	
+	public int iconX(int numIcons) {
+		System.out.println(numIcons%4-1+"");
+		return (numIcons%4-1);
+	}
+
+	public int iconY(int numIcons) {
+		System.out.println(numIcons/4+"");
+		return (numIcons/4);
+	}
+
 	public boolean stringContains(String a, String b){
 		boolean doesContain = false;
 		for(int i = 0; i < a.length(); i++){

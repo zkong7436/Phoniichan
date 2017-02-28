@@ -30,7 +30,11 @@ public class MyDemo extends Component {
 	@Override
 	public void update(Graphics2D g) {
 		int[][]a = new int[4][4];
+		a[0][0] = 2;
+		a[0][3] = 2;
 		int x = 1;
+		int y = 1;
+		int z = 1;
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
 		String pics[] = { "resources/images2048/grass.jpg" , "resources/images2048/bulbasaur.png",
@@ -38,22 +42,24 @@ public class MyDemo extends Component {
 		//changeImages();
 		int height = 80,width = 80;
 //		Graphic picture1 = new Graphic(0,0,80,80,"resources/images2048/grass.jpg");
-//		Graphic picture2 = new Graphic(50,50,5,"resources/images2048/bulbasaur.jpg");
-//		Graphic picture3 = new Graphic(50,50,5,"resources/images2048/ivysaur.jpg");
+
 		for (int row = 0; row < a.length; row++) {
 			for (int col = 0; col < a[row].length; col++) {
-				x = a[row][col];
+				x = a[row][col];			
+			
 				
-				Graphic picture2 = new Graphic(col*width,row*height,80,80,"resources/images2048/bulbasaur.png");
-				Graphic picture1 = new Graphic(col*width,row*height,80,80,"resources/images2048/grass.jpg");
-				
-				g.drawImage(picture1.getImage(), picture1.getX(), picture1.getY(), null);
-				g.drawRect(col*width,row*height, width, height);
-				
-				if(x == 0){
+					y = a[row][col];
+					if( y> 0){
+						 z= (int) (Math.log(y)/Math.log(2));
+					}
+					else{
+						z = 0;
+					}
+				 
+					Graphic picture2 = new Graphic(col*width,row*height,80,80,pics[z]);
 					g.drawImage(picture2.getImage(), picture2.getX(), picture2.getY(), null);
-					//g. background image somehow
-			}
+					g.drawRect(col*width,row*height, width, height);
+		
 		}		g.drawRect(120, 230, 170, 60);
 		board = a;
 	

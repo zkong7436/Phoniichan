@@ -25,7 +25,7 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 	private String descriptionText;
 	
 	public ButtonToby() {
-		super(0, 0, 330, 35); 
+		super(0, 0, 340, 35); 
 		font = "Papyrus";
 		size = 14;
 		update();
@@ -34,16 +34,16 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.cyan);
-		g.fillRoundRect(0, 0, 300, 33, 15, 15);
+		g.fillRoundRect(0, 0, 310, 33, 15, 15);
 		g.setColor(Color.black);
-		g.drawRoundRect(0, 0, 300, 33, 15, 15);
+		g.drawRoundRect(0, 0, 310, 33, 15, 15);
 		if(displayName != null){
-			g.setFont(new Font(font, Font.PLAIN, size));
+			g.setFont(new Font(font, Font.BOLD, size));
 			g.drawString(name, 10, 20);	
 		}
 		if(displayCost != null){
-			g.setFont(new Font(font, Font.PLAIN, size));
-			g.drawString(cost, 305, 20);
+			g.setFont(new Font(font, Font.BOLD, size));
+			g.drawString(cost, 315, 20);
 		}
 	}
 	
@@ -105,6 +105,12 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 	public void highlight() {
 		// TODO Auto-generated method stub
 	
+	}
+
+	@Override
+	public void flip() {
+		// TODO Auto-generated method stub
+		
 	}
  
 }

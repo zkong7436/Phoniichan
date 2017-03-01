@@ -23,22 +23,6 @@ public class HomeScreen extends PokedexScreen {
 		backImg = new Graphic(330, 90, "resources/ivyback.png");
 		appLinks = new ArrayList<ClickableGraphic>();
 		findApps();
-		int xShift = 0;
-		int yShift = 0;
-		if(appLinks != null){
-			for(int i = 0; i < appLinks.size(); i++){
-				if(i < 16){
-					if(i !=0 && i%4 == 0){
-					xShift = 0;
-					yShift += 75;
-					}else{
-						xShift += 75;
-					}
-				appLinks.get(i).setX(330+i*xShift);
-				appLinks.get(i).setY(90+i*yShift);
-				}
-			}
-		}
 		viewObjects.add(backImg);
 		viewObjects.addAll(appLinks);
 	}
@@ -48,8 +32,7 @@ public class HomeScreen extends PokedexScreen {
 		int numIcons = 0;
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){
-				numIcons++;
-				ClickableGraphic newLink = new ClickableGraphic(0,0,60,60,"resources/"+resources[i].getName());
+				ClickableGraphic newLink = new ClickableGraphic((iconX(numIcons))*60+330,iconY(numIcons)*60+90,60,60,"resources/"+resources[i].getName());
 				newLink.setAction(new Action(){
 
 					@Override
@@ -59,18 +42,17 @@ public class HomeScreen extends PokedexScreen {
 					}
 					
 				});
+				numIcons++;
 				appLinks.add(newLink);
 			}
 		}
 	}
 	
 	public int iconX(int numIcons) {
-		System.out.println(numIcons%4-1+"");
-		return (numIcons%4-1);
+		return (numIcons%4);
 	}
 
 	public int iconY(int numIcons) {
-		System.out.println(numIcons/4+"");
 		return (numIcons/4);
 	}
 

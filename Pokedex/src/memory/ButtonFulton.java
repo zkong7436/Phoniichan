@@ -16,6 +16,8 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	private ButtonContainer container;
 	private Color displayColor;
 	private boolean highlight;
+	private boolean checked;
+	private boolean isThere;
 	private final Color DIM = new Color(105, 105, 105);
 
 	public ButtonFulton(ButtonContainer container) {
@@ -32,7 +34,13 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	}
 	
 	public void flip(){
-		
+		if(!checked){
+			if(isThere){
+				
+			}else{
+				
+			}
+		}
 	}
 	
 	public void update(Graphics2D g) {
@@ -45,9 +53,6 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 		g.fillRoundRect(0, 0, 50, 100, 5, 10);
 		g.setColor(Color.black);
 		g.drawRoundRect(0, 0, 50-1, 50-1, 5, 10);
-		if(highlight){
-			g.setColor(Color.white);
-		}
 	}
 
 	public void setAction(Action a) {
@@ -61,30 +66,12 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
         update();
 	}
 	
-	public void highlight() {
-	    displayColor = this.color;
-		highlight = true;
-		update();
-	}
-
-	public void dim() {
-		displayColor = DIM;
-		highlight = false;
-		update();
-	}
-
 	@Override
 	public void setPicture(String address) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public Graphic getGraphic() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public void setName(String string) {
 		// TODO Auto-generated method stub
@@ -95,6 +82,20 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	public void setText(String string) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void setLabel(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
+
+	public void setThere(boolean isThere) {
+		this.isThere = isThere;
 	}
 
 }

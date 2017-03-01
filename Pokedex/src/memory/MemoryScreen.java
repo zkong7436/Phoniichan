@@ -81,11 +81,13 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 			idkName2++;
 			tiles.get(i).setY(55*idkName);
 			final ButtonInterfaceFulton c = tiles.get(i);
+			c.setThere(logic[i][0]);
 			tiles.get(i).setAction(new Action(){
 					public void act(){
 						if(acceptingInput){
 							Thread flip = new Thread(new Runnable(){
 								public void run(){
+									c.setChecked(true);
 									c.flip();
 								}
 							});
@@ -167,11 +169,11 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 
 	private void showAbras() { 
-//		ButtonInterfaceFulton b = null;
+		ButtonInterfaceFulton b = null;
 		for(int i = 0; i < tiles.size(); i++){
 			final ButtonInterfaceFulton c = tiles.get(i);
 			if(logic[i][0] == true){
-				c.highlight();
+				c.flip();
 			}
 		}
 	}

@@ -22,7 +22,7 @@ public interface ButtonInterfaceFulton extends Clickable{
 	void setText(String string);
 	
 	void setLabel(String string);
-	
+	 
 	void flip();
 	
 	void setChecked(boolean b);

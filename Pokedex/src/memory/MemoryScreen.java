@@ -183,7 +183,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 			int place = (int) (Math.random() * logic.length);
 			if(logic[place][0] != true){
 				logic[place][0] = true;
-				System.out.println(place);
+				System.out.println(place); 
 			}else{
 				i--;
 			}

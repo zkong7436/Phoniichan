@@ -36,7 +36,7 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	public void flip(){
 		if(!checked){
 			if(isThere){
-				
+				 
 			}else{
 				
 			}

@@ -63,4 +63,5 @@ max x: 710
 min x: 330
 max y: 435
 min y: 90
+approx. 380x345
 */

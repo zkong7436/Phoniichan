@@ -1,6 +1,7 @@
 package memory;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -53,12 +54,11 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 	}
 
 	private void addAbrasCaught(ArrayList<Visible> viewObjects) {
-		Progress abraCaught = new Progress();
-        String x = abraCaught.getCaught();
+        int x = MemoryScreen.abrasCaught;
         System.out.println(x);
-        abraNumber.setX(40);
-        abraNumber.setY(200);
-        abraNumber.setText(x);
+        abraNumber = new TextLabel(20, 20, 200, 200, "Abras Caught: "+x);
+        abraNumber.setFont("Papyrus");
+        abraNumber.setSize(18);
         viewObjects.add(abraNumber);	
 	}
 
@@ -91,7 +91,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 	}
 	
 	private void addAnimation(ArrayList<Visible> viewObjects) {
-		AnimatedComponent a = new AnimatedComponent(75,75,150,150);
+		AnimatedComponent a = new AnimatedComponent(200,200,150,150);
 		try{
 			int numberInRow = 5;
 			int rows = 1;
@@ -113,7 +113,11 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 			e.printStackTrace();
 		}
 		viewObjects.add(a);
+		a.setX(20);
+		a.setVy(1);
+		
 		a.play();
+		a.setY(150);
 	}
 
 	private ButtonToby getAButton() {

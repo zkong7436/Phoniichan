@@ -24,7 +24,6 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 	private ButtonToby[] buttons;
 	private Graphic picture;
 //	private int abraCaught;
-//	private String[] cost;
 	private TextLabel description;
 
 	public MarketScreen(int width, int height) {
@@ -35,37 +34,31 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		label = new TextLabel(20, 20, 760, 40, "AbraMarket");
+		label.setFont("Papyrus");
 		picture = new Graphic(40, 280, .05, "resources/sampleImages/White.png");
-		description = new TextLabel(150, 210, 500, 100, "");
+		description = new TextLabel(150, 225, 500, 100, "");
 		button = new Button(40,230,100,45,"Return",Color.green,
 			new Action() {
 			public void act() {
 				TobyDemo.game.setScreen(TobyDemo.memory);
 			}
 		});
+		addAnimation(viewObjects);
+		addButtons(viewObjects);
 		viewObjects.add(label);
 		viewObjects.add(button);
 		viewObjects.add(picture);
 		viewObjects.add(description);
-		addAnimation(viewObjects);
-		addButtons(viewObjects);
 	}
-	
-//	private String[] addCostLabel(String[] cost) {
-//		String[] costs = {"x10","x11","x12","x13","x14","x15"};
-//		for(int i = 0; i <costs.length; i++ ){
-//			cost[i] = costs[i];
-//		}
-//		return cost;
-//	}
 
 	private void addButtons(ArrayList<Visible> viewObjects) {
-		String[] names = {"Potion", "Alright Potion", "Good Potion", "Great Potion", "Super Potion"};
-		String[] costs = {"x1","x2","x4","x8","x16"};
-		String[] potionDescription = {"ajksfhawhfiwe","weirwentwe","asfawerhyk","ytttrthhhhea","dgndmdyjydj"};
+		String[] names = {"Potion", "Finer Potion", "Excellent Potion", "Superior Lure", "Legendary Candy"};
+		String[] costs = {"x 3","x 8","x15","x16","x25"};
+		String[] potionDescription = {"Restores 1 HP","Recovers 1 Life","Recovers 2 Life",
+				"Use to lure out all hiding Abras for a few seconds","Legendary item that can be used to skip one level"};
 		String[] address= {"resources/sampleImages/Potion1.png","resources/sampleImages/Potion2.png",
-				"resources/sampleImages/Potion3.png","resources/sampleImages/Potion1.png",
-				"resources/sampleImages/Potion1.png"};
+				"resources/sampleImages/Potion3.png","resources/sampleImages/Potion4.png",
+				"resources/sampleImages/Potion5.png"};
 		int numberOfButtons = 5;
 		buttons = new ButtonToby[numberOfButtons];
 		for(int i = 0; i <numberOfButtons; i++){ 
@@ -79,10 +72,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 //			final ButtonInterfaceFulton b = buttons[i];
 //			buttons[i].setAction(new Action() {
 //				public void act() {
-//					picture = new Graphic(25, 280, .4, address[address.length]);
-//					viewObjects.add(picture);
-//					description = new TextLabel(125, 250, 500, 100, potionDescription[potionDescription.length]);
-//					viewObjects.add(description);
+			
 //				}
 //			});
 			viewObjects.add(buttons[i]);
@@ -98,9 +88,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 			int h = 50;
 			
 			ImageIcon icon = new ImageIcon("resources/sampleImages/FloatAbra.png");
-			//create a for loop that will take a "sub-image" from the sprite grid
 			for(int i = 0; i <numberInRow*rows; i++){
-				//declare the "cropped image"
 				BufferedImage cropped = new BufferedImage(w,h, BufferedImage.TYPE_INT_ARGB);
 				int leftMargin = 0;
 				int topMargin = 0;
@@ -108,7 +96,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 				int y1 = topMargin+h*(i/numberInRow);
 				Graphics2D g = cropped.createGraphics();
 				g.drawImage(icon.getImage(),0,0,w,h,x1,y1,x1+w,y1+h,null);
-				a.addFrame(cropped,200);//change this for time on each frame
+				a.addFrame(cropped,200);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -121,7 +109,6 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 		return new ButtonToby();
 	}
 	
-	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
@@ -131,12 +118,12 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 		for(ButtonToby b:buttons){
 			if(b.isHovered(m.getX(), m.getY())){
 				picture.loadImages(b.getPictureAddress(), .2);
+				description.setFont("Papyrus");
 				description.setText(b.getDescription());
 			}
 		}
 	}
 	
-	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		

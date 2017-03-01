@@ -1,6 +1,3 @@
-/**
- * 
- */
 package TwentyFortyEight;
 
 import java.awt.Color;
@@ -10,6 +7,7 @@ import java.util.ArrayList;
 
 import guiPractice.components.Component;
 import guiPractice.components.Graphic;
+import guiPractice.components.TextLabel;
 
 /**
  * @author Student 8
@@ -18,6 +16,8 @@ import guiPractice.components.Graphic;
 public class MyDemo extends Component {
 	private int[][]board = new int[4][4];
 	private int [][]changeBoard = new int[4][4];
+	//private int[] scores = new int[3];
+	private int score = 1;
 	public MyDemo(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -61,16 +61,14 @@ public class MyDemo extends Component {
 					g.drawImage(picture2.getImage(), picture2.getX(), picture2.getY(), null);
 					g.drawRect(col*width,row*height, width, height);
 		
-		}		g.drawRect(120, 230, 170, 60);
-		board = a;
-	
-		
-		
+		}		
+			board = a;	
+		}
 	}
-	
+		
 
 
-	}
+	
 //	public void changeImages(){
 //		// checks array values.
 //		// if its 2 then it will be bulbasaur
@@ -115,4 +113,3 @@ public class MyDemo extends Component {
 //	}
 	
 
-}

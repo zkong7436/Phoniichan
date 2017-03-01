@@ -24,7 +24,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 	private ButtonToby[] buttons;
 	private Graphic picture;
 	private TextLabel description;
-	private int abraCaught;
+	private TextLabel abraNumber;
 
 	public MarketScreen(int width, int height) {
 		super(width, height);
@@ -43,12 +43,23 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 				TobyDemo.game.setScreen(TobyDemo.memory);
 			}
 		});
+		addAbrasCaught(viewObjects);
 		addAnimation(viewObjects);
 		addButtons(viewObjects);
 		viewObjects.add(label);
 		viewObjects.add(button);
 		viewObjects.add(picture);
 		viewObjects.add(description);
+	}
+
+	private void addAbrasCaught(ArrayList<Visible> viewObjects) {
+		Progress abraCaught = new Progress();
+        String x = abraCaught.getCaught();
+        System.out.println(x);
+        abraNumber.setX(40);
+        abraNumber.setY(200);
+        abraNumber.setText(x);
+        viewObjects.add(abraNumber);	
 	}
 
 	private void addButtons(ArrayList<Visible> viewObjects) {

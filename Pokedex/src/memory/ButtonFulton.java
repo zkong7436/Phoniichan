@@ -18,6 +18,7 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	private boolean highlight;
 	private boolean checked;
 	private boolean isThere;
+	private boolean reveal;
 	private final Color DIM = new Color(105, 105, 105);
 
 	public ButtonFulton(ButtonContainer container) {
@@ -34,25 +35,35 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	}
 	
 	public void flip(){
+		System.out.println("flip");
 		if(!checked){
+			System.out.println("flip not checked");
 			if(isThere){
-				 
+				System.out.println("is there");
+				 reveal = true;
+				 update();
 			}else{
 				
 			}
 		}
+		checked = true;
 	}
 	
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		if(reveal){
+			g.setColor(Color.white);
+			g.fillRoundRect(0, 0, 50, 100, 5, 10);
 //		if(pictureAddress != null){
 //			Graphic pic = new Graphic(x, y, w, h, imageLocation);
 //			container.getNumberOfButtons();
 //		}
-		g.setColor(Color.green);
-		g.fillRoundRect(0, 0, 50, 100, 5, 10);
-		g.setColor(Color.black);
-		g.drawRoundRect(0, 0, 50-1, 50-1, 5, 10);
+		}else{
+			g.setColor(Color.green);
+			g.fillRoundRect(0, 0, 50, 100, 5, 10);
+			g.setColor(Color.black);
+			g.drawRoundRect(0, 0, 50-1, 50-1, 5, 10);
+		}
 	}
 
 	public void setAction(Action a) {

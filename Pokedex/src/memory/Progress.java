@@ -19,10 +19,8 @@ public class Progress extends Component implements ProgressInterface{
 	private String health;
 
 	public Progress() {
-		super(125, 500, 120, 50);
+		super(300, 100, 250, 150);
 	}
-	
-
 	
 	public String getRound() {
 		return round;
@@ -87,7 +85,7 @@ public class Progress extends Component implements ProgressInterface{
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		FontMetrics fm = g.getFontMetrics();
-		g.setFont(new Font("Helvitca", Font.PLAIN, 12));
+		g.setFont(new Font("Helvitca", Font.PLAIN, 16));
 		if(gameOver){
 			g.setColor(Color.black);
 			String go = "Game Over!";
@@ -96,14 +94,17 @@ public class Progress extends Component implements ProgressInterface{
 			g.drawString(score, (120 - fm.stringWidth(round)) / 2, 60);
 //			FultonDemo.game.setScreen(FultonDemo.kevinLeaderBoard);
 		}else{
+			g.setColor(new Color(220,255,230));
+			g.fillRect(0, 0, 250, 150);
+			g.setColor(Color.black);
+			g.drawRect(0, 0, 250-1, 150-1);
 			if(round != null && caught != null && score != null && life !=null && combos != null && health != null){
-				g.setColor(Color.black);
 				g.drawString(round, (120 - fm.stringWidth(round))/2, 20);
-				g.drawString(caught, (120 - fm.stringWidth(caught))/2, 40);
-				g.drawString(score, (120 - fm.stringWidth(score))/2, 60);
-				g.drawString(life, (120 - fm.stringWidth(life))/2, 80);
-				g.drawString(combos, (120 - fm.stringWidth(combos))/2, 100);
-				g.drawString(health, (120 - fm.stringWidth(health))/2, 120);
+				g.drawString(health, (120 - fm.stringWidth(health))/2, 40);
+				g.drawString(caught, (120 - fm.stringWidth(caught))/2, 60);
+				g.drawString(score, (120 - fm.stringWidth(score))/2, 80);
+				g.drawString(life, (120 - fm.stringWidth(life))/2, 100);
+				g.drawString(combos, (120 - fm.stringWidth(combos))/2, 120);
 			}
 		}
 	}

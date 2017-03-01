@@ -41,6 +41,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 	
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
+		generateAbras();
 		increaseSize=5;
 		startingSize=4;
 		abraCount = 3;
@@ -64,7 +65,6 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 			ButtonInterfaceFulton b = new ButtonFulton(null);
 			tiles.add(b);		
 			tiles.get(i).setX(55*idkName2);
-			System.out.println("x is "+b.getX());
 			idkName2++;
 			tiles.get(i).setY(55*idkName);
 			final ButtonInterfaceFulton c = tiles.get(i);
@@ -74,7 +74,6 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 						if(acceptingInput){
 							Thread flip = new Thread(new Runnable(){
 								public void run(){
-									c.setChecked(true);
 									c.flip();
 								}
 							});
@@ -84,15 +83,22 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 								Thread nextRound = new Thread(MemoryScreen.this);
 								nextRound.start();
 							}
+							
 							for(int index = 0;index < tiles.size(); index++){
 								if(c == tiles.get(index)){
 									if(!logic[index][1]){
+										logic[index][1] = true;
 										if(logic[index][0]){
 											currentScore += (combo * level);
 											combo++;
+											abrasCaught++;
+											progress.setCaught(abrasCaught);
+											progress.setPoint(currentScore);
+											progress.setCombo(combo);
 										}else{
 											combo = 1;
 											hp--;
+											progress.setHp(hp);
 										}
 									}
 								}
@@ -136,7 +142,6 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		progress.setPoint(currentScore);
 		progress.setLife(lives);
 		progress.setCombo(combo);
-		generateAbras();
 		changeText("Click to Start");
 		try {
 			Thread.sleep(1000);

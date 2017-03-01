@@ -11,7 +11,7 @@ import guiPractice.components.Action;
 import guiPractice.components.Component;
 import guiPractice.components.Graphic;
 
-public class ButtonToby extends Component implements ButtonInterfaceFulton{
+public class ButtonToby extends Component implements ButtonInterfaceToby{
 
 	private Action action;
 	private Color c;
@@ -93,24 +93,6 @@ public class ButtonToby extends Component implements ButtonInterfaceFulton{
 	
 	public String getDescription(){
 		return descriptionText;
-	}
-	
-	@Override
-	public void dim() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void highlight() {
-		// TODO Auto-generated method stub
-	
-	}
-
-	@Override
-	public void flip() {
-		// TODO Auto-generated method stub
-		
 	}
  
 }

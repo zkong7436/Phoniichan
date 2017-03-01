@@ -23,8 +23,8 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 	private Button button;
 	private ButtonToby[] buttons;
 	private Graphic picture;
-//	private int abraCaught;
 	private TextLabel description;
+	private int abraCaught;
 
 	public MarketScreen(int width, int height) {
 		super(width, height);
@@ -69,7 +69,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 			buttons[i].setY(45*i+50);
 			buttons[i].setPicture(address[i]);
 			buttons[i].setLabel(potionDescription[i]);
-//			final ButtonInterfaceFulton b = buttons[i];
+//			final ButtonInterfaceToby b = buttons[i];
 //			buttons[i].setAction(new Action() {
 //				public void act() {
 			

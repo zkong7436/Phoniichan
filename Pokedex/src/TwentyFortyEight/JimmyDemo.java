@@ -5,7 +5,7 @@ package TwentyFortyEight;
 
 import java.awt.Color;
 import java.util.ArrayList;
-
+import java.util.Scanner;
 
 import guiPractice.GuiApplication;
 import guiPractice.components.Action;
@@ -18,7 +18,7 @@ import guiPractice.components.Visible;
  * @author Student 8
  *
  */
-public class JimmyDemo extends GuiApplication {
+public class JimmyDemo extends GuiApplication  {
 
 	static int[][] game;
 	static int temp;
@@ -80,12 +80,13 @@ public class JimmyDemo extends GuiApplication {
 		game[3][3] = 2;
 
 		printGame(game);
-
+		System.out.println("-------------------------------");
+	
 	}
 
 	// nested inner class
 	private class DemoScreen extends ClickableScreen {
-		private TextLabel rewardDisplay;
+		private TextLabel movementDisplay;
 		private Button slideUp;
 		private Button slideDown;
 		private Button slideLeft;
@@ -98,7 +99,7 @@ public class JimmyDemo extends GuiApplication {
 
 		@Override
 		public void initAllObjects(ArrayList<Visible> view) {
-			rewardDisplay = new TextLabel(20, 40, 1000, 25, "");
+			movementDisplay = new TextLabel(20, 40, 1000, 25, "");
 			slideUp = new Button(100, 75, 90, 40, "Up", Color.blue, new Action() {
 
 				@Override
@@ -107,8 +108,9 @@ public class JimmyDemo extends GuiApplication {
 					moveTilesMinus(game);
 					rotate(game, 3);
 					printGame(game);
-					JimmyDemo.reward.getReward(10);
-					rewardDisplay.setText(" You earned a reward ! Total points = " + JimmyDemo.reward.getPoints());
+					System.out.println("-------------------------------");
+					
+					movementDisplay.setText("You swiped up!");
 
 				}
 			});
@@ -120,9 +122,8 @@ public class JimmyDemo extends GuiApplication {
 					moveTilesPlus(game);
 					rotate(game, 3);
 					printGame(game);
-					
-					JimmyDemo.reward.getReward(10);
-					rewardDisplay.setText(" You earned a reward ! Total points = " + JimmyDemo.reward.getPoints());
+					System.out.println("-------------------------------");
+					movementDisplay.setText("You swiped down!");
 
 				}
 			});
@@ -132,8 +133,8 @@ public class JimmyDemo extends GuiApplication {
 				public void act() {
 					moveTilesMinus(game);
 					printGame(game);
-					JimmyDemo.reward.getReward(10);
-					rewardDisplay.setText(" You earned a reward ! Total points = " + JimmyDemo.reward.getPoints());
+					System.out.println("-------------------------------");
+					movementDisplay.setText("You swiped right!");
 
 				}
 			});
@@ -143,12 +144,12 @@ public class JimmyDemo extends GuiApplication {
 				public void act() {
 					moveTilesPlus(game);
 					printGame(game);
-					JimmyDemo.reward.getReward(10);
-					rewardDisplay.setText(" You earned a reward ! Total points = " + JimmyDemo.reward.getPoints());
+					System.out.println("-------------------------------");
+					movementDisplay.setText("You swiped left!");
 
 				}
 			});
-			view.add(rewardDisplay);
+			view.add(movementDisplay);
 			view.add(slideUp);
 			view.add(slideDown);
 			view.add(slideRight);

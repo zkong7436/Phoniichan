@@ -62,23 +62,7 @@ public class JimmyDemo extends GuiApplication  {
 
 			}
 		}
-		game[0][0] = 2;
-		game[0][1] = 2;
-		game[0][2] = 4;
-		game[0][3] = 64;
-		game[1][0] = 16;
-		game[1][1] = 32;
-		game[1][2] = 4;
-		game[1][3] = 2;
-		game[2][0] = 8;
-		game[2][1] = 2;
-		game[2][2] = 16;
-		game[2][3] = 2;
-		game[3][0] = 32;
-		game[3][1] = 2;
-		game[3][2] = 8;
-		game[3][3] = 2;
-
+		SpawnDemo.start(game);
 		printGame(game);
 		System.out.println("-------------------------------");
 	
@@ -108,6 +92,7 @@ public class JimmyDemo extends GuiApplication  {
 					moveTilesMinus(game);
 					rotate(game, 3);
 					printGame(game);
+					SpawnDemo.cont(game);
 					System.out.println("-------------------------------");
 					
 					movementDisplay.setText("You swiped up!");
@@ -122,6 +107,7 @@ public class JimmyDemo extends GuiApplication  {
 					moveTilesPlus(game);
 					rotate(game, 3);
 					printGame(game);
+					SpawnDemo.cont(game);
 					System.out.println("-------------------------------");
 					movementDisplay.setText("You swiped down!");
 
@@ -133,6 +119,7 @@ public class JimmyDemo extends GuiApplication  {
 				public void act() {
 					moveTilesMinus(game);
 					printGame(game);
+					SpawnDemo.cont(game);
 					System.out.println("-------------------------------");
 					movementDisplay.setText("You swiped right!");
 
@@ -144,6 +131,7 @@ public class JimmyDemo extends GuiApplication  {
 				public void act() {
 					moveTilesPlus(game);
 					printGame(game);
+					SpawnDemo.cont(game);
 					System.out.println("-------------------------------");
 					movementDisplay.setText("You swiped left!");
 

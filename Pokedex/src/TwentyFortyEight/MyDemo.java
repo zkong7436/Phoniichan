@@ -33,8 +33,9 @@ public class MyDemo extends Component {
 	@Override
 	public void update(Graphics2D g) {
 		int[][]a = new int[4][4];
-		a[0][0] = 2;
-		a[0][3] = 2;
+//		a[0][0] = 2;
+//		a[0][3] = 2;
+		SpawnDemo.start(a);
 		int x = 1;
 		int y = 1;
 		int z = 1;

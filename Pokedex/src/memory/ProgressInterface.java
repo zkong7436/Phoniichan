@@ -14,4 +14,6 @@ public interface ProgressInterface extends Visible{
 	void setLife(int lives);
 	
 	void setCombo(int combo);
+
+	void setHp(int hp);
 }

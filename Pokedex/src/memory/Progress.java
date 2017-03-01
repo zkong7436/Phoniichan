@@ -22,6 +22,32 @@ public class Progress extends Component implements ProgressInterface{
 		super(125, 500, 120, 50);
 	}
 	
+
+	
+	public String getRound() {
+		return round;
+	}
+
+	public String getCaught() {
+		return caught;
+	}
+
+	public String getScore() {
+		return score;
+	}
+
+	public String getCombos() {
+		return combos;
+	}
+	
+	public String getLife() {
+		return life;
+	}
+
+	public String getHealth() {
+		return health;
+	}
+	
 	public void gameOver() {
 		gameOver = true;
 		update();
@@ -33,7 +59,7 @@ public class Progress extends Component implements ProgressInterface{
 	}
 	
 	public void setCaught(int abrasCaught){
-		caught = "Abra| " + abrasCaught;
+		caught = "Abra Obtained| " + abrasCaught;
 		update();
 	}
 	 
@@ -70,14 +96,14 @@ public class Progress extends Component implements ProgressInterface{
 			g.drawString(score, (120 - fm.stringWidth(round)) / 2, 60);
 //			FultonDemo.game.setScreen(FultonDemo.kevinLeaderBoard);
 		}else{
-			if(round !=null && caught != null && score != null){
+			if(round != null && caught != null && score != null && life !=null && combos != null && health != null){
 				g.setColor(Color.black);
 				g.drawString(round, (120 - fm.stringWidth(round))/2, 20);
 				g.drawString(caught, (120 - fm.stringWidth(caught))/2, 40);
 				g.drawString(score, (120 - fm.stringWidth(score))/2, 60);
-				g.drawString(life, (120 - fm.stringWidth(life))/2, 60);
-				g.drawString(combos, (120 - fm.stringWidth(combos))/2, 60);
-				g.drawString(health, (120 - fm.stringWidth(health))/2, 60);
+				g.drawString(life, (120 - fm.stringWidth(life))/2, 80);
+				g.drawString(combos, (120 - fm.stringWidth(combos))/2, 100);
+				g.drawString(health, (120 - fm.stringWidth(health))/2, 120);
 			}
 		}
 	}

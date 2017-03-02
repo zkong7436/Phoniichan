@@ -18,7 +18,7 @@ public interface ButtonInterfaceToby extends Clickable {
 
 	void setName(String string);
 
-	void setText(String string);
+	void setCost(int string);
 	
 	void setLabel(String string);
 }

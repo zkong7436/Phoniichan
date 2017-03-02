@@ -46,7 +46,7 @@ public class Button extends TextLabel implements Clickable{
 				cutoff --;
 				t = t.substring(0,cutoff); 
 			}
-			g.drawString(t, (getWidth()-fm.stringWidth(t))/2, (getHeight()+fm.getHeight()-fm.getDescent())/2);
+			g.drawString(t, (getWidth()-fm.stringWidth(t))/2, (getHeight()+fm.getHeight()-8-fm.getDescent())/2);
 		}
 	}
 

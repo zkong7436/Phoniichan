@@ -1,8 +1,8 @@
 package memory;
 
-import guiPractice.GuiApplication;
+import guiPractice.GUIApplication;
 
-public class TobyDemo extends GuiApplication {
+public class TobyDemo extends GUIApplication {
 	
 	public static TobyDemo game;
 	public static MarketScreen market;
@@ -16,7 +16,7 @@ public class TobyDemo extends GuiApplication {
 	
 	protected void initScreen() {
 		market = new MarketScreen(getWidth(), getHeight());
-//		memory = new MemoryScreen(getWidth(), getHeight());
+		memory = new MemoryScreen(getWidth(), getHeight());
 		setScreen(market);
 	}
 

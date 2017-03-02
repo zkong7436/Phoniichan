@@ -25,9 +25,9 @@ public class ButtonToby extends Component implements ButtonInterfaceToby{
 	private String descriptionText;
 	
 	public ButtonToby() {
-		super(0, 0, 340, 35); 
-		font = "Papyrus";
-		size = 14;
+		super(0, 0, 380, 35); 
+		font = "Tw Cen MT Condensed";
+		size = 18;
 		update();
 	}
 	
@@ -39,11 +39,11 @@ public class ButtonToby extends Component implements ButtonInterfaceToby{
 		g.drawRoundRect(0, 0, 310, 33, 15, 15);
 		if(displayName != null){
 			g.setFont(new Font(font, Font.BOLD, size));
-			g.drawString(name, 10, 20);	
+			g.drawString(name, 10, 22);	
 		}
 		if(displayCost != null){
 			g.setFont(new Font(font, Font.BOLD, size));
-			g.drawString(cost, 315, 20);
+			g.drawString("x"+cost+" Abras", 315, 22);
 		}
 	}
 	
@@ -71,9 +71,9 @@ public class ButtonToby extends Component implements ButtonInterfaceToby{
 		update();
 	}
 
-	public void setText(String text) {
-		this.cost = text;
-		displayCost = text;
+	public void setCost(int costs) {
+		this.cost = String.valueOf(costs);
+		displayCost = String.valueOf(costs);
 		update();
 	}
 

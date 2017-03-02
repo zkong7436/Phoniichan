@@ -14,7 +14,7 @@ public class SpawnDemo implements SInterface{
 		System.out.println("Game starts and two random blank blocks are turned into 2s or 4s" );
 		start(board);
 		System.out.println("After you move (which is not shown), a new blank block is turned into a 2 or 4"+"");
-
+		
 		
 		
 		
@@ -37,6 +37,7 @@ public class SpawnDemo implements SInterface{
 		checkBlanks(board);
 		for(int i = 0; i<1; i++){
 			int newNum = 0;
+			
 			int determine = (int) (10*Math.random()+1);
 			if (determine<4) {
 				newNum = 4;

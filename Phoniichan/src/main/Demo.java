@@ -2,21 +2,14 @@ package main;
 
 import guiPractice.GuiApplication;
 
-/**
- * @author Student8
- *
- */
 @SuppressWarnings("serial")
-public class Pokedex extends GuiApplication {
+public class Demo extends GuiApplication {
 
-	/**
-	 * static fields
-	 */
-	public static Pokedex game;
-	public static PokedexScreen screen;
+	public static Demo game;
+	public static LockScreen screen;
 	
 	public static void main(String[] args){
-		game = new Pokedex();
+		game = new Demo();
 		Thread app = new Thread(game);
 		app.start();
 	}

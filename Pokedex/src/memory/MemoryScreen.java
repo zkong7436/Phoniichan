@@ -28,6 +28,8 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	private ProgressInterface progress;
 	private int increaseSize;
 	private int startingSize;
+	private Button button;
+	
 	
 	public MemoryScreen(int height, int width) {
 		super(height, height);
@@ -41,6 +43,12 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 	
 	public void initAllObjects(ArrayList<Visible> viewObjects){
+		button = new Button(35,230,100,45,"Return",Color.green,
+				new Action() {
+			public void act() {
+				TobyDemo.game.setScreen(TobyDemo.memory);
+			}
+		});
 		increaseSize=5;
 		startingSize=4;
 		abraCount = 3;
@@ -104,12 +112,15 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 								nextRound.start();
 							}else if(hp == 0){
 								System.out.println("HP IS GONE");
+								hp = 3;
+								progress.setLife(hp);
 								lives--;
+								if(lives == 0){
+									progress.gameOver();
+									return;
+								}
 								Thread nextRound = new Thread(MemoryScreen.this);
 								nextRound.start();
-							}else if(lives == 0){
-								progress.gameOver();
-								return;
 							}
 							
 						}

@@ -90,14 +90,14 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 			buttons[i].setLabel(potionDescription[i]);
 			
 //			final TobyButton b = buttons[i];
-//			buttons[i].setAction(new Action() {
-//				public void act() {				
-//					for(int i=0; costs.length<0; i++){
-//						int c = x - costs[i];
-//						System.out.println("subtracted: "+c);
-//					}
-//				}
-//			});
+			buttons[i].setAction(new Action() {
+				public void act() {				
+					for(int i=0; costs.length<0; i++){
+						int c = x - costs[i];
+						System.out.println("subtracted: "+c);
+					}
+				}
+			});
 			viewObjects.add(buttons[i]);
 		}
 	}

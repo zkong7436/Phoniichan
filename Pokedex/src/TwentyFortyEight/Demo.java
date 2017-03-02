@@ -1,103 +1,111 @@
+/**
+ * 
+ */
 package TwentyFortyEight;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import guiPractice.components.Component;
-import guiPractice.components.Graphic;
+import java.util.ArrayList;
+
+import guiPractice.components.TextLabel;
+import guiPractice.components.Visible;
 
 /**
  * @author Student 8
  *
  */
-public class MyDemo extends Component {
-	public MyDemo(int x, int y, int w, int h) {
-		super(x, y, w, h);
-		// TODO Auto-generated constructor stub
-	}
-
+@SuppressWarnings("serial")
+public class Demo extends main.Pokedex {
+//	public static Reward reward;
 	/**
 	 * 
 	 */
-
-	@Override
-	public void update(Graphics2D g) {
-		int[][]a = new int[4][4];
-//		a[0][0] = 2;
-//		a[0][3] = 2;
-		SpawnDemo.start(a);
-		int y = 1;
-		int z = 1;
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		g.setColor(Color.black);
-		String pics[] = { "resources/images2048/grass.jpg" , "resources/images2048/bulbasaur.png",
-		"resources/images2048/ivysaur.jpg" }; // this is filler.. we don't have ivysaur sprite in images2048 yet
-		//changeImages();
-		int height = 95,width = 95;
-//		Graphic picture1 = new Graphic(0,0,80,80,"resources/images2048/grass.jpg");
-
-		for (int row = 0; row < a.length; row++) {
-			for (int col = 0; col < a[row].length; col++) {
-				y = a[row][col];
-					if( y> 0){
-						 z= (int) (Math.log(y)/Math.log(2));
-					}
-					else{
-						z = 0;
-					}
-				 
-					Graphic picture2 = new Graphic(col*width,row*height,width,height,pics[z]);
-					g.drawImage(picture2.getImage(), picture2.getX(), picture2.getY(), null);
-					g.drawRect(col*width,row*height, width, height);
-		
-		}	
-		}
+	public Demo() {
+		//reward = new Reward();
 	}
-}	
 
+	/* (non-Javadoc)
+	 * @see guiPractice.GuiApplication#initScreen()
+	 */
+	@Override
+	protected void initScreen() {
+		DemoScreen demo = new DemoScreen(944,526);
+		setScreen(demo);
 
-	
-//	public void changeImages(){
-//		// checks array values.
-//		// if its 2 then it will be bulbasaur
-//		// default (0) = grass img
-//		for (int row = 0; row < board.length; row++) {
-//			for (int col = 0; col < board[row].length; col++) {
-//				changeBoard[row][col] = (int) Math.sqrt(board[row][col]);
-// 			}
-//		}
-////		// if values of chaneBoard[row][col] == 0  -> img is grass
-////		== 1 image is bulbasaur
-////				 == 2 is ivysaur
-//	}
+	}
 
-	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Demo d = new Demo();
+		Thread app = new Thread(d);
+		app.start();
+
+	}
+	// nested inner class
+	private class DemoScreen extends main.PokedexScreen{
+		//private TextLabel rewardDisplay;
+		//private Button beatAMonster;
+		//private MyDemo demo;
+		public DemoScreen(int width, int height) {
+			super(width, height);
+			
+			// TODO Auto-generated constructor stub
+		}
+
+		
+		
+		
+			//Button reset = new Button (40,40,40,40 , "Reset", Color.BLUE, new Action());
+			//reset.setAction(Action());
+		//	rewardDisplay = new TextLabel(20,40,1000,25,"");
+		//	beatAMonster = new Button(40, 100, 190, 40,"beat a monster" ,Color.blue, 
+//					new Action() {
+//						
+//						@Override
+//						public void act() {
+//							Demo.reward.getReward(10);
+//							rewardDisplay.setText(" You earned a reward ! Total points = " +Demo.reward.getPoints());
+//							
+//						}
+//					});
+		//	view.add(rewardDisplay);
+		//	view.add(beatAMonster);
+			
 	
 
-//	public void start(){
-//		ArrayList<Integer> Nrow = new ArrayList<Integer>();
-//		ArrayList<Integer> Ncol = new ArrayList<Integer>();
-//		for (int row = 0; row < board.length; row++) {
-//			for (int col= 0; col < board.length; col++) {
-//				if(board[row][col] == 0){
-//					Nrow.add(row);
-//					Ncol.add(col);
-//					//will add row and col of all unfilled squares
-//				}
-//			}
-//			for (int i = 0; i < 2; i++) {
-//				int rndX = (int)(Nrow.size()*Math.random());
-//				int rndY = (int)(Ncol.size()*Math.random());
-//				int expo = (int) ((1 * Math.random()) + 1); // (0 or 1) + 1;
-//				// 
-//				// 2 ^1 = 2; 2^2 = 4;  it will random 
-//				board[rndX][rndY] = (int) Math.pow(2, expo);
-//				Nrow.remove(rndX);
-//				Nrow.remove(rndY);
-//				
-//			}
-//		}
-//		
-//	}
-	
+		@SuppressWarnings("unused")
+		public void highScore(int userScore, int[] scores){
+			for(int i = 0; i < scores.length; i++){
+				if( scores[i] < userScore){
+					int temp = scores[i];
+					scores[i] = userScore;
+					scores[i+1] = temp;
+					for(int j = i+2; j < scores.length; j++){
+						scores[j] = scores[i];
+					}
+				}
+			}
+	}
+		@Override
+		public void initRemainingItems(ArrayList<Visible> view) {
+			MyDemo d = new MyDemo(333,90,380,345);
+			TextLabel text = new TextLabel(300, 50, 300, 30, "This is the High Score Board");
+			int[] scores = new int[3];
+	//		if(TwentyFortyEightGame.gameOver){
+	//			highScore(score, scores);
+	//		}
+			for(int i = 0; i < 3; i++){
+				
+				scores[0] = 1;
+				scores[1] = 2;
+				scores[2] = 3;
+				view.add(new TextLabel((450) , (150 + (i*50)), 30, 40, scores[i]+""));			
+		}
+			view.add(d);
+			view.add(text);
+		
+	}
+	}
+
+}
 

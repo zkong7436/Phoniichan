@@ -1,8 +1,6 @@
 package memory;
 
-import guiPractice.GUIApplication;
-
-public class TobyDemo extends GUIApplication {
+public class TobyDemo extends main.Pokedex {
 	
 	public static TobyDemo game;
 	public static TobyMarketScreen market;

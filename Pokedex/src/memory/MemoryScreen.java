@@ -11,7 +11,7 @@ import guiPractice.components.TextArea;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
-public class MemoryScreen extends ClickableScreen implements Runnable {
+public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
 	private TextLabel label;
 	private TextArea area;
@@ -42,7 +42,96 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		firstRound();
 	}
 	
-	public void initAllObjects(ArrayList<Visible> viewObjects){
+	private ProgressInterface getProgress() {
+		return new Progress();
+	}
+
+	public boolean pass(){
+		for(int i = 0; i < tiles.size(); i++){
+			if(logic[i][0] != logic[i][1]){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private void firstRound() {
+		for(int i = 0; i < tiles.size(); i++){
+			final ButtonInterfaceFulton b = tiles.get(i);
+			b.setReveal(false);
+			b.setChecked(false);
+			logic[i][0] = false;
+			logic[i][1] = false;
+		}
+		acceptingInput = false;
+		progress.setLevel(level);
+		progress.setCaught(abrasCaught);
+		progress.setHp(hp);
+		progress.setPoint(currentScore);
+		progress.setLife(lives);
+		progress.setCombo(combo);
+		changeText("Wait for message to dissapear to start!");
+		wait(1000);
+		label.setText("");
+		generateAbras();
+		showAbras();
+		wait(500);
+		for(int i = 0; i < tiles.size(); i++){
+			final ButtonInterfaceFulton b = tiles.get(i);
+			b.setReveal(false);
+			b.setChecked(false);
+		}
+		acceptingInput = true;
+	}
+
+	private void wait(int time){
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void showAbras() { 
+		for(int i = 0; i < tiles.size(); i++){
+			final ButtonInterfaceFulton c = tiles.get(i);
+			if(logic[i][0] == true){
+				c.flip();
+			}
+		}
+	}
+
+	private void generateAbras() {
+		for(int i = 0; i < abraCount; i++){
+			int place = (int) (Math.random() * logic.length);
+			if(logic[place][0] != true){
+				logic[place][0] = true;
+			}else{
+				i--;
+			}
+		}
+		for(int j = 0; j < startingSize + increaseSize; j++){
+			final ButtonInterfaceFulton c = tiles.get(j);
+			if(logic[j][0] == true){
+				System.out.println("not enough space");
+				c.setThere(true);
+			}else{
+				c.setThere(false);
+			}
+		}
+	}
+
+	private void changeText(String s) {
+		try {
+			label.setText(s);
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void initRemainingItems(ArrayList<Visible> viewObjects) {
 		button = new Button(35,230,100,45,"Return",Color.green,
 				new Action() {
 			public void act() {
@@ -132,95 +221,5 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		label = new TextLabel(getWidth()/2 - 150, getHeight()/2 -10, 400, 20, "Text");
 		viewObjects.add(progress);
 		viewObjects.add(label);
-	}
-	
-	
-	
-	private ProgressInterface getProgress() {
-		return new Progress();
-	}
-
-	public boolean pass(){
-		for(int i = 0; i < tiles.size(); i++){
-			if(logic[i][0] != logic[i][1]){
-				return false;
-			}
-		}
-		return true;
-	}
-
-	private void firstRound() {
-		for(int i = 0; i < tiles.size(); i++){
-			final ButtonInterfaceFulton b = tiles.get(i);
-			b.setReveal(false);
-			b.setChecked(false);
-			logic[i][0] = false;
-			logic[i][1] = false;
-		}
-		acceptingInput = false;
-		progress.setLevel(level);
-		progress.setCaught(abrasCaught);
-		progress.setHp(hp);
-		progress.setPoint(currentScore);
-		progress.setLife(lives);
-		progress.setCombo(combo);
-		changeText("Wait for message to dissapear to start!");
-		wait(1000);
-		label.setText("");
-		generateAbras();
-		showAbras();
-		wait(500);
-		for(int i = 0; i < tiles.size(); i++){
-			final ButtonInterfaceFulton b = tiles.get(i);
-			b.setReveal(false);
-			b.setChecked(false);
-		}
-		acceptingInput = true;
-	}
-
-	private void wait(int time){
-		try {
-			Thread.sleep(time);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void showAbras() { 
-		for(int i = 0; i < tiles.size(); i++){
-			final ButtonInterfaceFulton c = tiles.get(i);
-			if(logic[i][0] == true){
-				c.flip();
-			}
-		}
-	}
-
-	private void generateAbras() {
-		for(int i = 0; i < abraCount; i++){
-			int place = (int) (Math.random() * logic.length);
-			if(logic[place][0] != true){
-				logic[place][0] = true;
-			}else{
-				i--;
-			}
-		}
-		for(int j = 0; j < startingSize + increaseSize; j++){
-			final ButtonInterfaceFulton c = tiles.get(j);
-			if(logic[j][0] == true){
-				System.out.println("not enough space");
-				c.setThere(true);
-			}else{
-				c.setThere(false);
-			}
-		}
-	}
-
-	private void changeText(String s) {
-		try {
-			label.setText(s);
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 }

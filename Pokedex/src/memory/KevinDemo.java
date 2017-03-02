@@ -1,19 +1,24 @@
 package memory;
 
-import guiPractice.GuiApplication;
+import guiPractice.GUIApplication;
 
-public class KevinDemo extends GuiApplication
+public class KevinDemo extends GUIApplication
 {
-	@Override
-	protected void initScreen() 
+	public static KevinDemo game;
+	public static KevinLeaderboard leaderboard;
+	public static MemoryScreen memory;
+	
+	public static void main(String[] args)
 	{
-		KevinLeaderboard scoreboard = new KevinLeaderboard(getWidth(), getHeight());
-		setScreen(scoreboard);
-	}
-	public static void main(String args)
-	{
-		KevinDemo game = new KevinDemo();
+		game = new KevinDemo();
 		Thread app = new Thread(game);
 		app.start();
+	}
+	
+	protected void initScreen() 
+	{
+		leaderboard = new KevinLeaderboard(getWidth(), getHeight());
+		memory = new MemoryScreen(getWidth(), getHeight());
+		setScreen(leaderboard);
 	}
 }

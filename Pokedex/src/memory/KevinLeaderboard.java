@@ -1,5 +1,6 @@
 package memory;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.lang.reflect.Array;
@@ -7,11 +8,15 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
+import guiPractice.components.Action;
+import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.Visible;
 
 public class KevinLeaderboard extends ClickableScreen implements Runnable, MouseMotionListener
 {
+	private Button button;
+	
 	public int combo;
 	public int score;
 	public static Scanner in;
@@ -127,8 +132,16 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	}
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> arg0) 
+	public void initAllObjects(ArrayList<Visible> viewObjects) 
 	{
-		
-	} 
+		button = new Button(35,230,100,45,"Return",Color.orange,
+				new Action() 
+		{
+			public void act() 
+			{
+				KevinDemo.game.setScreen(KevinDemo.memory);
+			}
+		}); 
+		viewObjects.add(button);
+	}
 }

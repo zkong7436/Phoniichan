@@ -16,7 +16,7 @@ public class TobyDemo extends GUIApplication {
 	
 	protected void initScreen() {
 		market = new TobyMarketScreen(getWidth(), getHeight());
-		memory = new MemoryScreen(getWidth(), getHeight());
+//		memory = new MemoryScreen(getWidth(), getHeight());
 		setScreen(market);
 	}
 

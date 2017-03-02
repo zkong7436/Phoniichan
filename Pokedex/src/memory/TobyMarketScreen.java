@@ -28,7 +28,7 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 	private Graphic textbox;
 	private static String FONT = "Tw Cen MT Condensed";
 	private static int SIZE = 25;
-	private static int x = 50;
+	private static int x = MemoryScreen.abrasCaught;
 
 	public TobyMarketScreen(int width, int height) {
 		super(width, height);
@@ -54,7 +54,7 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 		
 		addAnimation(viewObjects);
 		addButtons(viewObjects);
-		addAbrasCaught(viewObjects);
+//		addAbrasCaught(viewObjects);
 		viewObjects.add(label);
 		viewObjects.add(button);
 		viewObjects.add(textbox);
@@ -62,15 +62,17 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 		viewObjects.add(description);
 	}
 
-	public void addAbrasCaught(ArrayList<Visible> viewObjects) {
-		int x = MemoryScreen.abrasCaught;
+	public void addAbrasCaught() {
+//		int x = MemoryScreen.abrasCaught;
         abraNumber = new TextLabel(20, 15, 300, 210, "Abras Caught: "+x);
         abraNumber.setFont(FONT);
         abraNumber.setSize(SIZE);
-        viewObjects.add(abraNumber);	
+//        viewObjects.add(abraNumber);	
 	}
 
 	private void addButtons(ArrayList<Visible> viewObjects) {
+		addAbrasCaught();
+		viewObjects.add(abraNumber);
 		String[] names = {"Potion", "Finer Potion", "Excellent Potion", "Superior Lure", "Legendary Candy"};
 		int[] costs = {3,8,15,16,25};
 		String[] potionDescription = {"Restores 1 HP","Recovers 1 Life","Recovers 2 Life",
@@ -92,7 +94,7 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 //			final TobyButton b = buttons[i];
 			buttons[i].setAction(new Action() {
 				public void act() {				
-					for(int i=0; costs.length<0; i++){
+					for(int i=0; i<costs.length; i++){
 						int c = x - costs[i];
 						System.out.println("subtracted: "+c);
 					}

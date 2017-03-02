@@ -1,7 +1,6 @@
 package memory;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -14,14 +13,14 @@ import guiPractice.components.Action;
 import guiPractice.components.AnimatedComponent;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
-import guiPractice.components.TextArea;
+import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
-public class MarketScreen extends ClickableScreen implements Runnable, MouseMotionListener{
+public class TobyMarketScreen extends ClickableScreen implements Runnable, MouseMotionListener{
 	
 	private Button button;
-	private ButtonToby[] buttons;
+	private TobyButton[] buttons;
 	private TextLabel label;
 	private TextLabel description;
 	private TextLabel abraNumber;
@@ -29,8 +28,9 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 	private Graphic textbox;
 	private static String FONT = "Tw Cen MT Condensed";
 	private static int SIZE = 25;
+	private static int x = 50;
 
-	public MarketScreen(int width, int height) {
+	public TobyMarketScreen(int width, int height) {
 		super(width, height);
 		Thread app = new Thread(this);
 		app.start();
@@ -51,6 +51,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 		description.setSize(SIZE);
 		picture = new Graphic(25, 280, .01, "resources/sampleImages/White.png");
 		textbox = new Graphic(123, 285, .54, "resources/sampleImages/PokeBox.png");
+		
 		addAnimation(viewObjects);
 		addButtons(viewObjects);
 		addAbrasCaught(viewObjects);
@@ -78,7 +79,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 				"resources/sampleImages/Potion3.png","resources/sampleImages/Potion4.png",
 				"resources/sampleImages/Potion5.png"};
 		int numberOfButtons = 5;
-		buttons = new ButtonToby[numberOfButtons];
+		buttons = new TobyButton[numberOfButtons];
 		for(int i = 0; i <numberOfButtons; i++){ 
 			buttons[i] = getAButton();
 			buttons[i].setName(names[i]);
@@ -88,13 +89,15 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 			buttons[i].setPicture(address[i]);
 			buttons[i].setLabel(potionDescription[i]);
 			
-			buttons[i].setAction(new Action() {
-				public void act() {
-					MemoryScreen.abrasCaught--;
-					System.out.println("subtracted");
-					System.out.println(MemoryScreen.abrasCaught);
-				}
-			});
+//			final TobyButton b = buttons[i];
+//			buttons[i].setAction(new Action() {
+//				public void act() {				
+//					for(int i=0; costs.length<0; i++){
+//						int c = x - costs[i];
+//						System.out.println("subtracted: "+c);
+//					}
+//				}
+//			});
 			viewObjects.add(buttons[i]);
 		}
 	}
@@ -116,7 +119,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 				int y1 = topMargin+h*(i/numberInRow);
 				Graphics2D g = cropped.createGraphics();
 				g.drawImage(icon.getImage(),0,0,w,h,x1,y1,x1+w,y1+h,null);
-				a.addFrame(cropped,200);
+				a.addFrame(cropped,220);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -127,8 +130,8 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 		a.play();
 	}
 
-	private ButtonToby getAButton() {
-		return new ButtonToby();
+	private TobyButton getAButton() {
+		return new TobyButton();
 	}
 	
 	public void run() {
@@ -137,7 +140,7 @@ public class MarketScreen extends ClickableScreen implements Runnable, MouseMoti
 	}
 	
 	public void mouseMoved(MouseEvent m){
-		for(ButtonToby b:buttons){
+		for(TobyButton b:buttons){
 			if(b.isHovered(m.getX(), m.getY())){
 				picture.loadImages(b.getPictureAddress(), .2);
 				description.setText(b.getDescription());

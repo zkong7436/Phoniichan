@@ -11,7 +11,7 @@ import guiPractice.components.Action;
 import guiPractice.components.Component;
 import guiPractice.components.Graphic;
 
-public class ButtonToby extends Component implements ButtonInterfaceToby{
+public class TobyButton extends Component implements TobyButtonInterface{
 
 	private Action action;
 	private Color c;
@@ -24,7 +24,7 @@ public class ButtonToby extends Component implements ButtonInterfaceToby{
 	private int size;
 	private String descriptionText;
 	
-	public ButtonToby() {
+	public TobyButton() {
 		super(0, 0, 380, 35); 
 		font = "Tw Cen MT Condensed";
 		size = 18;

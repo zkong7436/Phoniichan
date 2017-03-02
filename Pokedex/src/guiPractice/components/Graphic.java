@@ -37,7 +37,7 @@ public class Graphic implements Visible {
 		loadImages(imageLocation, w, h);
 	}
 	
-	private void loadImages(String imageLocation, int w, int h) {
+	public void loadImages(String imageLocation, int w, int h) {
 		try{
 			ImageIcon icon = new ImageIcon(imageLocation);
 			
@@ -64,7 +64,7 @@ public class Graphic implements Visible {
 		}
 	}
 
-	private void loadImages(String imageLocation, double scale) {
+	public void loadImages(String imageLocation, double scale) {
 		try{
 			//get the image from file(FULL SCALE)
 			ImageIcon icon = new ImageIcon(imageLocation);

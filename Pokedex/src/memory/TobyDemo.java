@@ -5,7 +5,7 @@ import guiPractice.GUIApplication;
 public class TobyDemo extends GUIApplication {
 	
 	public static TobyDemo game;
-	public static MarketScreen market;
+	public static TobyMarketScreen market;
 	public static MemoryScreen memory;
 
 	public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class TobyDemo extends GUIApplication {
 	}
 	
 	protected void initScreen() {
-		market = new MarketScreen(getWidth(), getHeight());
+		market = new TobyMarketScreen(getWidth(), getHeight());
 		memory = new MemoryScreen(getWidth(), getHeight());
 		setScreen(market);
 	}

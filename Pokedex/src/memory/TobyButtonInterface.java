@@ -5,7 +5,7 @@ import java.awt.Color;
 import guiPractice.components.Action;
 import guiPractice.components.Clickable;
 
-public interface ButtonInterfaceToby extends Clickable {
+public interface TobyButtonInterface extends Clickable {
 	void setX(int i);
 
 	void setY(int i);

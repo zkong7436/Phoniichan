@@ -3,13 +3,8 @@
  */
 package TwentyFortyEight;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
-import guiPractice.GuiApplication;
-import guiPractice.components.Action;
-import guiPractice.components.Button;
-import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
@@ -17,7 +12,8 @@ import guiPractice.components.Visible;
  * @author Student 8
  *
  */
-public class Demo extends GuiApplication {
+@SuppressWarnings("serial")
+public class Demo extends main.Pokedex {
 //	public static Reward reward;
 	/**
 	 * 
@@ -31,7 +27,7 @@ public class Demo extends GuiApplication {
 	 */
 	@Override
 	protected void initScreen() {
-		DemoScreen demo = new DemoScreen(getWidth(),getHeight());
+		DemoScreen demo = new DemoScreen(944,526);
 		setScreen(demo);
 
 	}
@@ -46,9 +42,7 @@ public class Demo extends GuiApplication {
 
 	}
 	// nested inner class
-	private class DemoScreen extends ClickableScreen{
-		private int score = 1;
-
+	private class DemoScreen extends main.PokedexScreen{
 		//private TextLabel rewardDisplay;
 		//private Button beatAMonster;
 		//private MyDemo demo;
@@ -58,22 +52,6 @@ public class Demo extends GuiApplication {
 			// TODO Auto-generated constructor stub
 		}
 
-		@Override
-		public void initAllObjects(ArrayList<Visible> view) {
-
-			MyDemo d = new MyDemo(50,50,380,345);
-			TextLabel text = new TextLabel(300, 50, 300, 30, "This is the High Score Board");
-			int[] scores = new int[3];
-	//		if(TwentyFortyEightGame.gameOver){
-	//			highScore(score, scores);
-	//		}
-			for(int i = 0; i < 3; i++){
-				
-				scores[0] = 1;
-				scores[1] = 2;
-				scores[2] = 3;
-				view.add(new TextLabel((450) , (150 + (i*50)), 30, 40, scores[i]+""));
-			}
 		
 		
 		
@@ -92,10 +70,10 @@ public class Demo extends GuiApplication {
 //					});
 		//	view.add(rewardDisplay);
 		//	view.add(beatAMonster);
-			view.add(d);
-			view.add(text);
-		}
+			
+	
 
+		@SuppressWarnings("unused")
 		public void highScore(int userScore, int[] scores){
 			for(int i = 0; i < scores.length; i++){
 				if( scores[i] < userScore){
@@ -108,11 +86,25 @@ public class Demo extends GuiApplication {
 				}
 			}
 	}
-		private Action Action() {
-			// TODO Auto-generated method stub
-			return null;
+		@Override
+		public void initRemainingItems(ArrayList<Visible> view) {
+			MyDemo d = new MyDemo(50,50,380,345);
+			TextLabel text = new TextLabel(300, 50, 300, 30, "This is the High Score Board");
+			int[] scores = new int[3];
+	//		if(TwentyFortyEightGame.gameOver){
+	//			highScore(score, scores);
+	//		}
+			for(int i = 0; i < 3; i++){
+				
+				scores[0] = 1;
+				scores[1] = 2;
+				scores[2] = 3;
+				view.add(new TextLabel((450) , (150 + (i*50)), 30, 40, scores[i]+""));			
 		}
+			view.add(d);
+			view.add(text);
 		
+	}
 	}
 
 }

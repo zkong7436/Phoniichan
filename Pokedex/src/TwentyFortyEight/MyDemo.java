@@ -33,7 +33,7 @@ public class MyDemo extends Component {
 		String pics[] = { "resources/images2048/grass.jpg" , "resources/images2048/bulbasaur.png",
 		"resources/images2048/ivysaur.jpg" }; // this is filler.. we don't have ivysaur sprite in images2048 yet
 		//changeImages();
-		int height = 80,width = 80;
+		int height = 95,width = 95;
 //		Graphic picture1 = new Graphic(0,0,80,80,"resources/images2048/grass.jpg");
 
 		for (int row = 0; row < a.length; row++) {
@@ -46,7 +46,7 @@ public class MyDemo extends Component {
 						z = 0;
 					}
 				 
-					Graphic picture2 = new Graphic(col*width,row*height,80,80,pics[z]);
+					Graphic picture2 = new Graphic(col*width,row*height,width,height,pics[z]);
 					g.drawImage(picture2.getImage(), picture2.getX(), picture2.getY(), null);
 					g.drawRect(col*width,row*height, width, height);
 		

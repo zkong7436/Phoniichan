@@ -35,13 +35,10 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 	}
 	
 	public void flip(){
-		System.out.println("flip");
 		if(!checked){
-			System.out.println("flip not checked");
 			if(isThere){
-				System.out.println("is there");
-				 reveal = true;
-				 update();
+				reveal = true;
+				update();
 			}else{
 				
 			}
@@ -54,6 +51,7 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 		if(reveal){
 			g.setColor(Color.white);
 			g.fillRoundRect(0, 0, 50, 100, 5, 10);
+			
 //		if(pictureAddress != null){
 //			Graphic pic = new Graphic(x, y, w, h, imageLocation);
 //			container.getNumberOfButtons();
@@ -109,4 +107,8 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 		this.isThere = isThere;
 	}
 
+	public void setReveal(boolean b) {
+		this.reveal = b;
+		update();
+	}
 }

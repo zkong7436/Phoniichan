@@ -7,6 +7,7 @@ import guiPractice.components.Clickable;
 import guiPractice.components.Graphic;
 
 public interface ButtonInterfaceFulton extends Clickable{
+
 	void setX(int i);
 
 	void setY(int i);
@@ -28,5 +29,6 @@ public interface ButtonInterfaceFulton extends Clickable{
 	void setChecked(boolean b);
 
 	void setThere(boolean b);
+
+	void setReveal(boolean b);
 }
- 

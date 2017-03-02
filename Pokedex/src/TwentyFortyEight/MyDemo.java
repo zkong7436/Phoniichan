@@ -1,6 +1,3 @@
-/**
- * 
- */
 package TwentyFortyEight;
 
 import java.awt.Color;
@@ -116,4 +113,3 @@ public class MyDemo extends Component {
 //	}
 	
 
-}

@@ -15,13 +15,14 @@ import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
 /**
- * @author Student 8
+ * @author Jimmy Wu
  *
  */
 public class JimmyDemo extends GuiApplication  {
 
 	static int[][] game;
-	static int temp;
+	static int[][] gameTemp;
+ 	static int temp;
 	
 	
 	
@@ -63,8 +64,10 @@ public class JimmyDemo extends GuiApplication  {
 			}
 		}
 		SpawnDemo.start(game);
+		createTemp();
 		printGame(game);
-		System.out.println("-------------------------------");
+		System.out.println("+++++++++++++++++++++++++++++++");
+		
 	
 	}
 
@@ -91,11 +94,20 @@ public class JimmyDemo extends GuiApplication  {
 					rotate(game, 1);
 					moveTilesMinus(game);
 					rotate(game, 3);
-					printGame(game);
-					SpawnDemo.cont(game);
-					System.out.println("-------------------------------");
+					int counter = counter(16);
 					
-					movementDisplay.setText("You swiped up!");
+					if (counter!=0) {
+						SpawnDemo.cont(game);
+						printGame(game);
+						
+						
+						System.out.println("-------------------------------");
+						
+						movementDisplay.setText("You swiped up!");
+					}else{
+						movementDisplay.setText("You cannot swipe up anymore.");
+					}
+					
 
 				}
 			});
@@ -103,13 +115,23 @@ public class JimmyDemo extends GuiApplication  {
 
 				@Override
 				public void act() {
+					createTemp();
 					rotate(game, 1);
 					moveTilesPlus(game);
 					rotate(game, 3);
-					printGame(game);
-					SpawnDemo.cont(game);
-					System.out.println("-------------------------------");
-					movementDisplay.setText("You swiped down!");
+					int counter = counter(16);
+					
+					if (counter!=0) {
+						SpawnDemo.cont(game);
+						printGame(game);
+						
+						System.out.println("-------------------------------");
+						movementDisplay.setText("You swiped down!");
+					}else{
+						movementDisplay.setText("You cannot swipe down anymore.");
+					}
+					
+					
 
 				}
 			});
@@ -117,11 +139,19 @@ public class JimmyDemo extends GuiApplication  {
 
 				@Override
 				public void act() {
-					moveTilesMinus(game);
-					printGame(game);
-					SpawnDemo.cont(game);
-					System.out.println("-------------------------------");
-					movementDisplay.setText("You swiped right!");
+					createTemp();
+					moveTilesMinus(game);		
+					int counter = counter(16);
+					
+					if (counter != 0) {
+						SpawnDemo.cont(game);
+						printGame(game);
+						System.out.println("-------------------------------");
+						movementDisplay.setText("You swiped right!");
+					}else {
+						movementDisplay.setText("You cannot swipe right anymore. ");
+					}
+					
 
 				}
 			});
@@ -129,12 +159,25 @@ public class JimmyDemo extends GuiApplication  {
 
 				@Override
 				public void act() {
+					createTemp();
 					moveTilesPlus(game);
-					printGame(game);
-					SpawnDemo.cont(game);
-					System.out.println("-------------------------------");
-					movementDisplay.setText("You swiped left!");
-
+					int counter = counter(16);
+					
+					if (counter != 0) {
+						SpawnDemo.cont(game);
+						printGame(game);
+						System.out.println("+++++++++++++++++++++++++++");
+						
+						movementDisplay.setText("You swiped left!");
+					}else {
+						movementDisplay.setText("You cannot swipe left anymore. ");
+					}
+					
+					
+					
+					
+					
+					
 				}
 			});
 			view.add(movementDisplay);
@@ -145,8 +188,28 @@ public class JimmyDemo extends GuiApplication  {
 		}
 
 	}
-
 	
+	private static int counter(int counter) {
+		for (int i = 0; i < game.length; i++) {
+			for (int j = 0; j < game[i].length; j++) {
+				if (gameTemp[i][j] == game[i][j]) {
+					counter--;
+				}
+			}
+		}
+		return counter;
+	
+	}
+	private static void createTemp() {
+		gameTemp = new int[4][4];
+		for (int i = 0; i < game.length; i++) {
+			for (int j = 0; j < game[i].length; j++) {
+				gameTemp[i][j] = game[i][j];
+			}
+		}
+	
+	}
+
 
 	public static void rotate(int[][] game, int numberOfRotations) {
 		// rotates clockwise
@@ -239,7 +302,9 @@ public class JimmyDemo extends GuiApplication  {
 		}
 
 	}
-
+		
+	
+	
 	public static void printGame(int[][] game) {
 		for (int[] row : game) {
 			for (int i : row) {

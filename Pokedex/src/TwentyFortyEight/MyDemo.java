@@ -3,21 +3,14 @@ package TwentyFortyEight;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.util.ArrayList;
-
 import guiPractice.components.Component;
 import guiPractice.components.Graphic;
-import guiPractice.components.TextLabel;
 
 /**
  * @author Student 8
  *
  */
 public class MyDemo extends Component {
-	private int[][]board = new int[4][4];
-	private int [][]changeBoard = new int[4][4];
-	//private int[] scores = new int[3];
-	private int score = 1;
 	public MyDemo(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -33,7 +26,6 @@ public class MyDemo extends Component {
 //		a[0][0] = 2;
 //		a[0][3] = 2;
 		SpawnDemo.start(a);
-		int x = 1;
 		int y = 1;
 		int z = 1;
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -46,10 +38,7 @@ public class MyDemo extends Component {
 
 		for (int row = 0; row < a.length; row++) {
 			for (int col = 0; col < a[row].length; col++) {
-				x = a[row][col];			
-			
-				
-					y = a[row][col];
+				y = a[row][col];
 					if( y> 0){
 						 z= (int) (Math.log(y)/Math.log(2));
 					}
@@ -61,11 +50,10 @@ public class MyDemo extends Component {
 					g.drawImage(picture2.getImage(), picture2.getX(), picture2.getY(), null);
 					g.drawRect(col*width,row*height, width, height);
 		
-		}		
-			board = a;	
+		}	
 		}
 	}
-		
+}	
 
 
 	

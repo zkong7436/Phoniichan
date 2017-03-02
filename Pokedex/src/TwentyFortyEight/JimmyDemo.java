@@ -5,6 +5,7 @@ package TwentyFortyEight;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import guiPractice.GuiApplication;
@@ -13,6 +14,7 @@ import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
+// adding ponts into a arraylist
 
 /**
  * @author Jimmy Wu
@@ -23,7 +25,7 @@ public class JimmyDemo extends GuiApplication  {
 	static int[][] game;
 	static int[][] gameTemp;
  	static int temp;
-	
+	static ArrayList<Integer> points = new ArrayList();
 	
 	
 	public static Reward reward;
@@ -67,7 +69,6 @@ public class JimmyDemo extends GuiApplication  {
 		createTemp();
 		printGame(game);
 		System.out.println("+++++++++++++++++++++++++++++++");
-		
 	
 	}
 
@@ -102,7 +103,7 @@ public class JimmyDemo extends GuiApplication  {
 						
 						
 						System.out.println("-------------------------------");
-						
+						System.out.println(Arrays.toString(points.toArray()));
 						movementDisplay.setText("You swiped up!");
 					}else{
 						movementDisplay.setText("You cannot swipe up anymore.");
@@ -126,6 +127,7 @@ public class JimmyDemo extends GuiApplication  {
 						printGame(game);
 						
 						System.out.println("-------------------------------");
+						System.out.println(Arrays.toString(points.toArray()));
 						movementDisplay.setText("You swiped down!");
 					}else{
 						movementDisplay.setText("You cannot swipe down anymore.");
@@ -147,6 +149,7 @@ public class JimmyDemo extends GuiApplication  {
 						SpawnDemo.cont(game);
 						printGame(game);
 						System.out.println("-------------------------------");
+						System.out.println(Arrays.toString(points.toArray()));
 						movementDisplay.setText("You swiped right!");
 					}else {
 						movementDisplay.setText("You cannot swipe right anymore. ");
@@ -166,8 +169,9 @@ public class JimmyDemo extends GuiApplication  {
 					if (counter != 0) {
 						SpawnDemo.cont(game);
 						printGame(game);
-						System.out.println("+++++++++++++++++++++++++++");
-						
+						System.out.println("-----------------------------"
+								+ "");
+						System.out.println(Arrays.toString(points.toArray()));
 						movementDisplay.setText("You swiped left!");
 					}else {
 						movementDisplay.setText("You cannot swipe left anymore. ");
@@ -234,9 +238,13 @@ public class JimmyDemo extends GuiApplication  {
 		for (int k = 0; k < row.length - 1; k++) {
 			if (row[k] == row[k + 1]) {
 				row[k] = row[k] + row[k + 1];
+				points.add(row[k]);
 				row[k + 1] = 0;
+				
 			}
+			
 		}
+		
 	}
 
 	public static void moveTilesPlus(int[][] game) {

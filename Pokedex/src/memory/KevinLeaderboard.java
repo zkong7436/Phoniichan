@@ -15,6 +15,7 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	public int combo;
 	public int score;
 	public static Scanner in;
+	public static Scanner in2;
 	public static ArrayList<Integer> scores;
 	public static ArrayList<String> names;
 	
@@ -24,19 +25,52 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 		super(width,height);
 		Thread app = new Thread(this);
 		app.start();
+		
 	}
 	
 	public static void main(String[] args)
 	{
-		in = new Scanner(System.in);
+		scores = new ArrayList<Integer>();
+		scores.add(90000);
+		scores.add(60000);
+		scores.add(30000);
+		scores.add(70000);
+		scores.add(100000);
+		scores.add(50000);
+		scores.add(40000);
+		scores.add(20000);
+		scores.add(80000);
+		scores.add(10000);
 		
-		int[] scores = {100000,90000,80000,70000,60000,50000,40000,30000,20000,10000};
-		String[] names = {"Alpha","Beta","Gamma","Delta","Epsilon", "Zeta","Eta","Theta","Iota","Kappa"};
+		names = new ArrayList<String>();
+		names.add("Alpha");
+		names.add("Beta");
+		names.add("Gamma");
+		names.add("Delta");
+		names.add("Epsilon");
+		names.add("Zeta");
+		names.add("Eta");
+		names.add("Theta");
+		names.add("Iota");
+		names.add("Kappa");
+		
+		in = new Scanner(System.in);
+	
+		insertionSort(scores,names);
 		for (int i = 0; i < 10;i++)
 		{
-			System.out.println(scores[i] + "," + names[i]);
+			System.out.println(scores.get(i) + "," + names.get(i));
 		}
-		System.out.print(scores.length + "," + names.length);
+		System.out.print(scores.size() + "," + names.size());
+		
+		addName();
+		
+		System.out.println("Leaderboard Updating....");
+		for (int i = 0; i < 10;i++)
+		{
+			System.out.println(scores.get(i) + "," + names.get(i));
+		}
+		System.out.print(scores.size() + "," + names.size());
 	}
 	
 	public static void insertionSort(ArrayList<Integer> scores, ArrayList<String> names)
@@ -48,8 +82,8 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	      int j = i;
 	      while (j > 0 && scores.get(j-1) > sIndex)
 	      {
-	           scores.set(j, j-1);
-	           names.set(j, j-1);
+	           scores.set(j, scores.get(j-1));
+	           names.set(j, names.get(j-1));
 	           j--;
 	      }
 	      scores.set(j, sIndex);
@@ -60,14 +94,16 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	{
 		System.out.println("Please enter your name");
 		String input = in.nextLine();
-		
-		scores.add(MemoryScreen.currentScore);
 		names.add(input);
+		
+		System.out.println("What was your score just now?");
+		Integer input2 = Integer.parseInt(in.nextLine());
+		scores.add(input2);
 		
 		insertionSort(scores,names);
 
-		scores.remove(scores.size()-1);
-		names.remove(names.size()-1);
+		scores.remove(0);
+		names.remove(0);
 	}
 	
 	@Override

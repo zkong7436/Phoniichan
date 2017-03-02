@@ -3,9 +3,10 @@ package main;
 import java.awt.Graphics2D;
 
 import guiPractice.components.Clickable;
+import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Graphic;
 
-public class AppsLink extends Graphic implements Clickable{
+public class AppsLink extends ClickableGraphic{
 
 	private static int HEIGHT = 60;
 	private static int WIDTH = 60;

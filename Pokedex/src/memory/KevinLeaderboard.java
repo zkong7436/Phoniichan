@@ -96,9 +96,11 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 		String input = in.nextLine();
 		names.add(input);
 		
-		System.out.println("What was your score just now?");
-		Integer input2 = Integer.parseInt(in.nextLine());
-		scores.add(input2);
+		//testing purposes
+//		System.out.println("What was your score just now?");
+//		Integer input2 = Integer.parseInt(in.nextLine());
+//		scores.add(input2);
+		scores.add(MemoryScreen.currentScore);
 		
 		insertionSort(scores,names);
 

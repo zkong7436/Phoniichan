@@ -3,8 +3,12 @@
  */
 package TwentyFortyEight;
 
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 
+import guiPractice.components.Action;
+import guiPractice.components.Button;
 import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
@@ -15,7 +19,13 @@ import guiPractice.components.Visible;
  */
 @SuppressWarnings("serial")
 public class Demo extends main.Pokedex {
-//	public static Reward reward;
+	static int[][]game;
+	private Button slideUp;
+	private Button slideDown;
+	private Button slideLeft;
+	private Button slideRight;
+	static ArrayList<Integer> points = new ArrayList();
+
 	/**
 	 * 
 	 */
@@ -104,9 +114,111 @@ public class Demo extends main.Pokedex {
 		}
 			view.add(d);
 			view.add(text);
+			TextLabel movementDisplay = new TextLabel(20, 40, 1000, 25, "");
+			slideUp = new Button(100, 75, 90, 40, "Up", Color.blue, new Action() {
+
+				@Override
+				public void act() {
+					JimmyDemo.rotate(game, 1);
+					JimmyDemo.moveTilesMinus(game);
+					JimmyDemo.rotate(game, 3);
+					int counter = JimmyDemo.counter(16);
+					
+					if (counter!=0) {
+						SpawnDemo.cont(game);
+						JimmyDemo.printGame(game);
+						
+						
+						System.out.println("-------------------------------");
+						System.out.println(Arrays.toString(points.toArray()));
+						movementDisplay.setText("You swiped up!");
+					}else{
+						movementDisplay.setText("You cannot swipe up anymore.");
+					}
+					
+
+				}
+			});
+			slideDown = new Button(100, 225, 90, 40, "Down", Color.blue, new Action() {
+
+				@Override
+				public void act() {
+					JimmyDemo.createTemp();
+					JimmyDemo.rotate(game, 1);
+					JimmyDemo.moveTilesPlus(game);
+					JimmyDemo.rotate(game, 3);
+					int counter = JimmyDemo.counter(16);
+					
+					if (counter!=0) {
+						SpawnDemo.cont(game);
+						JimmyDemo.printGame(game);
+						
+						System.out.println("-------------------------------");
+						System.out.println(Arrays.toString(points.toArray()));
+						movementDisplay.setText("You swiped down!");
+					}else{
+						movementDisplay.setText("You cannot swipe down anymore.");
+					}
+					
+					
+
+				}
+			});
+			slideRight = new Button(160, 150, 90, 40, "Right", Color.blue, new Action() {
+
+				@Override
+				public void act() {
+					JimmyDemo.createTemp();
+					JimmyDemo.moveTilesMinus(game);		
+					int counter = JimmyDemo.counter(16);
+					
+					if (counter != 0) {
+						SpawnDemo.cont(game);
+						JimmyDemo.printGame(game);
+						System.out.println("-------------------------------");
+						System.out.println(Arrays.toString(points.toArray()));
+						movementDisplay.setText("You swiped right!");
+					}else {
+						movementDisplay.setText("You cannot swipe right anymore. ");
+					}
+					
+
+				}
+			});
+			slideLeft = new Button(40, 150, 90, 40, "Left", Color.blue, new Action() {
+
+				@Override
+				public void act() {
+					JimmyDemo.createTemp();
+					JimmyDemo.moveTilesPlus(game);
+					int counter = JimmyDemo.counter(16);
+					
+					if (counter != 0) {
+						SpawnDemo.cont(game);
+						JimmyDemo.printGame(game);
+						System.out.println("-----------------------------"
+								+ "");
+						System.out.println(Arrays.toString(points.toArray()));
+						movementDisplay.setText("You swiped left!");
+					}else {
+						movementDisplay.setText("You cannot swipe left anymore. ");
+					}
+					
+					
+					
+					
+					
+					
+				}
+			});
+			view.add(movementDisplay);
+			view.add(slideUp);
+			view.add(slideDown);
+			view.add(slideRight);
+			view.add(slideLeft);
+		}
 		
 	}
 	}
 
-}
 

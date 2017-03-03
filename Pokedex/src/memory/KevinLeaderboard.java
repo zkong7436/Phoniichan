@@ -5,12 +5,14 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Scanner;
 
 import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
+import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
 public class KevinLeaderboard extends ClickableScreen implements Runnable, MouseMotionListener
@@ -23,7 +25,8 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	public static Scanner in2;
 	public static ArrayList<Integer> scores;
 	public static ArrayList<String> names;
-	
+	public static ArrayList<TextLabel> vName;
+	public static ArrayList<TextLabel> vScore;
 	
 	public KevinLeaderboard(int width, int height) 
 	{
@@ -134,8 +137,23 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) 
 	{
-		button = new Button(35,230,100,45,"Return",Color.orange,
-				new Action() 
+		vName = new ArrayList<TextLabel>();
+		vScore = new ArrayList<TextLabel>();
+		
+		for(int i = 0; i < vName.size();i++)
+		{
+			TextLabel convert = new TextLabel(35,230,100,45, names.get(i));
+			vName.add(convert);
+			System.out.println("added something to name");
+		}
+		
+		for(int i = 0; i < vScore.size();i++)
+		{
+			TextLabel convert2 = new TextLabel(35,230,100,45, Integer.toString(scores.get(i)));
+			vScore.add(convert2);
+			System.out.println("added something to score");
+		}
+		button = new Button(35,230,100,45,"Return",Color.orange,new Action() 
 		{
 			public void act() 
 			{
@@ -143,5 +161,14 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 			}
 		}); 
 		viewObjects.add(button);
-	}
+		for (int i = 0; i < vScore.size();i++)
+		{
+			viewObjects.add(vScore.get(i));
+			System.out.println("displayed");
+			viewObjects.add(vName.get(i));
+			System.out.println("displayed");
+		}
+		System.out.println("displayed");
+		
+	}	
 }

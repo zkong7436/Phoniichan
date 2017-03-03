@@ -228,7 +228,7 @@ public class JimmyDemo implements JimmyInterface  {
 
 	}
 
-	private static void combineTiles(int[] row) {
+	private static void combineTiles(int[] row, ArrayList<Integer> points) {
 		for (int k = 0; k < row.length - 1; k++) {
 			if (row[k] == row[k + 1]) {
 				row[k] = row[k] + row[k + 1];
@@ -244,7 +244,7 @@ public class JimmyDemo implements JimmyInterface  {
 		
 	}
 
-	public void moveTilesPlus(int[][] game) {
+	public void moveTilesPlus(int[][] game, ArrayList<Integer> points) {
 		for (int i = 0; i < game.length; i++) {
 			int[] row = new int[4];
 			for (int j = 0; j < game[i].length; j++) {
@@ -256,7 +256,7 @@ public class JimmyDemo implements JimmyInterface  {
 					row[temp] = game[i][j];
 				}
 			}
-			combineTiles(row);
+			combineTiles(row, points);
 
 			game[i] = row;
 		}
@@ -276,7 +276,7 @@ public class JimmyDemo implements JimmyInterface  {
 
 	}
 
-	public void moveTilesMinus(int[][] game) {
+	public void moveTilesMinus(int[][] game, ArrayList<Integer> points) {
 		for (int i = 0; i < game.length; i++) {
 			int[] row = new int[4];
 			for (int j = 0; j < game[i].length; j++) {
@@ -288,7 +288,7 @@ public class JimmyDemo implements JimmyInterface  {
 					row[temp] = game[i][j];
 				}
 			}
-			combineTiles(row);
+			combineTiles(row, points);
 
 			game[i] = row;
 		}

@@ -1,4 +1,4 @@
-package main;
+package memory;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -16,6 +16,9 @@ import guiPractice.components.ClickableScreen;
 import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
+import main.MemoryScreen;
+import main.TobyButton;
+import main.TobyDemo;
 
 public class TobyMarketScreen extends ClickableScreen implements Runnable, MouseMotionListener{
 	
@@ -190,7 +193,7 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 	public void mouseMoved(MouseEvent m){
 		for(TobyButton b:buttons){
 			if(b.isHovered(m.getX(), m.getY())){
-				picture.loadImages(b.getPictureAddress(), .2);
+				picture = new Graphic(0,0, .2,b.getPictureAddress());
 				description.setText(b.getDescription());
 			}
 		}

@@ -1,6 +1,7 @@
 package memory;
 
 import guiPractice.GuiApplication;
+import main.KevinLeaderboard;
 
 public class KevinDemo extends GuiApplication
 {

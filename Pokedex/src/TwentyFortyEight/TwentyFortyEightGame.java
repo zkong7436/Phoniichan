@@ -1,17 +1,16 @@
-package main;
-import TwentyFortyEight.BoardInterface;
+package TwentyFortyEight;
 public class TwentyFortyEightGame  {
 	public static boolean gameOver;
 	private int[][] board = new int [4][4];
 	public TwentyFortyEightGame() {
-		if(gameOver == 0){
+		if(gameOver){
 			//setBoard(board);
 		//	NewSquare();
 		}
 		reset();		
 	}
 	public void reset(){
-		if(gameOver == 1){
+		if(gameOver){
 			System.out.println("You've Lost !! :(" + " Click on restart button to play again.");
 			//make a restart button somewhere
 			

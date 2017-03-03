@@ -29,6 +29,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private int startingSize;
 	private int totalTiles;
 	private Button button;
+	private Button enter;
 	
 	
 	public MemoryScreen(int height, int width) {
@@ -48,9 +49,16 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		button = new Button(575,275,100,45,"Store",Color.green,
 				new Action() {
 			public void act() {
-			//	Pokedex.game.setScreen(FultonDemo.market);
+				Pokedex.game.setScreen(new MarketScreen(getWidth(),getHeight());
 			}
 		});
+		enter = new Button(55,230,70,70,"Home",new Color(0,0,0,0),new Action(){
+			public void act() {
+				Pokedex.game.setScreen(new HomeScreen(getWidth(),getHeight()));
+			}
+			
+		});
+		viewObjects.add(enter);
 		increaseSize=5;
 		startingSize=4;
 		abraCount = 3;

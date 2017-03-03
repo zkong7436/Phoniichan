@@ -2,10 +2,8 @@ package main;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
-
 import guiPractice.components.Action;
 import guiPractice.components.Component;
 import guiPractice.components.Graphic;
@@ -55,10 +53,13 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 //				image = new BufferedImage(50, 50, BufferedImage.TYPE_INT_ARGB);
 //				g = image.createGraphics();
 //				g.drawImage(icon.getImage(), 0, 0, 0, 0, 0, 0, 50, 50, null);
-				g.setColor(Color.white);
+//				g.drawImage(icon.getImage(),getX(), getY(), null);
+				System.out.println("asd");
+//				Graphic pic = new Graphic(0, 0, 55, 55, "resources/Abra.png");
+				g.setColor(new Color(0,255,0));
 				g.fillRoundRect(0, 0, 50, 100, 5, 10);
 			}else{
-				g.setColor(Color.blue);
+				g.setColor(Color.red);
 				g.fillRoundRect(0, 0, 50, 100, 5, 10);
 			}
 //		if(pictureAddress != null){
@@ -66,7 +67,7 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 //			container.getNumberOfButtons();
 //		}
 		}else{
-			g.setColor(Color.green);
+			g.setColor(Color.GRAY);
 			g.fillRoundRect(0, 0, 50, 100, 5, 10);
 			g.setColor(Color.black);
 			g.drawRoundRect(0, 0, 50-1, 50-1, 5, 10);
@@ -125,3 +126,4 @@ public class ButtonFulton extends Component implements ButtonInterfaceFulton {
 		this.numButtons = numButtons;
 	}
 }
+

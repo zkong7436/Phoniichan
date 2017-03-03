@@ -11,6 +11,7 @@ import guiPractice.components.Graphic;
  *
  */
 public class MyDemo extends Component {
+	static int[][]game = new int[4][4];
 	public MyDemo(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -22,10 +23,9 @@ public class MyDemo extends Component {
 
 	@Override
 	public void update(Graphics2D g) {
-		int[][]a = new int[4][4];
 //		a[0][0] = 2;
 //		a[0][3] = 2;
-		SpawnDemo.start(a);
+		SpawnDemo.start(game);
 		int y = 1;
 		int z = 1;
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -40,9 +40,9 @@ public class MyDemo extends Component {
 		int height = 55,width = 55;
 //		Graphic picture1 = new Graphic(0,0,80,80,"resources/images2048/grass.jpg");
 
-		for (int row = 0; row < a.length; row++) {
-			for (int col = 0; col < a[row].length; col++) {
-				y = a[row][col];
+		for (int row = 0; row < game.length; row++) {
+			for (int col = 0; col < game[row].length; col++) {
+				y = game[row][col];
 					if( y> 0){
 						 z= (int) (Math.log(y)/Math.log(2));
 					}

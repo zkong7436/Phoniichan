@@ -90,7 +90,7 @@ public class Demo extends main.Pokedex {
 		@Override
 		public void initRemainingItems(ArrayList<Visible> view) {
 			MyDemo d = new MyDemo(330,250,380,345);
-			TextLabel text = new TextLabel(600, 150, 300, 30, "This is the High Score Board");
+			TextLabel text = new TextLabel(560, 220, 100, 30, "High Score");
 			int[] scores = new int[3];
 	//		if(TwentyFortyEightGame.gameOver){
 	//			highScore(score, scores);
@@ -100,7 +100,7 @@ public class Demo extends main.Pokedex {
 				scores[0] = 1;
 				scores[1] = 2;
 				scores[2] = 3;
-				view.add(new TextLabel((450) , (150 + (i*50)), 30, 40, scores[i]+""));			
+				view.add(new TextLabel((560) , (230 + (i*20)), 30, 40, scores[i]+""));			
 		}
 			view.add(d);
 			view.add(text);

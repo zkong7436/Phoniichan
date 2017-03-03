@@ -5,6 +5,7 @@ package TwentyFortyEight;
 
 import java.util.ArrayList;
 
+import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
@@ -27,7 +28,7 @@ public class Demo extends main.Pokedex {
 	 */
 	@Override
 	protected void initScreen() {
-		DemoScreen demo = new DemoScreen(944,526);
+		DemoScreen demo = new DemoScreen(1000,1000);
 		setScreen(demo);
 
 	}
@@ -88,8 +89,8 @@ public class Demo extends main.Pokedex {
 	}
 		@Override
 		public void initRemainingItems(ArrayList<Visible> view) {
-			MyDemo d = new MyDemo(333,90,380,345);
-			TextLabel text = new TextLabel(300, 50, 300, 30, "This is the High Score Board");
+			MyDemo d = new MyDemo(330,250,380,345);
+			TextLabel text = new TextLabel(600, 150, 300, 30, "This is the High Score Board");
 			int[] scores = new int[3];
 	//		if(TwentyFortyEightGame.gameOver){
 	//			highScore(score, scores);

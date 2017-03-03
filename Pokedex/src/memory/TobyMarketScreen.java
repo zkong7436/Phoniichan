@@ -20,15 +20,16 @@ import guiPractice.components.Visible;
 public class TobyMarketScreen extends ClickableScreen implements Runnable, MouseMotionListener{
 	
 	private Button button;
-	private TobyButton[] buttons;
+	public TobyButton[] buttons;
 	private TextLabel label;
-	private TextLabel description;
+	public TextLabel description;
 	private TextLabel abraNumber;
 	private Graphic picture;
 	private Graphic textbox;
 	private static String FONT = "Tw Cen MT Condensed";
 	private static int SIZE = 25;
-	private static int x = MemoryScreen.abrasCaught;
+	//testing abraCaught
+//	public static int z;
 
 	public TobyMarketScreen(int width, int height) {
 		super(width, height);
@@ -37,10 +38,11 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 	}
 
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
-		button = new Button(35,230,100,45,"Return",Color.green,
+		button = new Button(35,230,100,45,"Return",Color.yellow,
 				new Action() {
 			public void act() {
 				TobyDemo.game.setScreen(TobyDemo.memory);
+				button.setColor(Color.yellow);
 			}
 		});
 		label = new TextLabel(25, 20, 760, 40, "AbraMarket");
@@ -54,7 +56,7 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 		
 		addAnimation(viewObjects);
 		addButtons(viewObjects);
-//		addAbrasCaught(viewObjects);
+		addAbrasCaught(viewObjects);
 		viewObjects.add(label);
 		viewObjects.add(button);
 		viewObjects.add(textbox);
@@ -62,17 +64,16 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 		viewObjects.add(description);
 	}
 
-	public void addAbrasCaught() {
-//		int x = MemoryScreen.abrasCaught;
-        abraNumber = new TextLabel(20, 15, 300, 210, "Abras Caught: "+x);
+	public void addAbrasCaught(ArrayList<Visible> viewObjects) {
+//		Progress caught = new Progress();
+//		int x = caught.getCaught();
+        abraNumber = new TextLabel(20, 15, 300, 210, "Abras Caught: "+MemoryScreen.abrasCaught);
         abraNumber.setFont(FONT);
         abraNumber.setSize(SIZE);
-//        viewObjects.add(abraNumber);	
+        viewObjects.add(abraNumber);	
 	}
 
 	private void addButtons(ArrayList<Visible> viewObjects) {
-		addAbrasCaught();
-		viewObjects.add(abraNumber);
 		String[] names = {"Potion", "Finer Potion", "Excellent Potion", "Superior Lure", "Legendary Candy"};
 		int[] costs = {3,8,15,16,25};
 		String[] potionDescription = {"Restores 1 HP","Recovers 1 Life","Recovers 2 Life",
@@ -91,13 +92,58 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 			buttons[i].setPicture(address[i]);
 			buttons[i].setLabel(potionDescription[i]);
 			
-//			final TobyButton b = buttons[i];
+			final TobyButton b = buttons[i];
 			buttons[i].setAction(new Action() {
-				public void act() {				
-					for(int i=0; i<costs.length; i++){
-						int c = x - costs[i];
-						System.out.println("subtracted: "+c);
-					}
+				public void act() {	
+					if(MemoryScreen.abrasCaught >= b.getCost()){
+//						for(int i=0; i<buttons.length;i++){
+//							if(buttons[i] = buttons[1]){
+//								if(MemoryScreen.hp < 3){
+//									MemoryScreen.hp++;
+//									validCost();
+//								}else{
+//									description.setText("**You already have max HP**");
+//									break;
+//								}							
+//							}
+//							if(buttons[i] = buttons[2]){
+//								if(MemoryScreen.lives < 3){
+//									MemoryScreen.lives++;
+//									validCost();
+//								}else{
+//									description.setText("**You already have max lives**");
+//									break;
+//								}
+//							}
+//							if(buttons[i] = buttons[3]){
+//								if(MemoryScreen.lives <= 1){
+//									MemoryScreen.lives += 2;
+//									validCost();
+//								}else{
+//									description.setText("**You already have max lives**");
+//									break;
+//								}
+//							}
+//							if(buttons[i] = buttons[4]){
+//								MemoryScreen.firstRound();
+//							}
+//							if(buttons[i] = buttons[5]){
+//								MemoryScreen.level++;
+//							}									
+//						}						
+					}else{
+						description.setText("**Return to capture more Abras**");
+						button.setColor(Color.red);
+					}				
+				}
+
+				private void validCost() {
+					int c = (MemoryScreen.abrasCaught) - (b.getCost());
+					System.out.println("subtracted: "+c);
+					abraNumber.setText("Abras Caught: "+c);
+					MemoryScreen.abrasCaught = c;
+					description.setText("**Return to use power up**");
+					button.setColor(Color.green);					
 				}
 			});
 			viewObjects.add(buttons[i]);

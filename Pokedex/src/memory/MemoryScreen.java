@@ -43,17 +43,17 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 	}
 	
 	public void initAllObjects(ArrayList<Visible> viewObjects){
-		button = new Button(35,230,100,45,"Return",Color.green,
+		button = new Button(35,230,100,45,"Market",Color.green,
 				new Action() {
 			public void act() {
-				TobyDemo.game.setScreen(TobyDemo.memory);
+				TobyDemo.game.setScreen(TobyDemo.market);
 			}
 		});
 		increaseSize=5;
 		startingSize=4;
 		abraCount = 3;
 		currentScore = 0;
-		abrasCaught = 0;
+//		abrasCaught = 0;
 		combo = 1;
 		level = 1; 
 		lives = 3;
@@ -132,6 +132,7 @@ public class MemoryScreen extends ClickableScreen implements Runnable {
 		label = new TextLabel(getWidth()/2 - 150, getHeight()/2 -10, 400, 20, "Text");
 		viewObjects.add(progress);
 		viewObjects.add(label);
+		viewObjects.add(button);
 	}
 	
 	

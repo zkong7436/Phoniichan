@@ -14,11 +14,11 @@ import guiPractice.components.Graphic;
 public class TobyButton extends Component implements TobyButtonInterface{
 
 	private Action action;
-	private Color c;
+	private Color color;
 	private String pictureAddress;
 	private String name;
 	private String displayName;
-	private String cost;
+	private int cost;
 	private String displayCost;
 	private String font;
 	private int size;
@@ -43,7 +43,7 @@ public class TobyButton extends Component implements TobyButtonInterface{
 		}
 		if(displayCost != null){
 			g.setFont(new Font(font, Font.BOLD, size));
-			g.drawString("x"+cost+" Abras", 315, 22);
+			g.drawString(displayCost, 315, 22);
 		}
 	}
 	
@@ -61,7 +61,7 @@ public class TobyButton extends Component implements TobyButtonInterface{
 	}
 
 	public void setColor(Color color) {
-		this.c = color;
+		this.color = color;
         update();
 	}
 
@@ -72,8 +72,8 @@ public class TobyButton extends Component implements TobyButtonInterface{
 	}
 
 	public void setCost(int costs) {
-		this.cost = String.valueOf(costs);
-		displayCost = String.valueOf(costs);
+		cost = costs;
+		displayCost = "x"+cost+" Abras";
 		update();
 	}
 
@@ -93,6 +93,10 @@ public class TobyButton extends Component implements TobyButtonInterface{
 	
 	public String getDescription(){
 		return descriptionText;
+	}
+	
+	public int getCost(){
+		return cost;
 	}
  
 }

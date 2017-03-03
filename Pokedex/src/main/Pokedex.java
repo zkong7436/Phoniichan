@@ -1,6 +1,8 @@
 package main;
 
 import guiPractice.GuiApplication;
+import realpokedex.PokedexList;
+import realpokedex.Pokemon;
 
 /**
  * @author Student8
@@ -22,7 +24,7 @@ public class Pokedex extends GuiApplication {
 	}
 	
 	protected void initScreen() {
-		screen = new HomeScreen(944, 526);
+		screen = new LockScreen(944, 526);
 		setScreen(screen);
 	}
 

@@ -9,6 +9,8 @@ import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
+import realpokedex.PokedexList;
+import realpokedex.Pokemon;
 
 public class HomeScreen extends PokedexScreen {
 
@@ -38,15 +40,6 @@ public class HomeScreen extends PokedexScreen {
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){
 				ClickableGraphic newLink = new ClickableGraphic((iconX(numIcons))*120+360,iconY(numIcons)*120+120,90,90,"resources/"+resources[i].getName());
-				newLink.setAction(new Action(){
-
-					@Override
-					public void act() {
-						//goto application
-						
-					}
-					
-				});
 				String name = cutString(resources[i].getName(), "icon.png");
 				TextLabel newLinkLabel = new TextLabel((iconX(numIcons))*120+360,iconY(numIcons)*120+210,90,40,centerString(name, 8));
 				newLinkLabel.setSize(20);
@@ -55,6 +48,12 @@ public class HomeScreen extends PokedexScreen {
 				appLinkLabels.add(newLinkLabel);
 			}
 		}
+		appLinks.get(2).setAction(new Action(){
+			
+			public void act(){
+				Pokedex.game.setScreen(new PokedexList(getWidth(),getHeight()));
+			}
+		});
 	}
 	
 	public int iconX(int numIcons) {

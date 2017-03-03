@@ -61,9 +61,9 @@ public class JosephDemo extends GuiApplication  {
 		
 		
 		gameTemp = new int[4][4];
-		JimmyDemo.createTemp(gameTemp, MyDemo.game);
+		JimmyDemo.jimmy.createTemp(gameTemp, MyDemo.game);
 	
-		JimmyDemo.printGame(MyDemo.game);
+		JimmyDemo.jimmy.printGame(MyDemo.game);
 		System.out.println("+++++++++++++++++++++++++++++++");
 	
 	}
@@ -86,19 +86,19 @@ public class JosephDemo extends GuiApplication  {
 		@Override
 		public void initRemainingItems(ArrayList<Visible> view) {
 				movementDisplay = new TextLabel(20, 40, 1000, 25, "");
-				slideUp = new Button(100, 75, 90, 40, "Up", Color.blue, new Action() {
+				slideUp = new Button(785, 320, 40, 40, "Up", Color.green, new Action() {
 
 					@Override
 					public void act() {
-						JimmyDemo.createTemp(gameTemp, MyDemo.game);
-						JimmyDemo.rotate(MyDemo.game, 1);
-						JimmyDemo.moveTilesMinus(MyDemo.game);
-						JimmyDemo.rotate(MyDemo.game, 3);
-						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
+						JimmyDemo.jimmy.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.jimmy.rotate(MyDemo.game, 1);
+						JimmyDemo.jimmy.moveTilesMinus(MyDemo.game);
+						JimmyDemo.jimmy.rotate(MyDemo.game, 3);
+						int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter!=0) {
 							SpawnDemo.cont(MyDemo.game);
-							JimmyDemo.printGame(MyDemo.game);
+							JimmyDemo.jimmy.printGame(MyDemo.game);
 							
 							
 							System.out.println("-------------------------------");
@@ -111,19 +111,19 @@ public class JosephDemo extends GuiApplication  {
 
 					}
 				});
-				slideDown = new Button(100, 225, 90, 40, "Down", Color.blue, new Action() {
+				slideDown = new Button(785, 390, 40, 40, "Down", Color.green, new Action() {
 
 					@Override
 					public void act() {
-						JimmyDemo.createTemp(gameTemp, MyDemo.game);
-						JimmyDemo.rotate(MyDemo.game, 1);
-						JimmyDemo.moveTilesPlus(MyDemo.game);
-						JimmyDemo.rotate(MyDemo.game, 3);
-						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
+						JimmyDemo.jimmy.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.jimmy.rotate(MyDemo.game, 1);
+						JimmyDemo.jimmy.moveTilesPlus(MyDemo.game);
+						JimmyDemo.jimmy.rotate(MyDemo.game, 3);
+						int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter!=0) {
 							SpawnDemo.cont(MyDemo.game);
-							JimmyDemo.printGame(MyDemo.game);
+							JimmyDemo.jimmy.printGame(MyDemo.game);
 							
 							System.out.println("-------------------------------");
 							System.out.println(Arrays.toString(points.toArray()));
@@ -137,16 +137,16 @@ public class JosephDemo extends GuiApplication  {
 
 					}
 				});
-				slideRight = new Button(160, 150, 90, 40, "Right", Color.blue, new Action() {
+				slideRight = new Button(827, 355, 40, 40, "Right", Color.green, new Action() {
 
 					@Override
 					public void act() {
-						JimmyDemo.createTemp(gameTemp, MyDemo.game);
-						JimmyDemo.moveTilesMinus(MyDemo.game);		
-						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
+						JimmyDemo.jimmy.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.jimmy.moveTilesMinus(MyDemo.game);		
+						int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 						if (counter != 0) {
 							SpawnDemo.cont(MyDemo.game);
-							JimmyDemo.printGame(MyDemo.game);
+							JimmyDemo.jimmy.printGame(MyDemo.game);
 							System.out.println("-------------------------------");
 							System.out.println(Arrays.toString(points.toArray()));
 							movementDisplay.setText("You swiped right!");
@@ -157,17 +157,17 @@ public class JosephDemo extends GuiApplication  {
 
 					}
 				});
-				slideLeft = new Button(40, 150, 90, 40, "Left", Color.blue, new Action() {
+				slideLeft = new Button(740, 355, 40, 40, "Left", Color.green, new Action() {
 
 					@Override
 					public void act() {
-						JimmyDemo.createTemp(gameTemp, MyDemo.game);
-						JimmyDemo.moveTilesPlus(MyDemo.game);
-						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
+						JimmyDemo.jimmy.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.jimmy.moveTilesPlus(MyDemo.game);
+						int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter != 0) {
 							SpawnDemo.cont(MyDemo.game);
-							JimmyDemo.printGame(MyDemo.game);
+							JimmyDemo.jimmy.printGame(MyDemo.game);
 							System.out.println("-----------------------------"
 									+ "");
 							System.out.println(Arrays.toString(points.toArray()));
@@ -204,4 +204,3 @@ public class JosephDemo extends GuiApplication  {
 	}
 	
 	
-

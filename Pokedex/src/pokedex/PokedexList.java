@@ -1,23 +1,27 @@
 /**
  * 
  */
-package main;
+package pokedex;
 
 import java.util.ArrayList;
 
 import guiPractice.components.Visible;
+import main.PokedexScreen;
+import main.Pokemon;
 
 /**
  * @author Wendigo
  *
  */
-public class NewPokemon extends PokedexScreen {
+public class PokedexList extends PokedexScreen {
 
 	/**
 	 * @param width
 	 * @param height
 	 */
-	public NewPokemon(int width, int height) {
+	private ArrayList<Pokemon> pokeList;
+	
+	public PokedexList(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
 	}
@@ -27,8 +31,9 @@ public class NewPokemon extends PokedexScreen {
 	 */
 	@Override
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
-		// TODO Auto-generated method stub
-
+		pokeList = new ArrayList<Pokemon>();
+		viewObjects.addAll(pokeList);
+		update();
 	}
 
 }

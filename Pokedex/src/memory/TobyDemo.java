@@ -15,8 +15,8 @@ public class TobyDemo extends main.Pokedex {
 	}
 	
 	protected void initScreen() {
-		market = new TobyMarketScreen(getWidth(), getHeight());
-		memory = new MemoryScreen(getWidth(), getHeight());
+		memory = new MemoryScreen(944, 526);
+		market = new TobyMarketScreen(944, 526);
 		setScreen(market);
 	}
 

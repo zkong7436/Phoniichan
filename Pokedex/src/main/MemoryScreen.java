@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import guiPractice.components.Action;
 import guiPractice.components.Button;
+import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
@@ -18,6 +19,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	public static int combo;
 	public static int hp;
 	private int abraCount;
+	private Graphic picture;
 	private boolean acceptingInput;
 	private ArrayList<Boolean> abra;
 	private ArrayList<Boolean> checked;
@@ -41,10 +43,12 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 	
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
+		picture = new Graphic(331, 92, 380, 345, "resources/backthingy.png");
+		viewObjects.add(picture);
 		button = new Button(575,275,100,45,"Store",Color.green,
 				new Action() {
 			public void act() {
-			//	FultonDemo.game.setScreen(FultonDemo.market);
+			//	Pokedex.game.setScreen(FultonDemo.market);
 			}
 		});
 		increaseSize=5;
@@ -75,9 +79,9 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			ButtonInterfaceFulton b = new ButtonFulton();
 			tiles.add(b);		
 			tiles.get(i).setNumButtons(tiles.size());
-			tiles.get(i).setX(55*idkName2);
+			tiles.get(i).setX(300+(55*idkName2));
 			idkName2++;
-			tiles.get(i).setY(55*idkName);
+			tiles.get(i).setY(100+(55*idkName));
 			final ButtonInterfaceFulton c = tiles.get(i);
 			tiles.get(i).setAction(new Action(){
 				public void act(){
@@ -143,6 +147,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 	
 	public void update(ArrayList<Visible> viewObjects) {
+		viewObjects.remove(tiles);
 		int idkName = 0;
 		int idkName2 = 1;
 		totalTiles = tiles.size() + increaseSize;
@@ -161,9 +166,9 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			}
 			ButtonInterfaceFulton b = new ButtonFulton();
 			tiles.add(b);		
-			tiles.get(i).setX(55*idkName2);
+			tiles.get(i).setX(300+(55*idkName2));
 			idkName2++;
-			tiles.get(i).setY(55*idkName);
+			tiles.get(i).setY(100+(55*idkName));
 			final ButtonInterfaceFulton c = tiles.get(i);
 			tiles.get(i).setAction(new Action(){
 				public void act(){

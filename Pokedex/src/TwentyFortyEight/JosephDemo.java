@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import guiPractice.GuiApplication;
+import guiPractice.GUIApplication;
 import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
@@ -23,7 +23,7 @@ import guiPractice.components.Visible;
  * @author Jimmy Wu
  *
  */
-public class JosephDemo extends GuiApplication {
+public class JosephDemo extends GUIApplication {
 
 	static int[][] gameTemp;
 	static int temp;

@@ -1,6 +1,6 @@
 package main;
 
-import guiPractice.GuiApplication;
+import guiPractice.GUIApplication;
 import realpokedex.PokedexList;
 import realpokedex.Pokemon;
 
@@ -9,7 +9,7 @@ import realpokedex.Pokemon;
  *
  */
 @SuppressWarnings("serial")
-public class Pokedex extends GuiApplication {
+public class Pokedex extends GUIApplication {
 
 	/**
 	 * static fields

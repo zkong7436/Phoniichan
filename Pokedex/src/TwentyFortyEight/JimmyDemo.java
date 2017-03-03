@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import guiPractice.GuiApplication;
 import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;

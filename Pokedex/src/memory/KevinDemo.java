@@ -1,8 +1,8 @@
 package memory;
 
-import guiPractice.GuiApplication;
+import guiPractice.GUIApplication;
 
-public class KevinDemo extends GuiApplication
+public class KevinDemo extends GUIApplication
 {
 	@Override
 	protected void initScreen() 

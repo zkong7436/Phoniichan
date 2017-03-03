@@ -54,6 +54,7 @@ public class HomeScreen extends PokedexScreen {
 				Pokedex.game.setScreen(new PokedexList(getWidth(),getHeight()));
 			}
 		});
+		//hi
 	}
 	
 	public int iconX(int numIcons) {

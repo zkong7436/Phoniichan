@@ -37,7 +37,7 @@ public class HomeScreen extends PokedexScreen {
 		int numIcons = 0;
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){
-				ClickableGraphic newLink = new ClickableGraphic((iconX(numIcons))*60+330,iconY(numIcons)*60+90,60,60,"resources/"+resources[i].getName());
+				ClickableGraphic newLink = new ClickableGraphic((iconX(numIcons))*120+360,iconY(numIcons)*120+120,90,90,"resources/"+resources[i].getName());
 				newLink.setAction(new Action(){
 
 					@Override
@@ -76,6 +76,7 @@ public class HomeScreen extends PokedexScreen {
 			}
 			if(bIdx == b.length()){
 				doesContain = true;
+				iconIdx = aIdx - b.length();
 				break;
 			}
 		}

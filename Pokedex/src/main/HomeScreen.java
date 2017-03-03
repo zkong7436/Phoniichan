@@ -9,6 +9,7 @@ import guiPractice.components.ClickableGraphic;
 import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
+import memory.MemoryScreen;
 import realpokedex.PokedexList;
 import realpokedex.Pokemon;
 
@@ -48,6 +49,12 @@ public class HomeScreen extends PokedexScreen {
 				appLinkLabels.add(newLinkLabel);
 			}
 		}
+		appLinks.get(1).setAction(new Action(){
+			
+			public void act(){
+				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
+			}
+		});
 		appLinks.get(2).setAction(new Action(){
 			
 			public void act(){

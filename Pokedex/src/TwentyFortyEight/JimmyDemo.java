@@ -1,6 +1,3 @@
-/**
- * 
- */
 package TwentyFortyEight;
 
 import java.awt.Color;
@@ -58,15 +55,9 @@ public class JimmyDemo extends GuiApplication  {
 		app.start();
 		
 		game = new int[4][4];
-		int x = 0;
-		for (int i = 0; i < game.length; i++) {
-			for (int j = 0; j < game[i].length; j++) {
-				game[i][j] = x;
-
-			}
-		}
+		gameTemp = new int[4][4];
 		SpawnDemo.start(game);
-		createTemp();
+		createTemp(gameTemp, game);
 		printGame(game);
 		System.out.println("+++++++++++++++++++++++++++++++");
 	
@@ -95,7 +86,7 @@ public class JimmyDemo extends GuiApplication  {
 					rotate(game, 1);
 					moveTilesMinus(game);
 					rotate(game, 3);
-					int counter = counter(16);
+					int counter = counter(16, gameTemp, game);
 					
 					if (counter!=0) {
 						SpawnDemo.cont(game);
@@ -116,11 +107,11 @@ public class JimmyDemo extends GuiApplication  {
 
 				@Override
 				public void act() {
-					createTemp();
+					createTemp(gameTemp, game);
 					rotate(game, 1);
 					moveTilesPlus(game);
 					rotate(game, 3);
-					int counter = counter(16);
+					int counter = counter(16, gameTemp, game);
 					
 					if (counter!=0) {
 						SpawnDemo.cont(game);
@@ -141,9 +132,9 @@ public class JimmyDemo extends GuiApplication  {
 
 				@Override
 				public void act() {
-					createTemp();
+					createTemp(gameTemp, game);
 					moveTilesMinus(game);		
-					int counter = counter(16);
+					int counter = counter(16, gameTemp, game);
 					
 					if (counter != 0) {
 						SpawnDemo.cont(game);
@@ -162,9 +153,9 @@ public class JimmyDemo extends GuiApplication  {
 
 				@Override
 				public void act() {
-					createTemp();
+					createTemp(gameTemp, game);
 					moveTilesPlus(game);
-					int counter = counter(16);
+					int counter = counter(16, gameTemp, game);
 					
 					if (counter != 0) {
 						SpawnDemo.cont(game);
@@ -193,21 +184,21 @@ public class JimmyDemo extends GuiApplication  {
 
 	}
 	
-	static int counter(int counter) {
+	public static int counter(int number, int[][] gameTemp, int[][] game) {
 		for (int i = 0; i < game.length; i++) {
 			for (int j = 0; j < game[i].length; j++) {
 				if (gameTemp[i][j] == game[i][j]) {
-					counter--;
+					number--;
 				}
 			}
 		}
-		return counter;
+		return number;
 	
 	}
-	static void createTemp() {
-		gameTemp = new int[4][4];
-		for (int i = 0; i < game.length; i++) {
-			for (int j = 0; j < game[i].length; j++) {
+	public static void createTemp(int[][] gameTemp, int[][]game) {
+		
+		for (int i = 0; i < gameTemp.length; i++) {
+			for (int j = 0; j < gameTemp[i].length; j++) {
 				gameTemp[i][j] = game[i][j];
 			}
 		}
@@ -238,7 +229,10 @@ public class JimmyDemo extends GuiApplication  {
 		for (int k = 0; k < row.length - 1; k++) {
 			if (row[k] == row[k + 1]) {
 				row[k] = row[k] + row[k + 1];
-				points.add(row[k]);
+				if (row[k]!=0) {
+					points.add(row[k]);
+				}
+				
 				row[k + 1] = 0;
 				
 			}
@@ -325,3 +319,4 @@ public class JimmyDemo extends GuiApplication  {
 	}
 
 }
+

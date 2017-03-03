@@ -1,6 +1,6 @@
-package main;
+package memory;
 
-import memory.TobyMarketScreen;
+import main.Pokedex;
 
 public class TobyDemo extends main.Pokedex {
 	

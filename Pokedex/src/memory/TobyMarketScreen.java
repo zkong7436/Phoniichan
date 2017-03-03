@@ -16,9 +16,6 @@ import guiPractice.components.ClickableScreen;
 import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
-import main.MemoryScreen;
-import main.TobyButton;
-import main.TobyDemo;
 
 public class TobyMarketScreen extends ClickableScreen implements Runnable, MouseMotionListener{
 	

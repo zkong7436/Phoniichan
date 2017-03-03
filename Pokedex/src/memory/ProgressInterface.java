@@ -1,4 +1,4 @@
-package main;
+package memory;
 
 import guiPractice.components.Visible;
 

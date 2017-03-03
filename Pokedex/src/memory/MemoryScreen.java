@@ -1,4 +1,4 @@
-package main;
+package memory;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -8,6 +8,9 @@ import guiPractice.components.Button;
 import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
+import main.HomeScreen;
+import main.Pokedex;
+import main.PokedexScreen;
 
 public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	

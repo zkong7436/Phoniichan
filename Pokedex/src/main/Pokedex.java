@@ -27,5 +27,5 @@ public class Pokedex extends GuiApplication {
 		screen = new LockScreen(944, 526);
 		setScreen(screen);
 	}
-
+ 
 }

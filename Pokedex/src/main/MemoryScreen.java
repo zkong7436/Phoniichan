@@ -44,7 +44,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 	
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
-		picture = new Graphic(320, 92, 380, 345, "resources/backthingy.png");
+		picture = new Graphic(331, 92, 380, 345, "resources/backthingy.png");
 		viewObjects.add(picture);
 		button = new Button(575,275,100,45,"Store",Color.green,
 				new Action() {
@@ -63,7 +63,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		startingSize=4;
 		abraCount = 3;
 		currentScore = 0;
-//		abrasCaught = 0;
+		abrasCaught = 0;
 		combo = 1;
 		level = 1; 
 		lives = 3;
@@ -103,6 +103,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 										currentScore += (combo * level);
 										combo++;
 										abrasCaught++;
+//										TobyMarketScreen.setCaught(abrascaught);
 										progress.setCombo(combo);
 										progress.setCaught(abrasCaught);
 										progress.setPoint(currentScore);

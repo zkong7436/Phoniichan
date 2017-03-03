@@ -190,10 +190,10 @@ public class JosephDemo extends GuiApplication  {
 		//		}
 				for(int i = 0; i < 3; i++){
 					
-					scores[0] = 1;
-					scores[1] = 2;
-					scores[2] = 3;
-					view.add(new TextLabel((560) , (230 + (i*20)), 30, 40, scores[i]+""));			
+					scores[0] = 10000;
+					scores[1] = 2000;
+					scores[2] = 300;
+					view.add(new TextLabel((560) , (230 + (i*20)), 150, 40, (i+1)+scores[i]+""));			
 			}
 				view.add(d);
 				view.add(text);

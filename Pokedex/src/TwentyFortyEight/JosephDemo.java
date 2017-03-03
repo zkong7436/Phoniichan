@@ -4,6 +4,8 @@
 package TwentyFortyEight;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -12,6 +14,7 @@ import guiPractice.GuiApplication;
 import guiPractice.components.Action;
 import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
+import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 // adding ponts into a arraylist
@@ -22,7 +25,6 @@ import guiPractice.components.Visible;
  */
 public class JosephDemo extends GuiApplication  {
 
-	static int[][] game;
 	static int[][] gameTemp;
  	static int temp;
 	static ArrayList<Integer> points = new ArrayList();
@@ -57,12 +59,11 @@ public class JosephDemo extends GuiApplication  {
 		Thread app = new Thread(d);
 		app.start();
 		
-		game = new int[4][4];
+		
 		gameTemp = new int[4][4];
-		SpawnDemo.start(game);
-		JimmyDemo.createTemp(gameTemp, game);
+		JimmyDemo.createTemp(gameTemp, MyDemo.game);
 	
-		JimmyDemo.printGame(game);
+		JimmyDemo.printGame(MyDemo.game);
 		System.out.println("+++++++++++++++++++++++++++++++");
 	
 	}
@@ -81,7 +82,7 @@ public class JosephDemo extends GuiApplication  {
 			// TODO Auto-generated constructor stub
 		}
 
-	
+
 		@Override
 		public void initRemainingItems(ArrayList<Visible> view) {
 				movementDisplay = new TextLabel(20, 40, 1000, 25, "");
@@ -89,15 +90,15 @@ public class JosephDemo extends GuiApplication  {
 
 					@Override
 					public void act() {
-						JimmyDemo.createTemp(gameTemp, game);
-						JimmyDemo.rotate(game, 1);
-						JimmyDemo.moveTilesMinus(game);
-						JimmyDemo.rotate(game, 3);
-						int counter = JimmyDemo.counter(16, gameTemp, game);
+						JimmyDemo.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.rotate(MyDemo.game, 1);
+						JimmyDemo.moveTilesMinus(MyDemo.game);
+						JimmyDemo.rotate(MyDemo.game, 3);
+						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter!=0) {
-							SpawnDemo.cont(game);
-							JimmyDemo.printGame(game);
+							SpawnDemo.cont(MyDemo.game);
+							JimmyDemo.printGame(MyDemo.game);
 							
 							
 							System.out.println("-------------------------------");
@@ -114,19 +115,20 @@ public class JosephDemo extends GuiApplication  {
 
 					@Override
 					public void act() {
-						JimmyDemo.createTemp(gameTemp, game);
-						JimmyDemo.rotate(game, 1);
-						JimmyDemo.moveTilesPlus(game);
-						JimmyDemo.rotate(game, 3);
-						int counter = JimmyDemo.counter(16, gameTemp, game);
+						JimmyDemo.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.rotate(MyDemo.game, 1);
+						JimmyDemo.moveTilesPlus(MyDemo.game);
+						JimmyDemo.rotate(MyDemo.game, 3);
+						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter!=0) {
-							SpawnDemo.cont(game);
-							JimmyDemo.printGame(game);
+							SpawnDemo.cont(MyDemo.game);
+							JimmyDemo.printGame(MyDemo.game);
 							
 							System.out.println("-------------------------------");
 							System.out.println(Arrays.toString(points.toArray()));
 							movementDisplay.setText("You swiped down!");
+							update();
 						}else{
 							movementDisplay.setText("You cannot swipe down anymore.");
 						}
@@ -139,17 +141,15 @@ public class JosephDemo extends GuiApplication  {
 
 					@Override
 					public void act() {
-						JimmyDemo.createTemp(gameTemp, game);
-						JimmyDemo.moveTilesMinus(game);		
-						int counter = JimmyDemo.counter(16, gameTemp, game);
-						
+						JimmyDemo.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.moveTilesMinus(MyDemo.game);		
+						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
 						if (counter != 0) {
-							SpawnDemo.cont(game);
-							JimmyDemo.printGame(game);
+							SpawnDemo.cont(MyDemo.game);
+							JimmyDemo.printGame(MyDemo.game);
 							System.out.println("-------------------------------");
 							System.out.println(Arrays.toString(points.toArray()));
 							movementDisplay.setText("You swiped right!");
-							update();
 						}else {
 							movementDisplay.setText("You cannot swipe right anymore. ");
 						}
@@ -161,26 +161,20 @@ public class JosephDemo extends GuiApplication  {
 
 					@Override
 					public void act() {
-						JimmyDemo.createTemp(gameTemp, game);
-						JimmyDemo.moveTilesPlus(game);
-						int counter = JimmyDemo.counter(16, gameTemp, game);
+						JimmyDemo.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.moveTilesPlus(MyDemo.game);
+						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter != 0) {
-							SpawnDemo.cont(game);
-							JimmyDemo.printGame(game);
+							SpawnDemo.cont(MyDemo.game);
+							JimmyDemo.printGame(MyDemo.game);
 							System.out.println("-----------------------------"
 									+ "");
 							System.out.println(Arrays.toString(points.toArray()));
 							movementDisplay.setText("You swiped left!");
 						}else {
 							movementDisplay.setText("You cannot swipe left anymore. ");
-						}
-						
-						
-						
-						
-						
-						
+						}	
 					}
 				});
 				view.add(movementDisplay);
@@ -204,8 +198,7 @@ public class JosephDemo extends GuiApplication  {
 				view.add(d);
 				view.add(text);
 			}
-
-			
+	
 		}
 
 	}

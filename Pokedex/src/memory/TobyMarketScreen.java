@@ -17,7 +17,7 @@ import guiPractice.components.Graphic;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 
-public class TobyMarketScreen extends ClickableScreen implements Runnable, MouseMotionListener{
+public class TobyMarketScreen extends main.PokedexScreen implements Runnable, MouseMotionListener{
 	
 	private Button button;
 	public TobyButton[] buttons;
@@ -37,7 +37,8 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 		app.start();
 	}
 
-	public void initAllObjects(ArrayList<Visible> viewObjects) {
+	@Override
+	public void initRemainingItems(ArrayList<Visible> viewObjects) {
 		button = new Button(35,230,100,45,"Return",Color.yellow,
 				new Action() {
 			public void act() {

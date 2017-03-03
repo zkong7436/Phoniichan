@@ -25,7 +25,7 @@ public class MyDemo extends Component {
 	public void update(Graphics2D g) {
 //		a[0][0] = 2;
 //		a[0][3] = 2;
-		SpawnDemo.start(game);
+		SpawnDemo.spawn.start(game);
 		int y = 1;
 		int z = 1;
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);

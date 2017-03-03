@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package TwentyFortyEight;
 
 import java.awt.Color;
@@ -83,6 +86,7 @@ public class JimmyDemo extends GuiApplication  {
 
 				@Override
 				public void act() {
+					createTemp(gameTemp, game);
 					rotate(game, 1);
 					moveTilesMinus(game);
 					rotate(game, 3);
@@ -91,7 +95,6 @@ public class JimmyDemo extends GuiApplication  {
 					if (counter!=0) {
 						SpawnDemo.cont(game);
 						printGame(game);
-						
 						
 						System.out.println("-------------------------------");
 						System.out.println(Arrays.toString(points.toArray()));
@@ -319,4 +322,3 @@ public class JimmyDemo extends GuiApplication  {
 	}
 
 }
-

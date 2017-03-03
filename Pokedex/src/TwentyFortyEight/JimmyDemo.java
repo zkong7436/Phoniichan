@@ -193,7 +193,7 @@ public class JimmyDemo extends GuiApplication  {
 
 	}
 	
-	private static int counter(int counter) {
+	static int counter(int counter) {
 		for (int i = 0; i < game.length; i++) {
 			for (int j = 0; j < game[i].length; j++) {
 				if (gameTemp[i][j] == game[i][j]) {
@@ -204,7 +204,7 @@ public class JimmyDemo extends GuiApplication  {
 		return counter;
 	
 	}
-	private static void createTemp() {
+	static void createTemp() {
 		gameTemp = new int[4][4];
 		for (int i = 0; i < game.length; i++) {
 			for (int j = 0; j < game[i].length; j++) {
@@ -238,10 +238,7 @@ public class JimmyDemo extends GuiApplication  {
 		for (int k = 0; k < row.length - 1; k++) {
 			if (row[k] == row[k + 1]) {
 				row[k] = row[k] + row[k + 1];
-				if(row[k]!=0) {
-					points.add(row[k]);
-				}
-				
+				points.add(row[k]);
 				row[k + 1] = 0;
 				
 			}

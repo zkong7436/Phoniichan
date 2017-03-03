@@ -54,7 +54,7 @@ public class HomeScreen extends PokedexScreen {
 			public void act(){
 				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
 			}
-		});
+		}); 
 		appLinks.get(2).setAction(new Action(){
 			
 			public void act(){

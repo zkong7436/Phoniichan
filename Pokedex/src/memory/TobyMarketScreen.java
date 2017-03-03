@@ -96,6 +96,7 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 			buttons[i].setAction(new Action() {
 				public void act() {	
 					if(MemoryScreen.abrasCaught >= b.getCost()){
+						validCost();
 //						for(int i=0; i<buttons.length;i++){
 //							if(buttons[i] = buttons[1]){
 //								if(MemoryScreen.hp < 3){
@@ -190,7 +191,7 @@ public class TobyMarketScreen extends ClickableScreen implements Runnable, Mouse
 	public void mouseMoved(MouseEvent m){
 		for(TobyButton b:buttons){
 			if(b.isHovered(m.getX(), m.getY())){
-				picture = new Graphic(0,0, .2,b.getPictureAddress());
+				picture.loadImages(b.getPictureAddress(), .2);
 				description.setText(b.getDescription());
 			}
 		}

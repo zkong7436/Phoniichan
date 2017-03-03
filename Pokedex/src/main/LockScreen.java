@@ -69,7 +69,7 @@ public class LockScreen extends PokedexScreen {
 			public void act() {
 				if(code.equals(corCode)){
 					locked = false;
-					Pokedex.game.setScreen(new HomeScreenCopy(getWidth(),getHeight()));
+					Pokedex.game.setScreen(new HomeScreen(getWidth(),getHeight()));
 				}else{
 					codeLabel.setText("Wrong passcode");
 					code = "";

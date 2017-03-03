@@ -14,7 +14,7 @@ import main.Pokedex;
 import main.PokedexScreen;
 
 /**
- * @author Wendigo
+ * @author zkong7436
  *
  */
 public class PokedexList extends PokedexScreen {
@@ -28,7 +28,6 @@ public class PokedexList extends PokedexScreen {
 	private TextLabel title;
 	private int iconIdx;
 	private int pokIdx;
-	private Pokemon may;
 	
 	public PokedexList(int width, int height) {
 		super(width, height);

@@ -3,7 +3,7 @@ package TwentyFortyEight;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public  class SpawnDemo implements SpawnInterface{
+public  class SpawnDemo implements IvanInterface{
 	private boolean gameOver = false;
 	private boolean move = false;
 	private static int [][]board = new int [4][4];

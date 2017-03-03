@@ -1,4 +1,4 @@
-package memory;
+package main;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;

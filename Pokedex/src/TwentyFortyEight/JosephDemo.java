@@ -97,7 +97,7 @@ public class JosephDemo extends GuiApplication  {
 						int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter!=0) {
-							SpawnDemo.cont(MyDemo.game);
+							SpawnDemo.spawn.cont(MyDemo.game);
 							JimmyDemo.jimmy.printGame(MyDemo.game);
 							
 							
@@ -122,7 +122,7 @@ public class JosephDemo extends GuiApplication  {
 						int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter!=0) {
-							SpawnDemo.cont(MyDemo.game);
+							SpawnDemo.spawn.cont(MyDemo.game);
 							JimmyDemo.jimmy.printGame(MyDemo.game);
 							
 							System.out.println("-------------------------------");
@@ -145,7 +145,7 @@ public class JosephDemo extends GuiApplication  {
 						JimmyDemo.jimmy.moveTilesMinus(MyDemo.game);		
 						int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 						if (counter != 0) {
-							SpawnDemo.cont(MyDemo.game);
+							SpawnDemo.spawn.cont(MyDemo.game);
 							JimmyDemo.jimmy.printGame(MyDemo.game);
 							System.out.println("-------------------------------");
 							System.out.println(Arrays.toString(points.toArray()));
@@ -166,7 +166,7 @@ public class JosephDemo extends GuiApplication  {
 						int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 						
 						if (counter != 0) {
-							SpawnDemo.cont(MyDemo.game);
+							SpawnDemo.spawn.cont(MyDemo.game);
 							JimmyDemo.jimmy.printGame(MyDemo.game);
 							System.out.println("-----------------------------"
 									+ "");
@@ -204,4 +204,5 @@ public class JosephDemo extends GuiApplication  {
 	}
 	
 	
+
 

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package realpokedex;
 
 import java.io.File;

@@ -238,7 +238,10 @@ public class JimmyDemo extends GuiApplication  {
 		for (int k = 0; k < row.length - 1; k++) {
 			if (row[k] == row[k + 1]) {
 				row[k] = row[k] + row[k + 1];
-				points.add(row[k]);
+				if(row[k]!=0) {
+					points.add(row[k]);
+				}
+				
 				row[k + 1] = 0;
 				
 			}

@@ -30,10 +30,14 @@ public class MyDemo extends Component {
 		int z = 1;
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.black);
-		String pics[] = { "resources/images2048/grass.jpg" , "resources/images2048/bulbasaur.png",
-		"resources/images2048/ivysaur.jpg" }; // this is filler.. we don't have ivysaur sprite in images2048 yet
+		String pics[] = { "resources/images2048/grass.jpg" , "resources/images2048/1.png",
+		"resources/images2048/ivysaur.png", "resources/images2048/venasaur.png", "resources/images2048/4.png",
+		"resources/images2048/5.png", "resources/images2048/6.png", "resources/images2048/7.png",
+		"resources/images2048/8.png", "resources/images2048/9.png", "resources/images2048/10.png",
+		"resources/images2048/11.png", "resources/images2048/12.png", "resources/images2048/13.png",
+		"resources/images2048/14.png", "resources/images2048/15.png",}; // this is filler.. we don't have ivysaur sprite in images2048 yet
 		//changeImages();
-		int height = 95,width = 95;
+		int height = 55,width = 55;
 //		Graphic picture1 = new Graphic(0,0,80,80,"resources/images2048/grass.jpg");
 
 		for (int row = 0; row < a.length; row++) {

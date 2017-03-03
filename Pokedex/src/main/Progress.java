@@ -96,7 +96,7 @@ public class Progress extends Component implements ProgressInterface{
 			g.drawString(go, (120 - fm.stringWidth(go)) / 2, 20);
 			g.drawString(round, (WIDTH - fm.stringWidth(round)) / 2, 40);
 			g.drawString(score, (WIDTH - fm.stringWidth(round)) / 2, 60);
-//			FultonDemo.game.setScreen(FultonDemo.kevinLeaderBoard);
+			Pokedex.game.setScreen(new kevinLeaderBoard(getWidth(),getHeight());
 		}else{
 			g.setColor(new Color(220,255,230));
 			g.fillRect(0, 0, WIDTH, HEIGHT);

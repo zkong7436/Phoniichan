@@ -17,6 +17,10 @@ public class Pokedex extends GuiApplication {
 	public static Pokedex game;
 	public static PokedexScreen screen;
 	
+	public Pokedex(){
+		setBounds(50,50,944,526);
+	}
+	
 	public static void main(String[] args){
 		game = new Pokedex();
 		Thread app = new Thread(game);
@@ -24,7 +28,7 @@ public class Pokedex extends GuiApplication {
 	}
 	
 	protected void initScreen() {
-		screen = new LockScreen(944, 526);
+		screen = new PokedexList(944, 526);
 		setScreen(screen);
 	}
 

@@ -1,10 +1,14 @@
 package realpokedex;
 
+import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 
+import guiPractice.components.Action;
+import guiPractice.components.Button;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
+import main.Pokedex;
 import main.PokedexScreen;
 
 /**
@@ -20,26 +24,39 @@ public class Pokemon extends PokedexScreen {
 	
 	private static String[][] stats;
 	private int number;
-	private TextLabel name;
 	private int iconIdx;
+	private File[] resources;
+	private TextLabel name;
 	
 	public Pokemon(int width, int height, int number) {
 		super(width, height);
+		System.out.println("You created a screen using number "+number);
 		this.number = number;
+		name.setText(cutString(resources[number].getName().substring(3),".png"));
 	}
 
 	/* (non-Javadoc)
 	 * @see guiPractice.Screen#initObjects(java.util.ArrayList)
 	 */
 
+	public void goToScreen(){
+		Pokedex.game.setScreen(new PokedexList(getWidth(),getHeight()));
+	}
+	
 	@Override
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
-		File[] resources = new File("resources/pokemon/").listFiles();
+		resources = new File("resources/pokemon/").listFiles();
 		stats = new String[resources.length][5];
 		addStats(resources);
-		TextLabel name = new TextLabel(360,110,200,30, cutString(resources[number].getName().substring(3),".png"));
+		name = new TextLabel(360,110,200,30, cutString(resources[number].getName().substring(3),".png"));
 		name.setSize(26);
+		Button back = new Button(560,210,60,60,"Back",Color.black, new Action(){
+			public void act(){
+				Pokedex.game.setScreen(new PokedexList(getWidth(),getHeight()));
+			}
+		});
 		viewObjects.add(name);
+		viewObjects.add(back);
 	}
 	
 	public void addStats(File[] resources){

@@ -46,17 +46,19 @@ public class PokedexList extends PokedexScreen {
 		viewObjects.add(title);
 	}
 	
+
 	private void findPokemons() {
 		File[] resources = new File("resources/pokemon/").listFiles();
 		int numIcons = 0;
 		for(int i = 0; i < resources.length; i++){
 			pokIdx = i;
+			Pokemon destination = new Pokemon(getWidth(),getHeight(),i);
 			ClickableGraphic poke = new ClickableGraphic((iconX(numIcons))*120+360,iconY(numIcons)*105+115,90,90,"resources/pokemon/"+resources[i].getName());
 			poke.setAction(new Action(){
 
 				@Override
 				public void act() {
-					Pokedex.game.setScreen(new Pokemon(getWidth(),getHeight(),pokIdx));
+					Pokedex.game.setScreen(destination);
 				}
 				
 			});

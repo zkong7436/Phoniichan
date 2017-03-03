@@ -61,6 +61,151 @@ public class JosephDemo extends GuiApplication  {
 		
 		
 		gameTemp = new int[4][4];
+<<<<<<< HEAD
+		JimmyDemo.createTemp(gameTemp, MyDemo.game);
+	
+		JimmyDemo.printGame(MyDemo.game);
+		System.out.println("+++++++++++++++++++++++++++++++");
+	
+	}
+
+	// nested inner class
+	private class DemoScreen  extends main.PokedexScreen {
+		private TextLabel movementDisplay;
+		private Button slideUp;
+		private Button slideDown;
+		private Button slideLeft;
+		private Button slideRight;
+		
+
+		public DemoScreen(int width, int height) {
+			super(width, height);
+			// TODO Auto-generated constructor stub
+		}
+
+
+		@Override
+		public void initRemainingItems(ArrayList<Visible> view) {
+				movementDisplay = new TextLabel(20, 40, 1000, 25, "");
+				slideUp = new Button(803, 290, 90, 40, "Up", Color.blue, new Action() {
+
+					@Override
+					public void act() {
+						JimmyDemo.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.rotate(MyDemo.game, 1);
+						JimmyDemo.moveTilesMinus(MyDemo.game);
+						JimmyDemo.rotate(MyDemo.game, 3);
+						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
+						
+						if (counter!=0) {
+							SpawnDemo.cont(MyDemo.game);
+							JimmyDemo.printGame(MyDemo.game);
+							
+							
+							System.out.println("-------------------------------");
+							System.out.println(Arrays.toString(points.toArray()));
+							movementDisplay.setText("You swiped up!");
+						}else{
+							movementDisplay.setText("You cannot swipe up anymore.");
+						}
+						
+
+					}
+				});
+				slideDown = new Button(800, 370, 90, 40, "Down", Color.blue, new Action() {
+
+					@Override
+					public void act() {
+						JimmyDemo.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.rotate(MyDemo.game, 1);
+						JimmyDemo.moveTilesPlus(MyDemo.game);
+						JimmyDemo.rotate(MyDemo.game, 3);
+						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
+						
+						if (counter!=0) {
+							SpawnDemo.cont(MyDemo.game);
+							JimmyDemo.printGame(MyDemo.game);
+							
+							System.out.println("-------------------------------");
+							System.out.println(Arrays.toString(points.toArray()));
+							movementDisplay.setText("You swiped down!");
+						}else{
+							movementDisplay.setText("You cannot swipe down anymore.");
+						}
+						
+						
+
+					}
+				});
+				slideRight = new Button(867, 330, 90, 40, "Right", Color.blue, new Action() {
+
+					@Override
+					public void act() {
+						JimmyDemo.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.moveTilesMinus(MyDemo.game);		
+						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
+						if (counter != 0) {
+							SpawnDemo.cont(MyDemo.game);
+							JimmyDemo.printGame(MyDemo.game);
+							System.out.println("-------------------------------");
+							System.out.println(Arrays.toString(points.toArray()));
+							movementDisplay.setText("You swiped right!");
+						}else {
+							movementDisplay.setText("You cannot swipe right anymore. ");
+						}
+						
+
+					}
+				});
+				slideLeft = new Button(688, 330, 90, 40, "Left", Color.blue, new Action() {
+
+					@Override
+					public void act() {
+						JimmyDemo.createTemp(gameTemp, MyDemo.game);
+						JimmyDemo.moveTilesPlus(MyDemo.game);
+						int counter = JimmyDemo.counter(16, gameTemp, MyDemo.game);
+						
+						if (counter != 0) {
+							SpawnDemo.cont(MyDemo.game);
+							JimmyDemo.printGame(MyDemo.game);
+							System.out.println("-----------------------------"
+									+ "");
+							System.out.println(Arrays.toString(points.toArray()));
+							movementDisplay.setText("You swiped left!");
+						}else {
+							movementDisplay.setText("You cannot swipe left anymore. ");
+						}	
+					}
+				});
+				view.add(movementDisplay);
+				view.add(slideUp);
+				view.add(slideDown);
+				view.add(slideRight);
+				view.add(slideLeft);
+				MyDemo d = new MyDemo(330,250,400,385);
+				TextLabel text = new TextLabel(560, 220, 100, 30, "High Score");
+				int[] scores = new int[3];
+		//		if(TwentyFortyEightGame.gameOver){
+		//			highScore(score, scores);
+		//		}
+				for(int i = 0; i < 3; i++){
+					
+					scores[0] = 10000;
+					scores[1] = 2000;
+					scores[2] = 300;
+					view.add(new TextLabel((560) , (230 + (i*20)), 150, 40, (i+1)+"."+scores[i]+""));			
+			}
+				view.add(d);
+				view.add(text);
+			}
+	
+		}
+
+	}
+	
+	
+
+=======
 		JimmyDemo.jimmy.createTemp(gameTemp, MyDemo.game);
 	
 		JimmyDemo.jimmy.printGame(MyDemo.game);
@@ -204,3 +349,4 @@ public class JosephDemo extends GuiApplication  {
 	}
 	
 	
+>>>>>>> branch '2048' of https://github.com/zkong7436/Pokedex.git

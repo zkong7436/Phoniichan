@@ -97,6 +97,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			tiles.get(i).setAction(new Action(){
 				public void act(){
 					if(acceptingInput){
+						checkCorrect(c);
 						for(int index = 0;index < tiles.size(); index++){
 							if(c == tiles.get(index)){
 								if(!checked.get(index)){
@@ -157,6 +158,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		viewObjects.add(label);
 		viewObjects.add(button);
 	}
+	
+	public void checkCorrect(
 	
 	public void update(ArrayList<Visible> viewObjects) {
 		viewObjects.remove(tiles);

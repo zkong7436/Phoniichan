@@ -62,26 +62,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			
 		});
 		viewObjects.add(enter);
-		increaseSize=5;
-		startingSize=4;
-		abraCount = 3;
-		currentScore = 0;
-		abrasCaught = 0;
-		combo = 1;
-		level = 1; 
-		lives = 3;
-		hp = 3;
-		int idkName = 0;
-		int idkName2 = 1;
-		tiles = new ArrayList<ButtonInterfaceFulton>();
-		abra = new ArrayList<Boolean>();
-		checked = new ArrayList<Boolean>();
-		
-		for(int j = 0; j < startingSize + increaseSize; j ++){
-			abra.add(false);
-			checked.add(false);
-		}
-		
+                intitializeItems();
+
 		for(int i = 0; i < startingSize + increaseSize; i++){
 			if(i % (Math.sqrt(startingSize + increaseSize)) == 0){
 				idkName++;
@@ -98,28 +80,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 				public void act(){
 					if(acceptingInput){
 						checkCorrect(c);
-						for(int index = 0;index < tiles.size(); index++){
-							if(c == tiles.get(index)){
-								if(!checked.get(index)){
-									checked.set(index, true);
-									c.flip();
-									if(abra.get(index)){
-										currentScore += (combo * level);
-										combo++;
-										abrasCaught++;
-//										TobyMarketScreen.setCaught(abrascaught);
-										progress.setCombo(combo);
-										progress.setCaught(abrasCaught);
-										progress.setPoint(currentScore);
-									}else{
-										combo = 1;
-										hp--;
-										progress.setCombo(combo);
-										progress.setHp(hp);
-									}
-								}
-							}
-						}
 						
 						if(pass()){
 							level++;
@@ -159,7 +119,52 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		viewObjects.add(button);
 	}
 	
-	public void checkCorrect(
+        public void intitializeItems(){
+                increaseSize=5;
+		startingSize=4;
+		abraCount = 3;
+		currentScore = 0;
+		abrasCaught = 0;
+		combo = 1;
+		level = 1; 
+		lives = 3;
+		hp = 3;
+		int idkName = 0;
+		int idkName2 = 1;
+		tiles = new ArrayList<ButtonInterfaceFulton>();
+		abra = new ArrayList<Boolean>();
+		checked = new ArrayList<Boolean>();
+		
+		for(int j = 0; j < startingSize + increaseSize; j ++){
+			abra.add(false);
+			checked.add(false);
+		}
+        }
+
+	public void checkCorrect(buttonInterfaceFulton C){
+                for(int index = 0;index < tiles.size(); index++){
+		        if(c == tiles.get(index)){
+			        if(!checked.get(index)){
+					checked.set(index, true);
+					c.flip();
+					if(abra.get(index)){
+						currentScore += (combo * level);
+						combo++;
+					        abrasCaught++;
+//				 	        TobyMarketScreen.setCaught(abrascaught);
+					 	progress.setCombo(combo);
+				 	        progress.setCaught(abrasCaught);
+						progress.setPoint(currentScore);
+					}else{
+						combo = 1;
+						hp--;
+						progress.setCombo(combo);
+						progress.setHp(hp);
+					}
+				}
+			}
+		}   
+        }
 	
 	public void update(ArrayList<Visible> viewObjects) {
 		viewObjects.remove(tiles);

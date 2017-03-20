@@ -82,31 +82,12 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 						checkCorrect(c);
 						
 						if(pass()){
-							level++;
-							abraCount++;
-							hp = 3;
-							if(level % 3 == 0){
-								increaseSize += 2;
-								System.out.println(increaseSize);
-								update(viewObjects);
-							}
-							Thread nextRound = new Thread(MemoryScreen.this);
-							nextRound.start();
+							passedLevel();
 						}else if(hp == 0){
-							System.out.println("HP IS GONE");
-							hp = 3;
-							lives--;
-							level--;
-							abraCount--;
-							if(lives == 0){
-								progress.gameOver();
-								return;
-							}
-							Thread nextRound = new Thread(MemoryScreen.this);
-							nextRound.start();
+							failedLevel();
 						}
-						
 					}
+					
 				}
 			});
 			viewObjects.add(tiles.get(i));
@@ -117,6 +98,20 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		viewObjects.add(progress);
 		viewObjects.add(label);
 		viewObjects.add(button);
+	}
+	
+	public void failedLevel(){
+	 	System.out.println("HP IS GONE");
+		hp = 3;
+		lives--;
+		level--;
+		abraCount--;
+		if(lives == 0){
+			progress.gameOver();
+			return;
+		}
+		Thread nextRound = new Thread(MemoryScreen.this);
+		nextRound.start();
 	}
 	
         public void intitializeItems(){
@@ -166,6 +161,19 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		}   
         }
 	
+	public void passedLevel(){
+		level++;
+		abraCount++;
+		hp = 3;
+		if(level % 3 == 0){
+			increaseSize += 2;
+			System.out.println(increaseSize);
+			update(viewObjects);
+		}
+		Thread nextRound = new Thread(MemoryScreen.this);
+		nextRound.start();
+	}
+		
 	public void update(ArrayList<Visible> viewObjects) {
 		viewObjects.remove(tiles);
 		int idkName = 0;

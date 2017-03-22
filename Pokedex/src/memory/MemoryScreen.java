@@ -34,6 +34,18 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private Button button;
 	private Button enter;
 	
+	public int getLevel(){
+		return level;
+	}
+	
+	public int getAbrasCaught(){
+		return abrasCaught;
+	}
+	
+	public void setAbrasCaught(int caught){
+		abrasCaught = caught;
+		progress.set
+	}
 	
 	public MemoryScreen(int height, int width) {
 		super(height, height);
@@ -99,6 +111,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		viewObjects.add(label);
 		viewObjects.add(button);
 	}
+	
+	public void setProgress
 	
 	public void failedLevel(){
 	 	System.out.println("HP IS GONE");

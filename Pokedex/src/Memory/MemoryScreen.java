@@ -43,6 +43,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
 	public void setLevel(int level){
 		this.level = level;
+		
 	}
 	
 	public void setAbrasCaught(int caught){
@@ -125,7 +126,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 	
 	public void failedLevel(){
-	 	System.out.println("HP IS GONE");
 		hp = 3;
 		lives--;
 		level--;
@@ -194,83 +194,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		Thread nextRound = new Thread(MemoryScreen.this);
 		nextRound.start();
 		System.out.println("asdasd");
-	}
-		
-	public void update(ArrayList<Visible> viewObjects) {
-		viewObjects.remove(tiles);
-		int idkName = 0;
-		int idkName2 = 1;
-		totalTiles = tiles.size() + increaseSize;
-		
-		for(int j = 0; j < increaseSize; j ++){
-			abra.add(false);
-			checked.add(false);
-		}
-		
-		tiles.clear();
-		
-		for(int i = 0; i < totalTiles;i++){
-			if(i % (Math.sqrt(totalTiles)) == 0){
-				idkName++;
-				idkName2 = 1;
-			}
-			ButtonInterfaceFulton b = new ButtonFulton();
-			tiles.add(b);		
-			tiles.get(i).setX(300+(55*idkName2));
-			idkName2++;
-			tiles.get(i).setY(100+(55*idkName));
-			final ButtonInterfaceFulton c = tiles.get(i);
-			tiles.get(i).setAction(new Action(){
-				public void act(){
-					if(acceptingInput){
-						for(int index = 0;index < tiles.size(); index++){
-							if(c == tiles.get(index)){
-								if(!checked.get(index)){
-									checked.set(index, true);
-									c.flip();
-									if(abra.get(index)){
-										currentScore += (combo * level);
-										combo++;
-										abrasCaught++;
-										progress.setCombo(combo);
-										progress.setCaught(abrasCaught);
-										progress.setPoint(currentScore);
-									}else{
-										combo = 1;
-										hp--;
-										progress.setCombo(combo);
-										progress.setHp(hp);
-									}
-								}
-							}
-						}	
-						if(pass()){
-							level++;
-							abraCount++;
-							hp = 3;
-							if(level % 3 == 0){
-								increaseSize += 2;
-								update(viewObjects);
-							}
-							Thread nextRound = new Thread(MemoryScreen.this);
-							nextRound.start();
-						}else if(hp == 0){
-							hp = 3;
-							lives--;
-							level--;
-							abraCount--;
-							if(lives == 0){
-								progress.gameOver();
-								return;
-							}
-							Thread nextRound = new Thread(MemoryScreen.this);
-							nextRound.start();
-						}
-					}
-				}
-			});
-			viewObjects.add(tiles.get(i));
-		}
 	}
 	
 	private ProgressInterface getProgress() {

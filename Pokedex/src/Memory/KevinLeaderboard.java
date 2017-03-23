@@ -135,8 +135,9 @@ public class KevinLeaderboard extends main.PokedexScreen implements Runnable, Mo
 		
 	}
 
+
 	@Override
-	public void initAllObjects(ArrayList<Visible> viewObjects) 
+	public void initRemainingItems(ArrayList<Visible> viewObjects) 
 	{
 		vName = new ArrayList<TextLabel>();
 		vScore = new ArrayList<TextLabel>();
@@ -164,12 +165,5 @@ public class KevinLeaderboard extends main.PokedexScreen implements Runnable, Mo
 			viewObjects.add(vName.get(i));
 		}
 		System.out.println("displayed");
-		
-	}
-
-	@Override
-	public void initRemainingItems(ArrayList<Visible> viewObjects) {
-		// TODO Auto-generated method stub
-		
 	}	
 }

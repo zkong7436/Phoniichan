@@ -41,6 +41,10 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		return abrasCaught;
 	}
 	
+	public void setLevel(int level){
+		this.level = level;
+	}
+	
 	public void setAbrasCaught(int caught){
 		abrasCaught = caught;
 		progress.setCaught(caught);
@@ -60,12 +64,14 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
 		picture = new Graphic(331, 92, 380, 345, "resources/backthingy.png");
 		viewObjects.add(picture);
+		
 		button = new Button(575,275,100,45,"Store",Color.green,
 				new Action() {
 			public void act() {
-//				Pokedex.game.setScreen(new MarketScreen(getWidth(),getHeight());
+				Pokedex.game.setScreen(new MarketScreen(getWidth(),getHeight());
 			}
 		});
+		
 		enter = new Button(55,230,70,70,"Home",new Color(0,0,0,0),new Action(){
 			public void act() {
 				Pokedex.game.setScreen(new HomeScreen(getWidth(),getHeight()));
@@ -73,7 +79,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			
 		});
 		viewObjects.add(enter);
-                intitializeItems();
+		
+        intitializeItems();
         int idkName = 0;
         int idkName2 = 1;
 
@@ -113,6 +120,9 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		viewObjects.add(button);
 	}
 	
+	public void setProgress(){
+		
+	}
 	
 	public void failedLevel(){
 	 	System.out.println("HP IS GONE");
@@ -179,11 +189,11 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		hp = 3;
 		if(level % 3 == 0){
 			increaseSize += 2;
-			System.out.println(increaseSize);
 //			update(viewObjects);
 		}
 		Thread nextRound = new Thread(MemoryScreen.this);
 		nextRound.start();
+		System.out.println("asdasd");
 	}
 		
 	public void update(ArrayList<Visible> viewObjects) {

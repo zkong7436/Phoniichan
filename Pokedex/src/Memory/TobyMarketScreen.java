@@ -28,8 +28,6 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	private TobyGraphic textbox;
 	private static String FONT = "Tw Cen MT Condensed";
 	private static int SIZE = 25;
-	//testing abraCaught
-//	public static int z;
 
 	public TobyMarketScreen(int width, int height) {
 		super(width, height);
@@ -65,9 +63,8 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	}
 
 	public void addAbrasCaught(ArrayList<Visible> viewObjects) {
-//		MemoryScreen caught = new MemoryScreen(height, height);
-//		int x = caught.getAbrasCaught();
-        abraNumber = new TextLabel(20, 15, 300, 210, "Abras Caught: "+MemoryScreen.getAbrasCaught());
+		MemoryScreen caught = new MemoryScreen(getWidth(),getHeight());
+        abraNumber = new TextLabel(20, 15, 300, 210, "Abras Caught: "+caught.getAbrasCaught());
         abraNumber.setFont(FONT);
         abraNumber.setSize(SIZE);
         viewObjects.add(abraNumber);	
@@ -84,7 +81,6 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 		int numberOfButtons = 5;
 		buttons = new ArrayList<TobyButton>(numberOfButtons);
 		for(int i = 0; i <numberOfButtons; i++){ 
-//			buttons[i] = getAButton();
 			buttons.get(i).setName(names[i]);
 			buttons.get(i).setCost(costs[i]);
 			buttons.get(i).setX(185);
@@ -94,14 +90,14 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 			
 			final TobyButton b = buttons.get(i);
 			buttons.get(i).setAction(new Action() {
+				MemoryScreen m = new MemoryScreen(getWidth(),getHeight());
 				public void act() {
-					int caught = MemoryScreen.getAbrasCaught();
-					if(caught >= b.getCost()){
+					if(m.getAbrasCaught() >= b.getCost()){
 						validCost();
 						for(int i=0; i<buttons.size();i++){
 							if(buttons.get(i) == buttons.get(1)){
-								if(MemoryScreen.hp < 3){
-									MemoryScreen.hp++;
+								if(m.getHp() < 3){
+									m.setHp(m.getHp()+1);
 									validCost();
 								}else{
 									description.setText("**You already have max HP**");
@@ -109,8 +105,8 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 								}							
 							}
 							if(buttons.get(i) == buttons.get(2)){
-								if(MemoryScreen.lives < 3){
-									MemoryScreen.lives++;
+								if(m.getLives() < 3){
+									m.setLives(m.getLives()+1);
 									validCost();
 								}else{
 									description.setText("**You already have max lives**");
@@ -118,8 +114,8 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 								}
 							}
 							if(buttons.get(i) == buttons.get(3)){
-								if(MemoryScreen.lives <= 1){
-									MemoryScreen.lives += 2;
+								if(m.getLives() <= 1){
+									m.setLives(m.getLives()+2);
 									validCost();
 								}else{
 									description.setText("**You already have max lives**");
@@ -130,7 +126,7 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 //								MemoryScreen.firstRound();
 							}
 							if(buttons.get(i) == buttons.get(6)){
-								MemoryScreen.level++;
+								m.setLevel(m.getLevel()+1);
 							}									
 						}						
 					}else{
@@ -140,10 +136,10 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 				}
 
 				private void validCost() {
-					int c = (MemoryScreen.getAbrasCaught()) - (b.getCost());
+					int c = (m.getAbrasCaught()) - (b.getCost());
 					System.out.println("subtracted: "+c);
 					abraNumber.setText("Abras Caught: "+c);
-					MemoryScreen.setAbrasCaught(c);
+					m.setAbrasCaught(c);
 					description.setText("**Return to use power up**");
 					button.setColor(Color.green);					
 				}
@@ -179,10 +175,6 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 		a.setY(55);
 		a.play();
 	}
-
-//	private TobyButton getAButton() {
-//		return new TobyButton();
-//	}
 	
 	public void run() {
 		// TODO Auto-generated method stub

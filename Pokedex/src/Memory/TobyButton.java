@@ -25,25 +25,41 @@ public class TobyButton extends Component implements TobyButtonInterface{
 	private String descriptionText;
 	
 	public TobyButton() {
-		super(0, 0, 380, 35); 
+		super(0, 0, 228, 35); 
 		font = "Tw Cen MT Condensed";
 		size = 18;
 		update();
 	}
 	
+//	public void update(Graphics2D g) {
+//		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+//		g.setColor(Color.cyan);
+//		g.fillRoundRect(0, 0, 310, 33, 15, 15);
+//		g.setColor(Color.black);
+//		g.drawRoundRect(0, 0, 310, 33, 15, 15);
+//		if(displayName != null){
+//			g.setFont(new Font(font, Font.BOLD, size));
+//			g.drawString(name, 10, 22);	
+//		}
+//		if(displayCost != null){
+//			g.setFont(new Font(font, Font.BOLD, size));
+//			g.drawString(displayCost, 315, 22);
+//		}
+//	}
+	
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.cyan);
-		g.fillRoundRect(0, 0, 310, 33, 15, 15);
+		g.fillRoundRect(0, 0, 200, 33, 15, 15);
 		g.setColor(Color.black);
-		g.drawRoundRect(0, 0, 310, 33, 15, 15);
+		g.drawRoundRect(0, 0, 200, 33, 15, 15);
 		if(displayName != null){
 			g.setFont(new Font(font, Font.BOLD, size));
 			g.drawString(name, 10, 22);	
 		}
 		if(displayCost != null){
 			g.setFont(new Font(font, Font.BOLD, size));
-			g.drawString(displayCost, 315, 22);
+			g.drawString(displayCost, 205, 22);
 		}
 	}
 	
@@ -73,7 +89,7 @@ public class TobyButton extends Component implements TobyButtonInterface{
 
 	public void setCost(int costs) {
 		cost = costs;
-		displayCost = "x"+cost+" Abras";
+		displayCost = "x"+cost;
 		update();
 	}
 

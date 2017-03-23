@@ -27,7 +27,7 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	private TobyGraphic picture;
 	private TobyGraphic textbox;
 	private static String FONT = "Tw Cen MT Condensed";
-	private static int SIZE = 25;
+	private static int SIZE = 22;
 
 	public TobyMarketScreen(int width, int height) {
 		super(width, height);
@@ -36,21 +36,21 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	}
 
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
-		button = new Button(35,230,100,45,"Return",Color.yellow,
+		button = new Button(360,230,90,40,"Return",Color.yellow,
 				new Action() {
 			public void act() {
 //				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
 				button.setColor(Color.yellow);
 			}
 		});
-		label = new TextLabel(25, 20, 760, 40, "AbraMarket");
+		label = new TextLabel(340, 90, 760, 40, "AbraMarket");
 		label.setFont(FONT);
 		label.setSize(SIZE);
-		description = new TextLabel(150, 225, 500, 100, "");
+		description = new TextLabel(350, 295, 500, 100, "");
 		description.setFont(FONT);
 		description.setSize(SIZE);
-		picture = new TobyGraphic(25, 280, .01, "resources/sampleImages/White.png");
-		textbox = new TobyGraphic(123, 285, .54, "resources/sampleImages/PokeBox.png");
+		picture = new TobyGraphic(360, 270, .01, "resources/TobyMarket/White.png");
+		textbox = new TobyGraphic(336, 360, .38, "resources/TobyMarket/PokeBox.png");
 		
 		addAnimation(viewObjects);
 		addButtons(viewObjects);
@@ -75,9 +75,9 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 		int[] costs = {3,8,15,16,25};
 		String[] potionDescription = {"Restores 1 HP","Recovers 1 Life","Recovers 2 Life",
 				"Use to lure out all hiding Abras for a few seconds","Legendary item that can be used to skip one level"};
-		String[] address= {"resources/sampleImages/Potion1.png","resources/sampleImages/Potion2.png",
-				"resources/sampleImages/Potion3.png","resources/sampleImages/Potion4.png",
-				"resources/sampleImages/Potion5.png"};
+		String[] address= {"resources/TobyMarket/Potion1.png","resources/TobyMarket/Potion2.png",
+				"resources/TobyMarket/Potion3.png","resources/TobyMarket/Potion4.png",
+				"resources/TobyMarket/Potion5.png"};
 		int numberOfButtons = 5;
 		buttons = new ArrayList<TobyButtonInterface>(numberOfButtons);
 		for(int i = 0; i <numberOfButtons; i++){
@@ -85,8 +85,8 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 			buttons.add(temp);
 			buttons.get(i).setName(names[i]);
 			buttons.get(i).setCost(costs[i]);
-			buttons.get(i).setX(185);
-			buttons.get(i).setY(45*i+50);
+			buttons.get(i).setX(478);
+			buttons.get(i).setY(45*i+110);
 			buttons.get(i).setPicture(address[i]);
 			buttons.get(i).setLabel(potionDescription[i]);
 			
@@ -151,14 +151,14 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	}
 	
 	private void addAnimation(ArrayList<Visible> viewObjects) {
-		AnimatedComponent a = new AnimatedComponent(200,200,150,150);
+		AnimatedComponent a = new AnimatedComponent(200,200,100,100);
 		try{
 			int numberInRow = 5;
 			int rows = 1;
 			int w = 55;
 			int h = 50;
 			
-			ImageIcon icon = new ImageIcon("resources/sampleImages/FloatAbra.png");
+			ImageIcon icon = new ImageIcon("resources/TobyMarket/FloatAbra.png");
 			for(int i = 0; i <numberInRow*rows; i++){
 				BufferedImage cropped = new BufferedImage(w,h, BufferedImage.TYPE_INT_ARGB);
 				int leftMargin = 0;
@@ -173,13 +173,9 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 			e.printStackTrace();
 		}
 		viewObjects.add(a);
-		a.setX(20);		
-		a.setY(55);
+		a.setX(350);		
+		a.setY(200);
 		a.play();
-	}
-	
-	private TobyButton getAButton() {
-		return new TobyButton();
 	}
 	
 	public void run() {
@@ -190,7 +186,7 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	public void mouseMoved(MouseEvent m){
 		for(TobyButtonInterface b:buttons){
 			if(b.isHovered(m.getX(), m.getY())){
-				picture.loadImages(b.getPictureAddress(), .2);
+				picture.loadImages(b.getPictureAddress(), .17);
 				description.setText(b.getDescription());
 			}
 		}

@@ -21,4 +21,8 @@ public interface TobyButtonInterface extends Clickable {
 	void setCost(int string);
 	
 	void setLabel(String string);
+
+	String getPictureAddress();
+
+	String getDescription();
 }

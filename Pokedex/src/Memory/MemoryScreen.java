@@ -14,8 +14,8 @@ import main.Pokedex;
 public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
 	private TextLabel label;
-	public static int level;
-	public static int abrasCaught;
+	private int level;
+	private int abrasCaught;
 	public static int currentScore;
 	public static int lives;
 	public static int combo;
@@ -33,22 +33,26 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private Button button;
 	private Button enter;
 	
-	public int getLevel(){
-		return level;
-	}
-	
-	public int getAbrasCaught(){
-		return abrasCaught;
-	}
-	
 	public void setLevel(int level){
 		this.level = level;
-		
+	}
+	
+	public int getLevel(){
+		return level;
 	}
 	
 	public void setAbrasCaught(int caught){
 		abrasCaught = caught;
 		progress.setCaught(caught);
+	}	
+	
+	public int getAbrasCaught(){
+		return abrasCaught;
+	}
+	
+	public void setScore(int score){
+		this.score = currentScore;
+		progress.setScore(score);
 	}
 	
 	public MemoryScreen(int height, int width) {
@@ -81,9 +85,9 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		});
 		viewObjects.add(enter);
 		
-        intitializeItems();
-        int idkName = 0;
-        int idkName2 = 1;
+        	intitializeItems();
+        	int idkName = 0;
+        	int idkName2 = 1;
 
 		for(int i = 0; i < startingSize + increaseSize; i++){
 			if(i % (Math.sqrt(startingSize + increaseSize)) == 0){
@@ -101,14 +105,12 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 				public void act(){
 					if(acceptingInput){
 						checkCorrect(c);
-						
 						if(pass()){
 							passedLevel();
 						}else if(hp == 0){
 							failedLevel();
 						}
 					}
-					
 				}
 			});
 			viewObjects.add(tiles.get(i));
@@ -122,24 +124,40 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 	
 	public void setProgress(){
-		
+		progress.setLevel(level);
+		progress.setCaught(abrasCaught);
+		progress.setHp(hp);
+		progress.setPoint(currentScore);
+		progress.setLife(lives);
+		progress.setCombo(combo);
 	}
 	
 	public void failedLevel(){
-		hp = 3;
-		lives--;
-		level--;
-		abraCount--;
-		if(lives == 0){
-			progress.gameOver();
-			return;
+		if(levels != 1){
+			hp = 3;
+			lives--;
+			level--;
+			abraCount--;
+			if(lives == 0){
+				progress.gameOver();
+				return;
+			}
+			Thread nextRound = new Thread(MemoryScreen.this);
+			nextRound.start();
+		}else{
+			hp = 3;
+			lives--;
+			if(lives == 0){
+				progress.gameOver();
+				return;
+			}
+			Thread nextRound = new Thread(MemoryScreen.this);
+			nextRound.start();
 		}
-		Thread nextRound = new Thread(MemoryScreen.this);
-		nextRound.start();
 	}
 	
 	public void intitializeItems(){
-        increaseSize=5;
+       		increaseSize=5;
 		startingSize=4;
 		abraCount = 3;
 		currentScore = 0;
@@ -169,14 +187,11 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 						combo++;
 					        abrasCaught++;
 //				 	        TobyMarketScreen.setCaught(abrascaught);
-					 	progress.setCombo(combo);
-				 	        progress.setCaught(abrasCaught);
-						progress.setPoint(currentScore);
+					 	setProgress();
 					}else{
 						combo = 1;
 						hp--;
-						progress.setCombo(combo);
-						progress.setHp(hp);
+						setProgress();
 					}
 				}
 			}
@@ -193,7 +208,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		}
 		Thread nextRound = new Thread(MemoryScreen.this);
 		nextRound.start();
-		System.out.println("asdasd");
 	}
 	
 	private ProgressInterface getProgress() {
@@ -218,12 +232,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			checked.set(i, false);
 		}
 		acceptingInput = false;
-		progress.setLevel(level);
-		progress.setCaught(abrasCaught);
-		progress.setHp(hp);
-		progress.setPoint(currentScore);
-		progress.setLife(lives);
-		progress.setCombo(combo);
+		setProgress();
 		changeText("Wait for message to dissapear to start!");
 		wait(1000);
 		label.setText("");

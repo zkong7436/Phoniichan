@@ -14,7 +14,6 @@ import guiPractice.components.AnimatedComponent;
 import guiPractice.components.Button;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
-import main.HomeScreen;
 import main.Pokedex;
 import Memory.TobyGraphic;
 
@@ -43,7 +42,7 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 		button = new Button(35,230,100,45,"Return",Color.yellow,
 				new Action() {
 			public void act() {
-				Pokedex.game.setScreen(new HomeScreen(getWidth(),getHeight()));
+				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
 				button.setColor(Color.yellow);
 			}
 		});

@@ -65,9 +65,9 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	}
 
 	public void addAbrasCaught(ArrayList<Visible> viewObjects) {
-//		Progress caught = new Progress();
-//		int x = caught.getCaught();
-        abraNumber = new TextLabel(20, 15, 300, 210, "Abras Caught: "+MemoryScreen.abrasCaught);
+//		MemoryScreen caught = new MemoryScreen(height, height);
+//		int x = caught.getAbrasCaught();
+        abraNumber = new TextLabel(20, 15, 300, 210, "Abras Caught: "+MemoryScreen.getAbrasCaught());
         abraNumber.setFont(FONT);
         abraNumber.setSize(SIZE);
         viewObjects.add(abraNumber);	
@@ -94,8 +94,9 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 			
 			final TobyButton b = buttons.get(i);
 			buttons.get(i).setAction(new Action() {
-				public void act() {	
-					if(MemoryScreen.abrasCaught >= b.getCost()){
+				public void act() {
+					int caught = MemoryScreen.getAbrasCaught();
+					if(caught >= b.getCost()){
 						validCost();
 						for(int i=0; i<buttons.size();i++){
 							if(buttons.get(i) == buttons.get(1)){
@@ -139,10 +140,10 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 				}
 
 				private void validCost() {
-					int c = (MemoryScreen.abrasCaught) - (b.getCost());
+					int c = (MemoryScreen.getAbrasCaught()) - (b.getCost());
 					System.out.println("subtracted: "+c);
 					abraNumber.setText("Abras Caught: "+c);
-					MemoryScreen.abrasCaught = c;
+					MemoryScreen.setAbrasCaught(c);
 					description.setText("**Return to use power up**");
 					button.setColor(Color.green);					
 				}

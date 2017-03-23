@@ -145,12 +145,9 @@ public class KevinLeaderboard extends main.PokedexScreen implements Runnable, Mo
 		for(int i = 0; i < vName.size();i++)
 		{
 			vName.add(new TextLabel(50, 50, 50, 50, names.get(i)));
-		}
-		
-		for(int i = 0; i < vScore.size();i++)
-		{
 			vScore.add(new TextLabel(50,50,50,50,"" + scores.get(i)+ ""));
 		}
+		
 		button = new Button(35,230,100,45,"Return",Color.orange,new Action() 
 		{
 			public void act() 

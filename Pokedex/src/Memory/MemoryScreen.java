@@ -68,7 +68,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		button = new Button(575,275,100,45,"Store",Color.green,
 				new Action() {
 			public void act() {
-				Pokedex.game.setScreen(new TobyMarketScreen(getWidth(),getHeight());
+				Pokedex.game.setScreen(new TobyMarketScreen(getWidth(),getHeight()));
 			}
 		});
 		

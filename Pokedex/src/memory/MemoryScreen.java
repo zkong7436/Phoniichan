@@ -10,7 +10,6 @@ import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
 import main.HomeScreen;
 import main.Pokedex;
-import main.PokedexScreen;
 
 public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
@@ -44,7 +43,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
 	public void setAbrasCaught(int caught){
 		abrasCaught = caught;
-		progress.set
+		progress.setCaught(caught);
 	}
 	
 	public MemoryScreen(int height, int width) {
@@ -75,6 +74,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		});
 		viewObjects.add(enter);
                 intitializeItems();
+        int idkName = 0;
+        int idkName2 = 1;
 
 		for(int i = 0; i < startingSize + increaseSize; i++){
 			if(i % (Math.sqrt(startingSize + increaseSize)) == 0){
@@ -112,7 +113,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		viewObjects.add(button);
 	}
 	
-	public void setProgress
 	
 	public void failedLevel(){
 	 	System.out.println("HP IS GONE");
@@ -128,8 +128,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		nextRound.start();
 	}
 	
-        public void intitializeItems(){
-                increaseSize=5;
+	public void intitializeItems(){
+        increaseSize=5;
 		startingSize=4;
 		abraCount = 3;
 		currentScore = 0;
@@ -138,8 +138,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		level = 1; 
 		lives = 3;
 		hp = 3;
-		int idkName = 0;
-		int idkName2 = 1;
 		tiles = new ArrayList<ButtonInterfaceFulton>();
 		abra = new ArrayList<Boolean>();
 		checked = new ArrayList<Boolean>();
@@ -150,7 +148,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		}
         }
 
-	public void checkCorrect(buttonInterfaceFulton C){
+	public void checkCorrect(ButtonInterfaceFulton c){
                 for(int index = 0;index < tiles.size(); index++){
 		        if(c == tiles.get(index)){
 			        if(!checked.get(index)){
@@ -182,7 +180,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		if(level % 3 == 0){
 			increaseSize += 2;
 			System.out.println(increaseSize);
-			update(viewObjects);
+//			update(viewObjects);
 		}
 		Thread nextRound = new Thread(MemoryScreen.this);
 		nextRound.start();

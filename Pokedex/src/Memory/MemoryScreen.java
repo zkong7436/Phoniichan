@@ -16,10 +16,10 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private TextLabel label;
 	private int level;
 	private int abrasCaught;
-	public static int currentScore;
-	public static int lives;
-	public static int combo;
-	public static int hp;
+	private int currentScore;
+	private int lives;
+	private int combo;
+	private int hp;
 	private int abraCount;
 	private Graphic picture;
 	private boolean acceptingInput;
@@ -29,12 +29,13 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private ProgressInterface progress;
 	private int increaseSize;
 	private int startingSize;
-	private int totalTiles;
 	private Button button;
 	private Button enter;
+	private boolean started;
 	
 	public void setLevel(int level){
 		this.level = level;
+		progress.setLevel(this.level);
 	}
 	
 	public int getLevel(){
@@ -43,7 +44,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
 	public void setAbrasCaught(int caught){
 		abrasCaught = caught;
-		progress.setCaught(caught);
+		progress.setCaught(abrasCaught);
 	}	
 	
 	public int getAbrasCaught(){
@@ -55,8 +56,36 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		progress.setScore(currentScore);
 	}
 	
-	public MemoryScreen(int height, int width) {
+	public int getScore(){
+		return currentScore;
+	}
+
+	public void setLives(int lives){
+		this.lives = lives;
+		progress.setLife(this.lives);
+	}
+	
+	public int getLives(){
+		return lives;
+	}
+	
+	public void setCombo(int combo){
+		this.combo = combo;
+		progress.setCombo(this.combo);
+	}
+	
+	public int getCombo(){
+		return combo;
+	}
+	
+	public void setHp(int hp){
+		this.hp = hp;
+		progress.setHp(this.hp);
+	}
+	
+	public MemoryScreen(int height, int width, booloean started) {
 		super(height, height);
+		this.started = started;
 		Thread app = new Thread(this);
 		app.start();
 	}
@@ -67,28 +96,30 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 	
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
-		picture = new Graphic(331, 92, 380, 345, "resources/backthingy.png");
-		viewObjects.add(picture);
+		background = new Graphic(331, 92, 380, 345, "resources/backthingy.png");
+		viewObjects.add(background);
 		
-		button = new Button(575,275,100,45,"Store",Color.green,
-				new Action() {
+		button = new Button(575,275,100,45,"Store",Color.green,new Action(){
 			public void act() {
 				Pokedex.game.setScreen(new TobyMarketScreen(getWidth(),getHeight()));
 			}
 		});
 		
-		enter = new Button(55,230,70,70,"Home",new Color(0,0,0,0),new Action(){
+		home = new Button(55,230,70,70,"Home",new Color(0,0,0,0),new Action(){
 			public void act() {
-				Pokedex.game.setScreen(new HomeScreen(getWidth(),getHeight()));
+				Pokedex.game.setScreen(HomeScreen(getWidth(),getHeight()));
 			}
-			
 		});
-		viewObjects.add(enter);
 		
-        	intitializeItems();
+		if(!started){
+			intitializeItems();
+		}else{
+			tiles.clear();
+		}
+        	
         	int idkName = 0;
         	int idkName2 = 1;
-
+		
 		for(int i = 0; i < startingSize + increaseSize; i++){
 			if(i % (Math.sqrt(startingSize + increaseSize)) == 0){
 				idkName++;
@@ -100,6 +131,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			tiles.get(i).setX(300+(55*idkName2));
 			idkName2++;
 			tiles.get(i).setY(100+(55*idkName));
+			
 			final ButtonInterfaceFulton c = tiles.get(i);
 			tiles.get(i).setAction(new Action(){
 				public void act(){
@@ -117,8 +149,9 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		}
 		
 		progress = getProgress();
-		label = new TextLabel(getWidth()/2 - 150, getHeight()/2 -10, 400, 20, "Text");
+		label = new TextLabel(getWidth()/2 - 150, getHeight()/2 -50, 400, 20, "Text");
 		viewObjects.add(progress);
+		viewObjects.add(home);
 		viewObjects.add(label);
 		viewObjects.add(button);
 	}
@@ -186,7 +219,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 						currentScore += (combo * level);
 						combo++;
 					        abrasCaught++;
-//				 	        TobyMarketScreen.setCaught(abrascaught);
 					 	setProgress();
 					}else{
 						combo = 1;
@@ -224,6 +256,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 
 	private void nextRound() {
+		acceptingInput = false;
+		setProgress();
 		for(int i = 0; i < tiles.size(); i++){
 			final ButtonInterfaceFulton b = tiles.get(i);
 			b.setReveal(false);
@@ -231,10 +265,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			abra.set(i, false);
 			checked.set(i, false);
 		}
-		acceptingInput = false;
-		setProgress();
-		changeText("Wait for message to dissapear to start!");
-		wait(1000);
 		label.setText("");
 		generateAbras();
 		showAbras();
@@ -244,8 +274,9 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			b.setReveal(false);
 			b.setChecked(false);
 		}
+		changeText("Wait for message to dissapear to start!");
+		wait(1000);
 		acceptingInput = true;
-		System.out.println("acccepting input");
 	}
 
 	private void wait(int time){
@@ -258,9 +289,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
 	private void showAbras() { 
 		for(int i = 0; i < tiles.size(); i++){
-			final ButtonInterfaceFulton c = tiles.get(i);
 			if(abra.get(i) == true){
-				c.flip();
+				tiles.get(i).flip();
 			}
 		}
 	}
@@ -270,7 +300,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			int place = (int) (Math.random() * abra.size());
 			if(abra.get(place) != true){
 				abra.set(place, true);
-				System.out.println(place);
 			}else{
 				i--;
 			}

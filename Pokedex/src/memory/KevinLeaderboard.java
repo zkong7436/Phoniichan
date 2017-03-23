@@ -14,8 +14,9 @@ import guiPractice.components.Button;
 import guiPractice.components.ClickableScreen;
 import guiPractice.components.TextLabel;
 import guiPractice.components.Visible;
+import main.Pokedex;
 
-public class KevinLeaderboard extends ClickableScreen implements Runnable, MouseMotionListener
+public class KevinLeaderboard extends main.PokedexScreen implements Runnable, MouseMotionListener
 {
 	private Button button;
 	
@@ -142,33 +143,33 @@ public class KevinLeaderboard extends ClickableScreen implements Runnable, Mouse
 		
 		for(int i = 0; i < vName.size();i++)
 		{
-			TextLabel convert = new TextLabel(35,230,100,45, names.get(i));
-			vName.add(convert);
-			System.out.println("added something to name");
+			vName.add(new TextLabel(50, 50, 50, 50, names.get(i)));
 		}
 		
 		for(int i = 0; i < vScore.size();i++)
 		{
-			TextLabel convert2 = new TextLabel(35,230,100,45, Integer.toString(scores.get(i)));
-			vScore.add(convert2);
-			System.out.println("added something to score");
+			vScore.add(new TextLabel(50,50,50,50,"" + scores.get(i)+ ""));
 		}
 		button = new Button(35,230,100,45,"Return",Color.orange,new Action() 
 		{
 			public void act() 
 			{
-				KevinDemo.game.setScreen(KevinDemo.memory);
+				Pokedex.game.setScreen(MemoryScreen.memory);
 			}
 		}); 
 		viewObjects.add(button);
 		for (int i = 0; i < vScore.size();i++)
 		{
 			viewObjects.add(vScore.get(i));
-			System.out.println("displayed");
 			viewObjects.add(vName.get(i));
-			System.out.println("displayed");
 		}
 		System.out.println("displayed");
+		
+	}
+
+	@Override
+	public void initRemainingItems(ArrayList<Visible> viewObjects) {
+		// TODO Auto-generated method stub
 		
 	}	
 }

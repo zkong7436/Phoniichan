@@ -1,4 +1,4 @@
-package memory;
+package Memory;
 
 import java.awt.Color;
 

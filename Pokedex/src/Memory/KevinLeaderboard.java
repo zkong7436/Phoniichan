@@ -154,7 +154,7 @@ public class KevinLeaderboard extends main.PokedexScreen implements Runnable, Mo
 		{
 			public void act() 
 			{
-				Pokedex.game.setScreen(MemoryScreen.memory);
+				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
 			}
 		}); 
 		viewObjects.add(button);

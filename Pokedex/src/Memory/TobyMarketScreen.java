@@ -37,7 +37,6 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 		app.start();
 	}
 
-	@Override
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
 		button = new Button(35,230,100,45,"Return",Color.yellow,
 				new Action() {

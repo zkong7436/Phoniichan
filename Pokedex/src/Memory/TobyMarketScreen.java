@@ -20,7 +20,7 @@ import Memory.TobyGraphic;
 public class TobyMarketScreen extends main.PokedexScreen implements Runnable, MouseMotionListener{
 	
 	private Button button;
-	public TobyButton[] buttons;
+	public ArrayList<TobyButton> buttons;
 	private TextLabel label;
 	public TextLabel description;
 	private TextLabel abraNumber;
@@ -82,56 +82,56 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 				"resources/sampleImages/Potion3.png","resources/sampleImages/Potion4.png",
 				"resources/sampleImages/Potion5.png"};
 		int numberOfButtons = 5;
-		buttons = new TobyButton[numberOfButtons];
+		buttons = new ArrayList<TobyButton>(numberOfButtons);
 		for(int i = 0; i <numberOfButtons; i++){ 
-			buttons[i] = getAButton();
-			buttons[i].setName(names[i]);
-			buttons[i].setCost(costs[i]);
-			buttons[i].setX(185);
-			buttons[i].setY(45*i+50);
-			buttons[i].setPicture(address[i]);
-			buttons[i].setLabel(potionDescription[i]);
+//			buttons[i] = getAButton();
+			buttons.get(i).setName(names[i]);
+			buttons.get(i).setCost(costs[i]);
+			buttons.get(i).setX(185);
+			buttons.get(i).setY(45*i+50);
+			buttons.get(i).setPicture(address[i]);
+			buttons.get(i).setLabel(potionDescription[i]);
 			
-			final TobyButton b = buttons[i];
-			buttons[i].setAction(new Action() {
+			final TobyButton b = buttons.get(i);
+			buttons.get(i).setAction(new Action() {
 				public void act() {	
 					if(MemoryScreen.abrasCaught >= b.getCost()){
 						validCost();
-//						for(int i=0; i<buttons.length;i++){
-//							if(buttons[i] = buttons[1]){
-//								if(MemoryScreen.hp < 3){
-//									MemoryScreen.hp++;
-//									validCost();
-//								}else{
-//									description.setText("**You already have max HP**");
-//									break;
-//								}							
-//							}
-//							if(buttons[i] = buttons[2]){
-//								if(MemoryScreen.lives < 3){
-//									MemoryScreen.lives++;
-//									validCost();
-//								}else{
-//									description.setText("**You already have max lives**");
-//									break;
-//								}
-//							}
-//							if(buttons[i] = buttons[3]){
-//								if(MemoryScreen.lives <= 1){
-//									MemoryScreen.lives += 2;
-//									validCost();
-//								}else{
-//									description.setText("**You already have max lives**");
-//									break;
-//								}
-//							}
-//							if(buttons[i] = buttons[4]){
+						for(int i=0; i<buttons.size();i++){
+							if(buttons.get(i) == buttons.get(1)){
+								if(MemoryScreen.hp < 3){
+									MemoryScreen.hp++;
+									validCost();
+								}else{
+									description.setText("**You already have max HP**");
+									break;
+								}							
+							}
+							if(buttons.get(i) == buttons.get(2)){
+								if(MemoryScreen.lives < 3){
+									MemoryScreen.lives++;
+									validCost();
+								}else{
+									description.setText("**You already have max lives**");
+									break;
+								}
+							}
+							if(buttons.get(i) == buttons.get(3)){
+								if(MemoryScreen.lives <= 1){
+									MemoryScreen.lives += 2;
+									validCost();
+								}else{
+									description.setText("**You already have max lives**");
+									break;
+								}
+							}
+							if(buttons.get(i) == buttons.get(5)){
 //								MemoryScreen.firstRound();
-//							}
-//							if(buttons[i] = buttons[5]){
-//								MemoryScreen.level++;
-//							}									
-//						}						
+							}
+							if(buttons.get(i) == buttons.get(6)){
+								MemoryScreen.level++;
+							}									
+						}						
 					}else{
 						description.setText("**Return to capture more Abras**");
 						button.setColor(Color.red);
@@ -147,7 +147,7 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 					button.setColor(Color.green);					
 				}
 			});
-			viewObjects.add(buttons[i]);
+			viewObjects.add(buttons.get(i));
 		}
 	}
 	
@@ -179,9 +179,9 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 		a.play();
 	}
 
-	private TobyButton getAButton() {
-		return new TobyButton();
-	}
+//	private TobyButton getAButton() {
+//		return new TobyButton();
+//	}
 	
 	public void run() {
 		// TODO Auto-generated method stub

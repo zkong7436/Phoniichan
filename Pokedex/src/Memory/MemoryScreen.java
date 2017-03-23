@@ -51,8 +51,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 	
 	public void setScore(int score){
-		this.score = currentScore;
-		progress.setScore(score);
+		currentScore = score;
+		progress.setScore(currentScore);
 	}
 	
 	public MemoryScreen(int height, int width) {
@@ -133,7 +133,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	}
 	
 	public void failedLevel(){
-		if(levels != 1){
+		if(level != 1){
 			hp = 3;
 			lives--;
 			level--;

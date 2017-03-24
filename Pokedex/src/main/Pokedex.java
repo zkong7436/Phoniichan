@@ -1,6 +1,8 @@
 package main;
 
 import guiPractice.GuiApplication;
+import realpokedex.PokedexList;
+import realpokedex.Pokemon;
 
 /**
  * @author Student8
@@ -14,6 +16,10 @@ public class Pokedex extends GuiApplication {
 	 */
 	public static Pokedex game;
 	public static PokedexScreen screen;
+	
+	public Pokedex(){
+		setBounds(50,50,944,526);
+	}
 	
 	public static void main(String[] args){
 		game = new Pokedex();

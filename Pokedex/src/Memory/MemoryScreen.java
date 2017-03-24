@@ -31,7 +31,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private int startingSize;
 	private Button button;
 	private Button enter;
-	private boolean started;
 	
 	public void setLevel(int level){
 		this.level = level;
@@ -53,7 +52,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
 	public void setScore(int score){
 		currentScore = score;
-		progress.setScore(currentScore);
+		progress.setPoint(currentScore);
 	}
 	
 	public int getScore(){
@@ -83,7 +82,11 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		progress.setHp(this.hp);
 	}
 	
-	public MemoryScreen(int height, int width, booloean started) {
+	public int getHp(){
+		return hp;
+	}
+	
+	public MemoryScreen(int height, int width) {
 		super(height, height);
 		this.started = started;
 		Thread app = new Thread(this);
@@ -111,12 +114,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			}
 		});
 		
-		if(!started){
-			intitializeItems();
-		}else{
-			tiles.clear();
-		}
-        	
+		initializeItems();
+		
         	int idkName = 0;
         	int idkName2 = 1;
 		

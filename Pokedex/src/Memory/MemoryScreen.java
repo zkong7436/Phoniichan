@@ -235,9 +235,10 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		if(level % 3 == 0){
 			increaseSize += 2;
 			System.out.println("At this point the number of tiles should increase. "+
-					  "However whenever I try to add new button the new buttons have no actions declared onto them."+
-					  "Even though it should be the same." +
-					  "All the back end still works but the buttons do not work as intended");
+					  "However whenever I try to add new button the new buttons have no actions declared onto them0. "+
+					  "Even though it should be the same. " +
+					  "All the back end still works but the buttons do not work as intended. "+
+					  "I deleted all part that were related to this.);
 //			update(viewObjects);
 		}
 		Thread nextRound = new Thread(MemoryScreen.this);

@@ -26,6 +26,7 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	private TextLabel abraNumber;
 	private TobyGraphic picture;
 	private TobyGraphic textbox;
+	private TobyGraphic pokemart;
 	private static String FONT = "Tw Cen MT Condensed";
 	private static int SIZE = 22;
 
@@ -36,25 +37,29 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	}
 
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
-		button = new Button(360,230,90,40,"Return",Color.yellow,
+		button = new Button(620,327,60,30,"Return",Color.yellow,
 				new Action() {
 			public void act() {
 //				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
 				button.setColor(Color.yellow);
 			}
 		});
-		label = new TextLabel(340, 90, 760, 40, "AbraMarket");
+		button.setFont(FONT);
+		button.setSize(SIZE);
+		label = new TextLabel(350, 100, 760, 40, "AbraMarket");
 		label.setFont(FONT);
-		label.setSize(SIZE);
-		description = new TextLabel(350, 295, 500, 100, "");
+		label.setSize(28);
+		description = new TextLabel(350, 300, 500, 100, "");
 		description.setFont(FONT);
 		description.setSize(SIZE);
 		picture = new TobyGraphic(360, 270, .01, "resources/TobyMarket/White.png");
-		textbox = new TobyGraphic(336, 360, .38, "resources/TobyMarket/PokeBox.png");
-		
+		textbox = new TobyGraphic(336, 365, .38, "resources/TobyMarket/PokeBox.png");
+//		pokemart = new TobyGraphic(338, 93, 1.16, "resources/TobyMarket/PokeMart.png");
+//		
+//		viewObjects.add(pokemart);
 		addAnimation(viewObjects);
 		addButtons(viewObjects);
-//		addAbrasCaught(viewObjects);
+		addAbrasCaught(viewObjects);
 		viewObjects.add(label);
 		viewObjects.add(button);
 		viewObjects.add(textbox);
@@ -62,13 +67,14 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 		viewObjects.add(description);
 	}
 
-//	public void addAbrasCaught(ArrayList<Visible> viewObjects) {
+	public void addAbrasCaught(ArrayList<Visible> viewObjects) {
 //		MemoryScreen caught = new MemoryScreen(getWidth(),getHeight());
-//        abraNumber = new TextLabel(20, 15, 300, 210, "Abras Caught: "+caught.getAbrasCaught());
-//        abraNumber.setFont(FONT);
-//        abraNumber.setSize(SIZE);
-//        viewObjects.add(abraNumber);	
-//	}
+//        abraNumber = new TextLabel(360, 240, 300, 210, "Abras Caught: "+caught.getAbrasCaught());
+		abraNumber = new TextLabel(345, 60, 300, 210, "Abras Caught: 40");
+        abraNumber.setFont(FONT);
+        abraNumber.setSize(SIZE);
+        viewObjects.add(abraNumber);	
+	}
 
 	private void addButtons(ArrayList<Visible> viewObjects) {
 		String[] names = {"Potion", "Finer Potion", "Excellent Potion", "Superior Lure", "Legendary Candy"};
@@ -173,8 +179,8 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 			e.printStackTrace();
 		}
 		viewObjects.add(a);
-		a.setX(350);		
-		a.setY(200);
+		a.setX(355);		
+		a.setY(100);
 		a.play();
 	}
 	

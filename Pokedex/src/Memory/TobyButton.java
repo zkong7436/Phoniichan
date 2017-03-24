@@ -31,22 +31,6 @@ public class TobyButton extends Component implements TobyButtonInterface{
 		update();
 	}
 	
-//	public void update(Graphics2D g) {
-//		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//		g.setColor(Color.cyan);
-//		g.fillRoundRect(0, 0, 310, 33, 15, 15);
-//		g.setColor(Color.black);
-//		g.drawRoundRect(0, 0, 310, 33, 15, 15);
-//		if(displayName != null){
-//			g.setFont(new Font(font, Font.BOLD, size));
-//			g.drawString(name, 10, 22);	
-//		}
-//		if(displayCost != null){
-//			g.setFont(new Font(font, Font.BOLD, size));
-//			g.drawString(displayCost, 315, 22);
-//		}
-//	}
-	
 	public void update(Graphics2D g) {
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setColor(Color.cyan);
@@ -59,6 +43,7 @@ public class TobyButton extends Component implements TobyButtonInterface{
 		}
 		if(displayCost != null){
 			g.setFont(new Font(font, Font.BOLD, size));
+			g.setColor(Color.black);
 			g.drawString(displayCost, 205, 22);
 		}
 	}

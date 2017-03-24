@@ -29,7 +29,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private ProgressInterface progress;
 	private int increaseSize;
 	private int startingSize;
-	private Button background;
+	private Button store;
 	private Button home;
 	
 	public void setLevel(int level){
@@ -101,7 +101,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		background = new Graphic(331, 92, 380, 345, "resources/backthingy.png");
 		viewObjects.add(background);
 		
-		button = new Button(575,275,100,45,"Store",Color.green,new Action(){
+		store = new Button(575,275,100,45,"Store",Color.green,new Action(){
 			public void act() {
 				Pokedex.game.setScreen(new TobyMarketScreen(getWidth(),getHeight()));
 			}
@@ -151,7 +151,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		viewObjects.add(progress);
 		viewObjects.add(home);
 		viewObjects.add(label);
-		viewObjects.add(button);
+		viewObjects.add(store);
 	}
 	
 	public void setProgress(){

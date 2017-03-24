@@ -145,7 +145,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			});
 			viewObjects.add(tiles.get(i));
 		}
-		
+		System.out.printlnt("The red are meant to be voltorbs and the green abras. "+
+				    "But I dont know how to set the buttons as images";
 		progress = getProgress();
 		label = new TextLabel(getWidth()/2 - 150, getHeight()/2 -50, 400, 20, "Text");
 		viewObjects.add(progress);

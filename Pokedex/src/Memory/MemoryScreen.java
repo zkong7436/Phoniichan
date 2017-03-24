@@ -29,8 +29,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private ProgressInterface progress;
 	private int increaseSize;
 	private int startingSize;
-	private Button button;
-	private Button enter;
+	private Button background;
+	private Button home;
 	
 	public void setLevel(int level){
 		this.level = level;
@@ -88,7 +88,6 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	
 	public MemoryScreen(int height, int width) {
 		super(height, height);
-		this.started = started;
 		Thread app = new Thread(this);
 		app.start();
 	}
@@ -110,7 +109,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		
 		home = new Button(55,230,70,70,"Home",new Color(0,0,0,0),new Action(){
 			public void act() {
-				Pokedex.game.setScreen(HomeScreen(getWidth(),getHeight()));
+				Pokedex.game.setScreen(new HomeScreen(getWidth(),getHeight()));
 			}
 		});
 		
@@ -188,7 +187,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 		}
 	}
 	
-	public void intitializeItems(){
+	public void initializeItems(){
        		increaseSize=5;
 		startingSize=4;
 		abraCount = 3;

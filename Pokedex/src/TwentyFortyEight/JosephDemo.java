@@ -81,6 +81,8 @@ public class JosephDemo extends GuiApplication {
 
 		@Override
 		public void initRemainingItems(ArrayList<Visible> view) {
+			SpawnDemo.spawn.start(MyDemo.game);
+			MyDemo d = new MyDemo(330, 250, 380, 345);
 			movementDisplay = new TextLabel(20, 40, 1000, 25, "");
 			slideUp = new Button(785, 320, 40, 40, "Up", Color.green, new Action() {
 
@@ -92,13 +94,16 @@ public class JosephDemo extends GuiApplication {
 					JimmyDemo.jimmy.rotate(MyDemo.game, 3);
 					int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
 
+
 					if (counter != 0) {
 						SpawnDemo.spawn.cont(MyDemo.game);
 						JimmyDemo.jimmy.printGame(MyDemo.game);
+						
 
 						System.out.println("-------------------------------");
 						System.out.println(Arrays.toString(points.toArray()));
 						movementDisplay.setText("You swiped up!");
+						d.update();
 					} else {
 						movementDisplay.setText("You cannot swipe up anymore.");
 					}
@@ -114,6 +119,7 @@ public class JosephDemo extends GuiApplication {
 					JimmyDemo.jimmy.moveTilesPlus(MyDemo.game, points);
 					JimmyDemo.jimmy.rotate(MyDemo.game, 3);
 					int counter = JimmyDemo.jimmy.counter(16, gameTemp, MyDemo.game);
+					
 
 					if (counter != 0) {
 						SpawnDemo.spawn.cont(MyDemo.game);
@@ -122,6 +128,7 @@ public class JosephDemo extends GuiApplication {
 						System.out.println("-------------------------------");
 						System.out.println(Arrays.toString(points.toArray()));
 						movementDisplay.setText("You swiped down!");
+						d.update();
 						update();
 					} else {
 						movementDisplay.setText("You cannot swipe down anymore.");
@@ -142,6 +149,7 @@ public class JosephDemo extends GuiApplication {
 						System.out.println("-------------------------------");
 						System.out.println(Arrays.toString(points.toArray()));
 						movementDisplay.setText("You swiped right!");
+						d.update();
 					} else {
 						movementDisplay.setText("You cannot swipe right anymore. ");
 					}
@@ -162,6 +170,7 @@ public class JosephDemo extends GuiApplication {
 						System.out.println("-----------------------------" + "");
 						System.out.println(Arrays.toString(points.toArray()));
 						movementDisplay.setText("You swiped left!");
+						d.update();
 					} else {
 						movementDisplay.setText("You cannot swipe left anymore. ");
 					}
@@ -172,7 +181,7 @@ public class JosephDemo extends GuiApplication {
 			view.add(slideDown);
 			view.add(slideRight);
 			view.add(slideLeft);
-			MyDemo d = new MyDemo(330, 250, 380, 345);
+			
 			TextLabel text = new TextLabel(560, 220, 100, 30, "High Score");
 			int[] scores = new int[3];
 			// if(TwentyFortyEightGame.gameOver){
@@ -183,16 +192,12 @@ public class JosephDemo extends GuiApplication {
 				scores[0] = 10000;
 				scores[1] = 2000;
 				scores[2] = 300;
-				view.add(new TextLabel((560), (230 + (i * 20)), 150, 40, (i + 1) + scores[i] + ""));
+				view.add(new TextLabel((560), (230 + (i * 20)), 150, 40, (i + 1) + "."+scores[i] + ""));
 			}
 			view.add(d);
 			view.add(text);
 		}
 
 	}
-	public static void checkGameOver() {
-		
-	}
-
 }
 

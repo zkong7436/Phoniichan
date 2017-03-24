@@ -21,7 +21,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 	private int combo;
 	private int hp;
 	private int abraCount;
-	private Graphic picture;
+	private Graphic background;
 	private boolean acceptingInput;
 	private ArrayList<Boolean> abra;
 	private ArrayList<Boolean> checked;

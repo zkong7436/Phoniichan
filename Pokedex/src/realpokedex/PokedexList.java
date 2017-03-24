@@ -14,7 +14,7 @@ import main.PokedexScreen;
  * @author zkong7436
  *
  */
-public class PokedexList extends PokedexScreen {
+public class PokedexList extends PokedexScreen{
 
 	/**
 	 * @param width
@@ -107,5 +107,6 @@ public class PokedexList extends PokedexScreen {
 		}
 		return space += a;
 	}
+
 	
 }

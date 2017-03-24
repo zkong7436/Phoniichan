@@ -15,14 +15,14 @@ import main.PokedexScreen;
  * @author zkong7436
  *
  */
-public class Pokemon extends PokedexScreen {
+public class Pokemon extends PokedexScreen{
 
 	/**
 	 * @param width
 	 * @param height
 	 */
 	
-	private static String[][] stats;
+	private String[][] stats;
 	private int number;
 	private int iconIdx;
 	private File[] resources;
@@ -32,7 +32,7 @@ public class Pokemon extends PokedexScreen {
 		super(width, height);
 		System.out.println("You created a screen using number "+number);
 		this.number = number;
-		name.setText(cutString(resources[number].getName().substring(3),".png"));
+		name.setText(stats[number][0]);
 	}
 
 	/* (non-Javadoc)
@@ -45,27 +45,52 @@ public class Pokemon extends PokedexScreen {
 	
 	@Override
 	public void initRemainingItems(ArrayList<Visible> viewObjects) {
+		String [] category = {"Seed","Seed","Seed","Lizard","Flame", "Flame","Tiny Turtle","Turtle","Shellfish"};
+		String[] abilities = {"Overgrow", "Overgrow", "Overgrow", "Blaze", "Blaze", "Blaze", "Torrent","Torrent","Torrent"};
+		String[] type = {"Grass, Poison", "Grass, Poison", "Grass, Poison", "Fire", "Fire", "Fire, Flying", "Water","Water","Water" };
+		String[] weaknesses = {"Fire, Flying, Ice, Psychic","Fire, Flying, Ice, Psychic","Fire, Flying, Ice, Psychic", "Ground, Rock, Water","Ground, Rock, Water","Rock,"
+				+ "Electric, Water", "Electric, Grass","Electric, Grass","Electric, Grass"};
 		resources = new File("resources/pokemon/").listFiles();
-		stats = new String[resources.length][5];
-		addStats(resources);
-		name = new TextLabel(360,110,200,30, cutString(resources[number].getName().substring(3),".png"));
+		addStats(category, abilities, type, weaknesses);
+		name = new TextLabel(360,110,200,30, stats[number][0]);
 		name.setSize(26);
-		Button back = new Button(560,210,60,60,"Back",Color.black, new Action(){
+		TextLabel printCate = new TextLabel(350,140,500,30, stats[number][1]);
+		TextLabel printAbil = new TextLabel(350,165,500,30, stats[number][2]);
+		TextLabel printType = new TextLabel(350,190,500,30, stats[number][3]);
+		TextLabel printWeak = new TextLabel(350,215,500,30, stats[number][4]);
+		Button back = new Button(560,270,70,60,"Back",Color.white, new Action(){
 			public void act(){
 				Pokedex.game.setScreen(new PokedexList(getWidth(),getHeight()));
 			}
 		});
 		viewObjects.add(name);
+		viewObjects.add(printCate);
+		viewObjects.add(printAbil);
+		viewObjects.add(printType);
+		viewObjects.add(printWeak);
 		viewObjects.add(back);
 	}
 	
-	public void addStats(File[] resources){
-		for(int i = 0; i < resources.length; i++){
+	public void addStats(String[] category, String[] abilities, String[] type, String[] weaknesses){
+		stats = new String[9][5];
+		for(int i = 0; i < 9; i++){
 			stats[i][0]=cutString(resources[i].getName().substring(3),".png");
+			stats[i][1]="Category: " + category[0];
+			stats[i][2]="Abilities: " + abilities[0];
+			stats[i][3]="Type: " + type[0];
+			stats[i][4]="Weaknesses: " + weaknesses[0];
 		}
 		
 	}
 	
+	public String cutString(String a, String b){
+		StringBuilder text = new StringBuilder(a);
+		if(stringContains(a, b)){
+			text.delete(iconIdx, iconIdx+b.length());
+		}
+		return text.toString();
+	}
+
 	public boolean stringContains(String a, String b){
 		boolean doesContain = false;
 		for(int i = 0; i < a.length(); i++){
@@ -82,14 +107,6 @@ public class Pokemon extends PokedexScreen {
 			}
 		}
 		return doesContain;
-	}
-	
-	public String cutString(String a, String b){
-		StringBuilder text = new StringBuilder(a);
-		if(stringContains(a, b)){
-			text.delete(iconIdx, iconIdx+b.length());
-		}
-		return text.toString();
 	}
 
 }

@@ -2,6 +2,9 @@ package main;
 
 import java.util.ArrayList;
 
+import Memory.MemoryScreen;
+import TwentyFortyEight.TwentyFortyEightGame;
+
 import java.io.File;
 
 import guiPractice.components.Action;
@@ -36,16 +39,6 @@ public class HomeScreen extends PokedexScreen {
 		int numIcons = 0;
 		for(int i = 0; i < resources.length; i++){
 			if(stringContains(resources[i].getName(),"icon")){
-				ClickableGraphic newLink = new ClickableGraphic((iconX(numIcons))*60+330,iconY(numIcons)*60+90,60,60,"resources/"+resources[i].getName());
-				newLink.setAction(new Action(){
-
-					@Override
-					public void act() {
-						//goto application
-						
-					}
-					
-				});
 				ClickableGraphic newLinks = new ClickableGraphic((iconX(numIcons))*120+360,iconY(numIcons)*120+120,90,90,"resources/"+resources[i].getName());
 				String name = cutString(resources[i].getName(), "icon.png");
 				TextLabel newLinkLabel = new TextLabel((iconX(numIcons))*120+360,iconY(numIcons)*120+210,90,40,centerString(name, 8));
@@ -58,6 +51,18 @@ public class HomeScreen extends PokedexScreen {
 			
 			public void act(){
 				Pokedex.game.setScreen(new PokedexList(getWidth(),getHeight()));
+			}
+		});
+		appLinks.get(0).setAction(new Action(){
+			
+			public void act(){
+				Pokedex.game.setScreen(new TwentyFortyEightGame(getWidth(),getHeight()));
+			}
+		});
+		appLinks.get(1).setAction(new Action(){
+			
+			public void act(){
+				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
 			}
 		});
 		//hi

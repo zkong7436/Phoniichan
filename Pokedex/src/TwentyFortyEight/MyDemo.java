@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import guiPractice.components.Component;
 import guiPractice.components.Graphic;
+import guiPractice.components.TextLabel;
 
 /**
  * @author Student 8
@@ -12,6 +13,7 @@ import guiPractice.components.Graphic;
  */
 public class MyDemo extends Component {
 	static int[][]game = new int[4][4];
+	Graphic[][] grid;
 	public MyDemo(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -25,7 +27,7 @@ public class MyDemo extends Component {
 	public void update(Graphics2D g) {
 //		a[0][0] = 2;
 //		a[0][3] = 2;
-		SpawnDemo.spawn.start(game);
+		grid = new Graphic[4][4];
 		int y = 1;
 		int z = 1;
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -35,9 +37,10 @@ public class MyDemo extends Component {
 		"resources/images2048/5.png", "resources/images2048/6.png", "resources/images2048/7.png",
 		"resources/images2048/8.png", "resources/images2048/9.png", "resources/images2048/10.png",
 		"resources/images2048/11.png", "resources/images2048/12.png", "resources/images2048/13.png",
-		"resources/images2048/14.png", "resources/images2048/15.png",}; // this is filler.. we don't have ivysaur sprite in images2048 yet
+		"resources/images2048/14.png", "resources/images2048/15.png"}; // this is filler.. we don't have ivysaur sprite in images2048 yet
 		//changeImages();
 		int height = 55,width = 55;
+		
 //		Graphic picture1 = new Graphic(0,0,80,80,"resources/images2048/grass.jpg");
 
 		for (int row = 0; row < game.length; row++) {
@@ -49,14 +52,20 @@ public class MyDemo extends Component {
 					else{
 						z = 0;
 					}
-				 
+					Graphic picture1 = new Graphic(col*width,row*height,width,height,pics[0]);
 					Graphic picture2 = new Graphic(col*width,row*height,width,height,pics[z]);
+					if(grid == null) return;
+					grid[row][col] = picture2;
+					g.drawImage(picture1.getImage(), picture1.getX(), picture1.getY(), null);
 					g.drawImage(picture2.getImage(), picture2.getX(), picture2.getY(), null);
 					g.drawRect(col*width,row*height, width, height);
-		
-		}	
+					
+					// instead of "hiii" find a way to get the numbers from the front end
+					// and replace it on drawString.		
+			}	
 		}
 	}
+	
 }	
 
 

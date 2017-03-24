@@ -25,4 +25,6 @@ public interface TobyButtonInterface extends Clickable {
 	String getPictureAddress();
 
 	String getDescription();
+
+	int getCost();
 }

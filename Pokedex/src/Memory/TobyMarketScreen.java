@@ -40,7 +40,8 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 		button = new Button(620,327,60,30,"Return",Color.yellow,
 				new Action() {
 			public void act() {
-//				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
+				//Waiting for MemoryScreen error fix
+				Pokedex.game.setScreen(new MemoryScreen(getWidth(),getHeight()));
 				button.setColor(Color.yellow);
 			}
 		});
@@ -68,9 +69,9 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 	}
 
 	public void addAbrasCaught(ArrayList<Visible> viewObjects) {
-//		MemoryScreen caught = new MemoryScreen(getWidth(),getHeight());
-//        abraNumber = new TextLabel(360, 240, 300, 210, "Abras Caught: "+caught.getAbrasCaught());
-		abraNumber = new TextLabel(345, 60, 300, 210, "Abras Caught: 40");
+		//Waiting for MemoryScreen error fix
+		MemoryScreen caught = new MemoryScreen(getWidth(),getHeight());
+        abraNumber = new TextLabel(360, 240, 300, 210, "Abras Caught: "+caught.getAbrasCaught());
         abraNumber.setFont(FONT);
         abraNumber.setSize(SIZE);
         viewObjects.add(abraNumber);	
@@ -97,61 +98,66 @@ public class TobyMarketScreen extends main.PokedexScreen implements Runnable, Mo
 			buttons.get(i).setLabel(potionDescription[i]);
 			
 			final TobyButtonInterface b = buttons.get(i);
-//			buttons.get(i).setAction(new Action() {
-//				MemoryScreen m = new MemoryScreen(getWidth(),getHeight());
-//				public void act() {
-//					if(m.getAbrasCaught() >= b.getCost()){
-//						validCost();
-//						for(int i=0; i<buttons.size();i++){
-//							if(buttons.get(i) == buttons.get(1)){
-//								if(m.getHp() < 3){
-//									m.setHp(m.getHp()+1);
-//									validCost();
-//								}else{
-//									description.setText("**You already have max HP**");
-//									break;
-//								}							
-//							}
-//							if(buttons.get(i) == buttons.get(2)){
-//								if(m.getLives() < 3){
-//									m.setLives(m.getLives()+1);
-//									validCost();
-//								}else{
-//									description.setText("**You already have max lives**");
-//									break;
-//								}
-//							}
-//							if(buttons.get(i) == buttons.get(3)){
-//								if(m.getLives() <= 1){
-//									m.setLives(m.getLives()+2);
-//									validCost();
-//								}else{
-//									description.setText("**You already have max lives**");
-//									break;
-//								}
-//							}
-//							if(buttons.get(i) == buttons.get(5)){
-////								MemoryScreen.firstRound();
-//							}
-//							if(buttons.get(i) == buttons.get(6)){
-//								m.setLevel(m.getLevel()+1);
-//							}									
-//						}						
-//					}else{
-//						description.setText("**Return to capture more Abras**");
-//						button.setColor(Color.red);
-//					}				
-//				}
-//
-//				private void validCost() {
-//					int c = (m.getAbrasCaught()) - (b.getCost());
-//					System.out.println("subtracted: "+c);
-//					abraNumber.setText("Abras Caught: "+c);
-//					m.setAbrasCaught(c);
-//					description.setText("**Return to use power up**");
-//					button.setColor(Color.green);					
-//				}
-//			});
+			buttons.get(i).setAction(new Action() {
+				//Waiting for MemoryScreen error fix
+				MemoryScreen m = new MemoryScreen(getWidth(),getHeight());
+				public void act() {
+					if(m.getAbrasCaught() >= b.getCost()){
+						for(int i=0; i<buttons.size();i++){
+							if(buttons.get(i) == buttons.get(1)){
+								if(m.getHp() < 3){
+									m.setHp(m.getHp()+1);
+									validCost();
+								}else{
+									description.setText("**You already have max HP**");
+									break;
+								}							
+							}
+							if(buttons.get(i) == buttons.get(2)){
+								if(m.getLives() < 3){
+									m.setLives(m.getLives()+1);
+									validCost();
+								}else{
+									description.setText("**You already have max lives**");
+									break;
+								}
+							}
+							if(buttons.get(i) == buttons.get(3)){
+								if(m.getLives() <= 1){
+									m.setLives(m.getLives()+2);
+									validCost();
+								}else{
+									description.setText("**You already have max lives**");
+									break;
+								}
+							}
+							if(buttons.get(i) == buttons.get(4)){
+								m.run();
+								validCost();
+								break;
+							}
+							if(buttons.get(i) == buttons.get(5)){
+								m.setLevel(m.getLevel()+1);
+								m.passedLevel();
+								validCost();
+								break;
+							}									
+						}						
+					}else{
+						description.setText("**Return to capture more Abras**");
+						button.setColor(Color.red);
+					}				
+				}
+
+				private void validCost() {
+					int c = (m.getAbrasCaught()) - (b.getCost());
+					System.out.println("subtracted: "+c);
+					abraNumber.setText("Abras Caught: "+c);
+					m.setAbrasCaught(c);
+					description.setText("**Return to use power up**");
+					button.setColor(Color.green);					
+				}
+			});
 			viewObjects.add(buttons.get(i));
 		}
 	}

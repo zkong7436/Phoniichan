@@ -5,11 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
-import javax.swing.ImageIcon;
-
 import guiPractice.components.Action;
 import guiPractice.components.Component;
-import guiPractice.components.Graphic;
 
 public class TobyButton extends Component implements TobyButtonInterface{
 

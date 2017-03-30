@@ -145,8 +145,8 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 			});
 			viewObjects.add(tiles.get(i));
 		}
-		System.out.printlnt("The red are meant to be voltorbs and the green abras. "+
-				    "But I dont know how to set the buttons as images";
+		System.out.println("The red are meant to be voltorbs and the green abras. "+
+				    "But I dont know how to set the buttons as images");
 		progress = getProgress();
 		label = new TextLabel(getWidth()/2 - 150, getHeight()/2 -50, 400, 20, "Text");
 		viewObjects.add(progress);
@@ -239,7 +239,7 @@ public class MemoryScreen extends main.PokedexScreen implements Runnable {
 					  "However whenever I try to add new button the new buttons have no actions declared onto them0. "+
 					  "Even though it should be the same. " +
 					  "All the back end still works but the buttons do not work as intended. "+
-					  "I deleted all part that were related to this.);
+					  "I deleted all part that were related to this.");
 //			update(viewObjects);
 		}
 		Thread nextRound = new Thread(MemoryScreen.this);
